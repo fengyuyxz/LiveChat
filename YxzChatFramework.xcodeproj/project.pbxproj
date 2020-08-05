@@ -18,6 +18,7 @@
 		1C2CBEE424D2CFCD0079BFD1 /* SupportedInterfaceOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBEE324D2CFCD0079BFD1 /* SupportedInterfaceOrientations.m */; };
 		1C2CBF2224D3062D0079BFD1 /* YxzLiveRoomSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBF2124D3062D0079BFD1 /* YxzLiveRoomSettingView.m */; };
 		1C2CC06F24D3FF320079BFD1 /* YxzPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */; };
+		1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */; };
 		1CB2B44124C940B80056107A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44024C940B80056107A /* AppDelegate.m */; };
 		1CB2B44724C940B80056107A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44624C940B80056107A /* ViewController.m */; };
 		1CB2B44A24C940B80056107A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB2B44824C940B80056107A /* Main.storyboard */; };
@@ -86,6 +87,8 @@
 		1C2CBF2124D3062D0079BFD1 /* YxzLiveRoomSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzLiveRoomSettingView.m; sourceTree = "<group>"; };
 		1C2CC06D24D3FF320079BFD1 /* YxzPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzPopView.h; sourceTree = "<group>"; };
 		1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzPopView.m; sourceTree = "<group>"; };
+		1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadLiveInfoManager.h; sourceTree = "<group>"; };
+		1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadLiveInfoManager.m; sourceTree = "<group>"; };
 		1CB2B43C24C940B80056107A /* YxzChatFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxzChatFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB2B43F24C940B80056107A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CB2B44024C940B80056107A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 			children = (
 				1CB2B49924C98D770056107A /* YxzChatController.h */,
 				1CB2B49A24C98D770056107A /* YxzChatController.m */,
+				1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */,
+				1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				1C2CBED624D257A00079BFD1 /* YxzLivePlayerControlView.m in Sources */,
 				1CB2B48324C940DF0056107A /* YxzUserModel.m in Sources */,
 				1CF4A32324D845D0000A630D /* NetWorkCore.m in Sources */,
+				1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */,
 				1CB2B44124C940B80056107A /* AppDelegate.m in Sources */,
 				1CB2B48124C940DF0056107A /* YXZMessageModel.m in Sources */,
 				1CB2B49824C989F20056107A /* YxzChatCompleteComponent.m in Sources */,

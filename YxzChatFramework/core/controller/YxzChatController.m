@@ -18,8 +18,10 @@
 #import "YxzPopView.h"
 #import "LiveRoomSettingSeparationView.h"
 #import "VoteView.h"
+#import "LoadLiveInfoManager.h"
 @interface YxzChatController ()<YxzLiveRoomControlDelegate,YxzPlayerDelegate,UIGestureRecognizerDelegate,ChateCompletionDelegate>
 
+@property(nonatomic,strong)RoomBaseInfo *roomBaseInfo;
 
 @property(nonatomic,strong)UIView *containerView;//容器 用于做旋转
 @property(nonatomic,strong)YxzChatCompleteComponent *chatComponentView;
@@ -41,7 +43,7 @@
 
 
 @property(nonatomic,strong)YxzPlayerModel *playerModel;
-
+@property(nonatomic,strong)LoadLiveInfoManager *liveInfoRequest;
 @end
 
 @implementation YxzChatController
@@ -86,7 +88,7 @@
    
 //    self.playerView.fatherView = self.videoContainerView;
      [self layoutSubViewConstraint];
-    [self startPlayAndJoinChatRoom];
+    [self loadData];
     
 }
 -(void)addGesture{
@@ -159,17 +161,44 @@
     NSMutableArray *paArray=[NSMutableArray array];
            for (RoomPlayUrlModel *p in self.roomBaseInfo.playList) {
                SuperPlayerUrl * sp=[SuperPlayerUrl new];
-               sp.title=p.title;
-               sp.url=p.playUrl;
+               sp.title=p.name;
+               sp.url=p.url;
                [paArray addObject:sp];
            }
     _playerModel.multiVideoURLs=paArray;
 }
--(void)startPlayAndJoinChatRoom{
+-(void)loadData{
    
+//    [self.liveInfoRequest loadLiveInfo:@"66a80bac-bb66-4932-8bff-4d8ef5219b6d"];
+    __weak typeof(self) weakSelf = self;
+    [self.liveInfoRequest loadLiveInfo:self.token completion:^(BOOL rsult, LiveRoomInfoModel * info) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (rsult) {
+            strongSelf.roomBaseInfo=info.data;
+            
+            
+            [strongSelf playVideo:strongSelf.roomBaseInfo];
+            
+            
+        }else{
+            if (info) {
+                
+            }
+        }
+    }];
+   
+}
+-(void)playVideo:(RoomBaseInfo *)info{
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    for (RoomPlayUrlModel *mode in info.playList) {
+        SuperPlayerUrl *playUrl=[[SuperPlayerUrl alloc]init];
+        playUrl.title=mode.name;
+        playUrl.url=mode.url;
+        [array addObject:playUrl];
+    }
+    self.playerModel=[[YxzPlayerModel alloc]init];
+    self.playerModel.multiVideoURLs=array;
     [self.livePlayer playWithModel:self.playerModel];
-        
-    
 }
 -(void)layoutSubViewConstraint{
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -533,7 +562,7 @@
     if (!_suspensionBut) {
         
         _suspensionBut=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_suspensionBut setImage:YxzSuperPlayerImage(@"xiangxia") forState:UIControlStateNormal];
+        [_suspensionBut setImage:YxzSuperPlayerImage(@"xiaochuan") forState:UIControlStateNormal];
         [_suspensionBut addTarget:self action:@selector(suspensionButPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _suspensionBut;
@@ -552,5 +581,11 @@
         _topToolView.backgroundColor=[UIColor clearColor];
     }
     return _topToolView;
+}
+-(LoadLiveInfoManager *)liveInfoRequest{
+    if (!_liveInfoRequest) {
+        _liveInfoRequest=[[LoadLiveInfoManager alloc]init];
+    }
+    return _liveInfoRequest;
 }
 @end

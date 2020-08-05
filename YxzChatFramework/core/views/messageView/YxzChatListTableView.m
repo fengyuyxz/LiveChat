@@ -50,7 +50,7 @@
         make.left.equalTo(self.mas_left).offset(10);
         make.top.equalTo(self.mas_top).offset(5);
         make.bottom.equalTo(self.mas_bottom).offset(-5);
-        make.width.equalTo(@(250));
+        make.right.equalTo(self.mas_right);
     }];
     [self.faceBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.containerView.mas_centerY);
@@ -109,7 +109,7 @@
     if (!_faceBut) {
         _faceBut=[UIButton buttonWithType:UIButtonTypeCustom];
         [_faceBut setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"faceTool"] forState:UIControlStateNormal];
-        
+        _faceBut.imageEdgeInsets=UIEdgeInsetsMake(2.5, 2.5, 2.5, 2.5);
         [_faceBut addTarget:self action:@selector(faceButPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _faceBut;
@@ -177,8 +177,9 @@
     [self.listInputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
         make.bottom.equalTo(self.mas_bottom);
-        make.height.equalTo(@(54));
-        make.right.equalTo(self.mas_right);
+        make.height.equalTo(@(49));
+        make.width.mas_equalTo(219);
+//        make.right.equalTo(self.mas_right);
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
           make.left.equalTo(self.mas_left);

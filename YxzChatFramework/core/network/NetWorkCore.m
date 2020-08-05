@@ -156,6 +156,7 @@
         _jsonRequestOperationManager=[AFHTTPSessionManager manager];
         
         [_jsonRequestOperationManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        
         _jsonRequestOperationManager.requestSerializer.timeoutInterval =15;
         [_jsonRequestOperationManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         _jsonRequestOperationManager.responseSerializer = [AFJSONResponseSerializer serializer];

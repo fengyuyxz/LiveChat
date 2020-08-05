@@ -7,11 +7,30 @@
 //
 
 #import "RoomBaseInfo.h"
+@implementation RoomPlayUrlModel
 
-@implementation RoomBaseInfo
 
 @end
-@implementation RoomPlayUrlModel
+@implementation LivePayAuth
+
+
+
+@end
+@implementation RoomBaseInfo
++(NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+        @"playList":@"definition",
+        @"roomId":@"id"
+    };
+}
++(NSDictionary *)mj_objectClassInArray{
+    return @{
+        @"playList":@"RoomPlayUrlModel"
+    };
+}
+@end
+
+@implementation LiveRoomInfoModel
 
 
 

@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YxzChatController : UIViewController
+@property(nonatomic,copy)NSString *token;
 
-@property(nonatomic,strong)RoomBaseInfo *roomBaseInfo;
 @end
 
 NS_ASSUME_NONNULL_END
