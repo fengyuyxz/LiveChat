@@ -27,11 +27,11 @@
     return self;
 }
 -(void)shootingStarAnimate{
-    CGFloat duration = 2.6f;
+    CGFloat duration = 1.6f;
     CGMutablePathRef path = CGPathCreateMutable();
-    int width = CGRectGetWidth(self.superview.bounds);
-    int fromX       = arc4random_uniform(width);     //起始位置:x轴上随机生成一个位置
-    int fromY       = -arc4random_uniform(50)-50;//arc4random() % 400; //起始位置:生成位于福袋上方的随机一个y坐标
+    int width = CGRectGetWidth(self.superview.bounds)/2;
+    int fromX       = arc4random_uniform(width)+width/4;     //起始位置:x轴上随机生成一个位置
+    int fromY       = -arc4random_uniform(50)+20;//arc4random() % 400; //起始位置:生成位于福袋上方的随机一个y坐标
     
     CGFloat positionX   = fromX+200;    //终点x
     CGFloat positionY   = CGRectGetHeight(self.superview.bounds)+100;    //终点y
@@ -47,15 +47,15 @@
     CFRelease(path);
     path = nil;
     //动画组合
-//    CAAnimationGroup *group = [CAAnimationGroup animation];
-//    group.delegate = self;
-//    group.duration = duration;
-//    group.fillMode = kCAFillModeForwards;
-//    group.removedOnCompletion = NO;
-//    group.repeatDuration=5;//动画持续时间
-//    group.animations = @[animation];
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.delegate = self;
+    group.duration = duration;
+    group.fillMode = kCAFillModeForwards;
+    group.removedOnCompletion = NO;
+    group.repeatDuration=3;//动画持续时间
+    group.animations = @[animation];
     
-    [self.layer addAnimation:animation forKey:nil];
+    [self.layer addAnimation:group forKey:nil];
     
 }
 -(void)animate{

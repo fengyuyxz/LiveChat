@@ -132,7 +132,7 @@
     self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
     self.praiseAnimateManager.speed=1;
 //    [self.praiseAnimateManager animate:2];
-    [self.praiseAnimateManager starAnimation:50];
+    [self.praiseAnimateManager starAnimation:10];
 }
 #pragma mark - YxzListViewInputDelegate =================
 -(void)faceClick{
