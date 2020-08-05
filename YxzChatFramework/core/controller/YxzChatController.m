@@ -189,16 +189,19 @@
    
 }
 -(void)playVideo:(RoomBaseInfo *)info{
-    NSMutableArray *array=[[NSMutableArray alloc]init];
-    for (RoomPlayUrlModel *mode in info.playList) {
-        SuperPlayerUrl *playUrl=[[SuperPlayerUrl alloc]init];
-        playUrl.title=mode.name;
-        playUrl.url=mode.url;
-        [array addObject:playUrl];
-    }
-    self.playerModel=[[YxzPlayerModel alloc]init];
-    self.playerModel.multiVideoURLs=array;
-    [self.livePlayer playWithModel:self.playerModel];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray *array=[[NSMutableArray alloc]init];
+        for (RoomPlayUrlModel *mode in info.playList) {
+            SuperPlayerUrl *playUrl=[[SuperPlayerUrl alloc]init];
+            playUrl.title=mode.name;
+            playUrl.url=mode.url;
+            [array addObject:playUrl];
+        }
+        self.playerModel=[[YxzPlayerModel alloc]init];
+        self.playerModel.multiVideoURLs=array;
+        [self.livePlayer playWithModel:self.playerModel];
+    });
+
 }
 -(void)layoutSubViewConstraint{
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {

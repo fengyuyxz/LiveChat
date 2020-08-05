@@ -344,7 +344,7 @@
         return;
     }
     
-    [self configTXPlayer];
+//    [self configTXPlayer];
     
     self.repeatBtn.hidden = YES;
     self.repeatBackBtn.hidden = YES;
@@ -383,10 +383,10 @@
 //        config.minAutoAdjustCacheTime = 5.0f;
 //        config.headers = self.playerConfig.headers;
 //        [self.livePlayer setConfig:config];
-        
+        NSString *videoURL = self.playerModel.playingDefinitionUrl;
         int liveType = [self livePlayerType];
         self.livePlayer.enableHWAcceleration = self.playerConfig.hwAcceleration;
-        [self.livePlayer startPlay:self.playerModel.videoURL type:liveType];
+        [self.livePlayer startPlay:videoURL type:liveType];
 //        TXCUrl *curl = [[TXCUrl alloc] initWithString:self.playerModel.videoURL];
 //        [self.livePlayer prepareLiveSeek:self.playerConfig.playShiftDomain bizId:curl.bizid];
         
