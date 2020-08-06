@@ -194,11 +194,15 @@
     if (self.playDidEnd) { return;  }
     // 显示控制层
     [self.controlView fadeShow];
-    if (self.isPauseByUser) {
-        [self resume];
-    } else {
-        [self pause];
+    if (!self.isLive) {
+        if (self.isPauseByUser) {
+            [self resume];
+        } else {
+            [self pause];
+        }
     }
+    
+    
 }
 #pragma mark - UIGestureRecognizerDelegate
 
@@ -596,7 +600,7 @@
                     [self.delegate superPlayerDidStart:self];
                 }
             }
-            
+            [self.middleBlackBtn fadeOut:0.1];
             if (self.state == StateBuffering)
                 self.state = YxzStatePlaying;
             [self.netWatcher loadingEndEvent];
@@ -786,7 +790,10 @@
     @try {
          self.playerModel.playingDefinition = separationTitle;
            NSString *url = self.playerModel.playingDefinitionUrl;
+            int liveType = [self livePlayerType];
            if (self.isLive) {
+//               [self.livePlayer stopPlay];
+//               [self.livePlayer startPlay:url type:liveType];
                [self.livePlayer switchStream:url];
                [self showMiddleBtnMsg:[NSString stringWithFormat:@"正在切换到%@...", separationTitle] withAction:YxzActionNone];
            } else {

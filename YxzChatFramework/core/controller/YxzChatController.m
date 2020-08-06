@@ -340,7 +340,7 @@
         if (self.livePlayer.playDidEnd) { return;  }
            // 显示控制层
         [self.livePlayer.controlView fadeShow];
-        if (self.livePlayer.isPauseByUser) {
+        if (self.livePlayer.isPauseByUser&&!self.livePlayer.isLive) {
             [self.livePlayer resume];
            } else {
                [self.livePlayer pause];
