@@ -175,7 +175,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (rsult) {
             strongSelf.roomBaseInfo=info.data;
-            
+            [strongSelf setBaseInfoView];
             
             [strongSelf playVideo:strongSelf.roomBaseInfo];
             
@@ -188,16 +188,22 @@
     }];
    
 }
+-(void)setBaseInfoView{
+    [self.basInfoView roomTitle:self.roomBaseInfo.title viewNum:self.roomBaseInfo.view_num zanNum:self.roomBaseInfo.zan_num commentNum:self.roomBaseInfo.comment_num];
+}
 -(void)playVideo:(RoomBaseInfo *)info{
     dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableArray *array=[[NSMutableArray alloc]init];
+        
         for (RoomPlayUrlModel *mode in info.playList) {
             SuperPlayerUrl *playUrl=[[SuperPlayerUrl alloc]init];
             playUrl.title=mode.name;
             playUrl.url=mode.url;
             [array addObject:playUrl];
         }
+//        NSString *url=info.playList.lastObject.url;
         self.playerModel=[[YxzPlayerModel alloc]init];
+//        self.playerModel.videoURL=url;
         self.playerModel.multiVideoURLs=array;
         [self.livePlayer playWithModel:self.playerModel];
     });
@@ -215,9 +221,16 @@
     }];
     [self.videoContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containerView.mas_left);
-        make.top.equalTo(self.containerView.mas_top);
+       
         make.right.equalTo(self.containerView.mas_right);
-        make.height.equalTo(@(280));
+        if (IPHONE_X) {
+            make.top.equalTo(self.containerView.mas_top).offset(24);
+             
+        }else{
+             make.top.equalTo(self.containerView.mas_top);
+             
+        }
+        make.height.equalTo(@(230));
     }];
     [self.chatComponentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containerView.mas_left);
@@ -227,15 +240,17 @@
     }];
     
     [self.topToolView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.containerView);
+        make.left.right.equalTo(self.containerView);
         if (IPHONE_X) {
-            make.height.mas_equalTo(74);
+            make.top.equalTo(self.containerView.mas_top).offset(24);
+            make.height.mas_equalTo(4);
         }else{
-            make.height.mas_equalTo(50);
+            make.top.equalTo(self.containerView.mas_top).offset(0);
+            make.height.mas_equalTo(54);
         }
     }];
     [self.suspensionBut mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.topToolView.mas_bottom).offset(-10);
+        make.bottom.equalTo(self.topToolView.mas_bottom).offset(0);
         make.right.equalTo(self.topToolView.mas_right).offset(-15);
         make.height.mas_equalTo(25);
         make.width.mas_equalTo(20);
@@ -260,6 +275,7 @@
     if (isFull) {
         [self.videoContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.top.equalTo(self.containerView);
+            
         }];
         [self.chatComponentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.containerView.mas_left);
@@ -269,10 +285,17 @@
         }];
     }else{
         [self.videoContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.containerView.mas_left);
-            make.top.equalTo(self.containerView.mas_top);
-            make.right.equalTo(self.containerView.mas_right);
-            make.height.equalTo(@(280));
+             make.left.equalTo(self.containerView.mas_left);
+                  
+                   make.right.equalTo(self.containerView.mas_right);
+                   if (IPHONE_X) {
+                       make.top.equalTo(self.containerView.mas_top).offset(24);
+                        
+                   }else{
+                        make.top.equalTo(self.containerView.mas_top);
+                        
+                   }
+                   make.height.equalTo(@(230));
         }];
         [self.chatComponentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.containerView.mas_left);
@@ -390,10 +413,12 @@
     [self.chatComponentView hiddenTheKeyboardAndFace:^{
         YxzLiveRoomSettingView *view=[[YxzLiveRoomSettingView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.45)];
         RoomSettingHeadeModel *headerModel=[RoomSettingHeadeModel new];
+        /*
         headerModel.headerImgUrlStr=@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596198002372&di=9f36c7199fb31f01eed130acdae394ec&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F7Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F267f9e2f07082838685c484ab999a9014c08f11f.jpg";
         headerModel.s_title=@"add";
         headerModel.m_title=@"天下无贼";
-        [view setHeader:headerModel sharpness:@"标准"];
+        */
+        [view setHeader:headerModel sharpness:self.playerModel.playingDefinition];
         
          YxzPopView *popView=[[YxzPopView alloc]initWithFrame:self.view.bounds];
         __weak typeof(self) weakSelf =self;

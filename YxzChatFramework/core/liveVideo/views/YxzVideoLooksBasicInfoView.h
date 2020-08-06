@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YxzVideoLooksBasicInfoView : UIView
-
+-(void)roomTitle:(NSString *)roomTitle viewNum:(NSString *)viewNum zanNum:(NSString *)zanNum commentNum:(NSString *)commentNum;
 @end
 
 NS_ASSUME_NONNULL_END

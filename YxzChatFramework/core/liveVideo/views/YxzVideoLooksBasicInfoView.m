@@ -10,6 +10,7 @@
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
 #import "YxzGetBundleResouceTool.h"
+#import "NSString+Empty.h"
 @interface YxzVideoLooksBasicInfoView()
 
 @property(nonatomic,strong)UIView *playStyleView;
@@ -115,7 +116,15 @@
        }];
     
 }
-
+-(void)roomTitle:(NSString *)roomTitle viewNum:(NSString *)viewNum zanNum:(NSString *)zanNum commentNum:(NSString *)commentNum{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.roomNameLabel.text=[NSString isEmpty:roomTitle]?@"":roomTitle;
+        self.playTimesLabel.text=[NSString isEmpty:viewNum]?@"":viewNum;
+        self.likeLabel.text=[NSString isEmpty:zanNum]?@"":zanNum;
+        self.giveAGiftLabel.text=[NSString isEmpty:commentNum]?@"":commentNum;
+    });
+    
+}
 -(UILabel *)generateLabel{
     UILabel *label=[[UILabel alloc]init];
     label.text=@"0";
@@ -182,7 +191,7 @@
         _roomNameLabel=[[UILabel alloc]init];
         _roomNameLabel.textColor=[UIColor whiteColor];
         _roomNameLabel.font=[UIFont systemFontOfSize:15];
-        _roomNameLabel.text=@"你的感觉";
+        _roomNameLabel.text=@"";
     }
     return _roomNameLabel;
     

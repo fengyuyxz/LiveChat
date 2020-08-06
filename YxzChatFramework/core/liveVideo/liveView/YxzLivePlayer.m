@@ -783,19 +783,25 @@
     }
 }
 -(void)switchSeparation:(NSString *)separationTitle{
-    self.playerModel.playingDefinition = separationTitle;
-    NSString *url = self.playerModel.playingDefinitionUrl;
-    if (self.isLive) {
-        [self.livePlayer switchStream:url];
-        [self showMiddleBtnMsg:[NSString stringWithFormat:@"正在切换到%@...", separationTitle] withAction:YxzActionNone];
-    } else {
-        if ([self.vodPlayer supportedBitrates].count > 1) {
-            [self.vodPlayer setBitrateIndex:self.playerModel.playingDefinitionIndex];
-        } else {
-            CGFloat startTime = [self.vodPlayer currentPlaybackTime];
-            [self.vodPlayer setStartTime:startTime];
-            [self.vodPlayer startPlay:url];
-        }
+    @try {
+         self.playerModel.playingDefinition = separationTitle;
+           NSString *url = self.playerModel.playingDefinitionUrl;
+           if (self.isLive) {
+               [self.livePlayer switchStream:url];
+               [self showMiddleBtnMsg:[NSString stringWithFormat:@"正在切换到%@...", separationTitle] withAction:YxzActionNone];
+           } else {
+               if ([self.vodPlayer supportedBitrates].count > 1) {
+                   [self.vodPlayer setBitrateIndex:self.playerModel.playingDefinitionIndex];
+               } else {
+                   CGFloat startTime = [self.vodPlayer currentPlaybackTime];
+                   [self.vodPlayer setStartTime:startTime];
+                   [self.vodPlayer startPlay:url];
+               }
+           }
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
     }
 }
 - (void)moviePlayDidEnd {

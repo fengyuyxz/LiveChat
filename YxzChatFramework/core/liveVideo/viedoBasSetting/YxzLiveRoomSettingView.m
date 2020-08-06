@@ -46,21 +46,15 @@
         sharpnesM.subTitle=sharpness;
     }
     [_dataSouce addObject:sharpnesM];
-//    RoomSettingModel *playM=[[RoomSettingModel alloc]init];
-//    playM.title=@"播放速度";
-//    playM.logImg=@"bofang";
-//    if (![NSString isEmpty:sharpness]) {
-//        playM.subTitle=sharpness;
-//    }
-//    [_dataSouce addObject:playM];
+
     RoomSettingModel *shareM=[[RoomSettingModel alloc]init];
     shareM.title=@"分享";
     shareM.logImg=@"share";
     [_dataSouce addObject:shareM];
-    RoomSettingModel *jubaoM=[[RoomSettingModel alloc]init];
-    jubaoM.title=@"举报";
-    jubaoM.logImg=@"jubao";
-    [_dataSouce addObject:jubaoM];
+//    RoomSettingModel *jubaoM=[[RoomSettingModel alloc]init];
+//    jubaoM.title=@"举报";
+//    jubaoM.logImg=@"jubao";
+//    [_dataSouce addObject:jubaoM];
     [self.tableView reloadData];
 }
 -(void)setupView{
