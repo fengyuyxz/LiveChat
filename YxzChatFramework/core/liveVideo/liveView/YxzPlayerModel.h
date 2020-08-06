@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSArray<SuperPlayerUrl *> *multiVideoURLs;
 
+
+
+
 /// 指定多码率情况下，默认播放的连接Index
 @property (nonatomic, assign) NSUInteger defaultPlayIndex;
 @property(nonatomic,assign)NSInteger playingDefinitionIndex;

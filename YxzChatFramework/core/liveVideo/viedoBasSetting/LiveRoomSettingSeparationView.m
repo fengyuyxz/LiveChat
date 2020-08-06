@@ -50,14 +50,15 @@
     [super layoutSubviews];
     
 }
--(void)setPlayerModel:(YxzPlayerModel *)playerModel{
+-(void)setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle{
     _playerModel=playerModel;
     NSMutableArray *array=[NSMutableArray array];
-    for (SuperPlayerUrl *pu in _playerModel.multiVideoURLs) {
+    for (RoomPlayUrlModel *pu in _playerModel.playList) {
         RoomSeparationModel *m=[RoomSeparationModel new];
-        m.title=pu.title;
+        m.title=pu.name;
         m.videoUrl=pu.url;
-        if ([_playerModel.playingDefinition isEqualToString:pu.title]) {
+        m.is_vip=pu.is_vip;
+        if ([playTitle isEqualToString:pu.name]) {
             m.isCheck=YES;
         }else{
             m.isCheck=NO;
@@ -85,6 +86,13 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    RoomSeparationModel *model=self.dataSouce[indexPath.row];
+    
+    if (model.is_vip==1&&!self.playerModel.auth.auth) {
+        //弹框 无权限切换高清
+        return;
+    }
+    
+    
     if (self.block) {
         self.block(model.title, model.videoUrl);
     }
@@ -122,6 +130,7 @@
 @end
 @interface LiveRoomSeparationCell()
 @property(nonatomic,strong)UILabel *titleLabel;
+@property(nonatomic,strong)UILabel *subTitleLabel;
 @property(nonatomic,strong)UIImageView *checkImage;
 @end
 @implementation LiveRoomSeparationCell
@@ -137,10 +146,15 @@
 -(void)setupView{
      self.selectionStyle  = UITableViewCellSelectionStyleNone;
     [self addSubview:self.titleLabel];
+    [self addSubview:self.subTitleLabel];
     [self addSubview:self.checkImage];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.left.equalTo(self.mas_left).offset(10);
+    }];
+    [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self.titleLabel.mas_right).offset(2);
     }];
     [self.checkImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
@@ -151,6 +165,11 @@
 -(void)setModel:(RoomSeparationModel *)model{
     _model=model;
     self.titleLabel.text=_model.title;
+    if (_model.is_vip==1) {
+        self.subTitleLabel.hidden=NO;
+    }else{
+        self.subTitleLabel.hidden=YES;
+    }
     if (model.isCheck) {
         self.checkImage.image=YxzSuperPlayerImage(@"xuanze");
         _titleLabel.font=[UIFont systemFontOfSize:15];
@@ -174,6 +193,15 @@
         _checkImage=[[UIImageView alloc]init];
     }
     return _checkImage;
+}
+-(UILabel *)subTitleLabel{
+    if (!_subTitleLabel) {
+        _subTitleLabel=[[UILabel alloc]init];
+        _subTitleLabel.font=[UIFont systemFontOfSize:14];
+        _subTitleLabel.textColor=RGBA_OF(0x999999);
+        _subTitleLabel.text=@"vip";
+    }
+    return _subTitleLabel;
 }
 @end
 @implementation RoomSeparationModel

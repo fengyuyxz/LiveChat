@@ -792,9 +792,9 @@
            NSString *url = self.playerModel.playingDefinitionUrl;
             int liveType = [self livePlayerType];
            if (self.isLive) {
-//               [self.livePlayer stopPlay];
-//               [self.livePlayer startPlay:url type:liveType];
-               [self.livePlayer switchStream:url];
+               [self.livePlayer stopPlay];
+               [self.livePlayer startPlay:url type:liveType];
+//               [self.livePlayer switchStream:url];
                [self showMiddleBtnMsg:[NSString stringWithFormat:@"正在切换到%@...", separationTitle] withAction:YxzActionNone];
            } else {
                if ([self.vodPlayer supportedBitrates].count > 1) {

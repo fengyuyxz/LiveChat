@@ -201,9 +201,35 @@
             playUrl.url=mode.url;
             [array addObject:playUrl];
         }
-//        NSString *url=info.playList.lastObject.url;
+        NSString *url=@"";
+        NSString *title=@"";
+        BOOL isAuth=NO;
+        for (RoomPlayUrlModel *mode in info.playList) {
+            if (info.auth.auth) {
+                if (mode.is_vip==1) {
+                    url=mode.url;
+                    title=mode.name;
+                    isAuth=YES;
+                    break;
+                }
+            }else{
+               if (mode.is_vip==2) {
+                    url=mode.url;
+                    title=mode.name;
+                   isAuth=YES;
+                    break;
+                }
+            }
+        }
+        if (!isAuth) {
+            // 提示无权限
+            return;
+        }
+        
+
         self.playerModel=[[YxzPlayerModel alloc]init];
-//        self.playerModel.videoURL=url;
+        self.playerModel.videoURL=url;
+        self.playerModel.playingDefinition=title;
         self.playerModel.multiVideoURLs=array;
         [self.livePlayer playWithModel:self.playerModel];
     });
@@ -413,6 +439,7 @@
     [self.chatComponentView hiddenTheKeyboardAndFace:^{
         YxzLiveRoomSettingView *view=[[YxzLiveRoomSettingView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height*0.45)];
         RoomSettingHeadeModel *headerModel=[RoomSettingHeadeModel new];
+        headerModel.m_title=self.roomBaseInfo.title;
         /*
         headerModel.headerImgUrlStr=@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596198002372&di=9f36c7199fb31f01eed130acdae394ec&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F7Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F267f9e2f07082838685c484ab999a9014c08f11f.jpg";
         headerModel.s_title=@"add";
@@ -462,7 +489,8 @@
 -(void)popSeparationView{
     if (self.playerModel.multiVideoURLs&&self.playerModel.multiVideoURLs.count>1) {
         LiveRoomSettingSeparationView *separationView=[[LiveRoomSettingSeparationView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 180)];
-        separationView.playerModel=self.playerModel;
+
+        [separationView setPlayerModel:self.roomBaseInfo withPlayTitle:self.playerModel.playingDefinition];
         YxzPopView *popView=[[YxzPopView alloc]initWithFrame:self.view.bounds];
         __weak typeof(self) weakSelf =self;
         separationView.block = ^(NSString *title, NSString *url) {

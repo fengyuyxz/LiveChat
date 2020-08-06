@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YxzPlayerModel.h"
+#import "RoomBaseInfo.h"
 @interface RoomSeparationModel : NSObject
 @property(nonatomic,copy)NSString *title;
+@property(nonatomic,assign)int is_vip;
 @property(nonatomic,copy)NSString *videoUrl;
 @property(nonatomic,assign)BOOL isCheck;
 @end
@@ -24,8 +25,10 @@
 
 typedef void(^SeparationCompelation)(NSString *title,NSString *url);
 @property(nonatomic,copy)SeparationCompelation block;
-@property(nonatomic,strong)YxzPlayerModel *playerModel;
+@property(nonatomic,strong)RoomBaseInfo *playerModel;
 @property(nonatomic,strong)NSArray *dataSouce;
+
+-(void)setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle;
 @end
 
 

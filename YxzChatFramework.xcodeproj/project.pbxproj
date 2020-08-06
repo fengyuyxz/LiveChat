@@ -516,7 +516,6 @@
 				1CB2B43924C940B80056107A /* Frameworks */,
 				1CB2B43A24C940B80056107A /* Resources */,
 				D06C61E46BC17D9BF3916160 /* [CP] Copy Pods Resources */,
-				237F16B77626D53CF016ADB7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -576,23 +575,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		237F16B77626D53CF016ADB7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YxzChatFramework/Pods-YxzChatFramework-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YxzChatFramework/Pods-YxzChatFramework-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YxzChatFramework/Pods-YxzChatFramework-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6666CB595E52834DC5A89B4A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
