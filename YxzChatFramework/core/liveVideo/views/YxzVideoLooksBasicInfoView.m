@@ -153,21 +153,21 @@
 -(UIImageView *)playTimesImageView{
     if (!_playTimesImageView) {
         _playTimesImageView=[[UIImageView alloc]init];
-        _playTimesImageView.image=[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"icon_rank@3x.png"];
+        _playTimesImageView.image=YxzSuperPlayerImage(@"xiaobofan");
     }
     return _playTimesImageView;
 }
 -(UIImageView *)likeImage{
     if (!_likeImage) {
         _likeImage=[[UIImageView alloc]init];
-        _likeImage.image=[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"icon_rank@3x.png"];
+        _likeImage.image=YxzSuperPlayerImage(@"shoucang");
     }
     return _likeImage;
 }
 -(UIImageView *)giveAGiftImageView{
     if (!_giveAGiftImageView) {
         _giveAGiftImageView=[[UIImageView alloc]init];
-        _giveAGiftImageView.image=[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"icon_rank@3x.png"];
+        _giveAGiftImageView.image=YxzSuperPlayerImage(@"pinglun");
     }
     return _giveAGiftImageView;
 }
