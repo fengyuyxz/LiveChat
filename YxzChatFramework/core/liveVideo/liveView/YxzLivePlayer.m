@@ -387,6 +387,7 @@
 //        config.minAutoAdjustCacheTime = 5.0f;
 //        config.headers = self.playerConfig.headers;
 //        [self.livePlayer setConfig:config];
+        self.state=YxzStateBuffering;
         NSString *videoURL = self.playerModel.playingDefinitionUrl;
         int liveType = [self livePlayerType];
         self.livePlayer.enableHWAcceleration = self.playerConfig.hwAcceleration;
@@ -396,7 +397,10 @@
         
 //        [self.livePlayer setMute:self.playerConfig.mute];
 //        [self.livePlayer setRenderMode:self.playerConfig.renderMode];
+        
+        
     }else{
+        self.state=YxzStateBuffering;
         [self.vodPlayer startPlay:self.playerModel.videoURL];
     }
     

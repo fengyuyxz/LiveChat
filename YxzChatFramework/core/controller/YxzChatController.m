@@ -8,6 +8,8 @@
 
 #import "YxzChatController.h"
 #import "NSString+Empty.h"
+#import "LGAlertView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "YxzChatCompleteComponent.h"
 #import "YxzVideoLooksBasicInfoView.h"
 #import "SuspensionWindow.h"
@@ -30,7 +32,7 @@
 @property(nonatomic,strong)YxzVideoLooksBasicInfoView *basInfoView;
 @property(nonatomic,strong)YxzLivePlayer *livePlayer;
 @property(nonatomic,assign)BOOL isFullScreen;
-
+@property (nonatomic) UIImageView *coverImageView;
 @property(nonatomic,strong)UIView *topToolView;
 
 @property(nonatomic,strong)UIButton *moreBut;
@@ -143,6 +145,7 @@
     [self.view addSubview:self.containerView];
     [self.containerView addSubview:self.basInfoView];
     [self.containerView addSubview:self.videoContainerView];
+    [self.videoContainerView addSubview:self.coverImageView];
     _chatComponentView=[[YxzChatCompleteComponent alloc]initWithFrame:self.view.bounds];
     _chatComponentView.delegate=self;
     [self.containerView addSubview:_chatComponentView];
@@ -176,7 +179,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (rsult) {
             strongSelf.roomBaseInfo=info.data;
-            strongSelf.roomBaseInfo.auth.auth=NO;
+//            strongSelf.roomBaseInfo.auth.auth=NO;
             [strongSelf setBaseInfoView];
             
             [strongSelf playVideo:strongSelf.roomBaseInfo];
@@ -225,6 +228,18 @@
         }
         if (!isAuth) {
             // 提示无权限
+            NSURL *corerImage=[NSURL URLWithString:info.auth.defaultbg];
+            [self.coverImageView sd_setImageWithURL:corerImage];
+            //弹框 无权限切换高清
+                  __weak typeof(self) weakSelf = self;
+                  LGAlertView *alert=[[LGAlertView alloc]initWithTitle:info.auth.title message:info.auth.desc style:LGAlertViewStyleAlert buttonTitles:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
+                      
+                  } cancelHandler:^(LGAlertView * _Nonnull alertView) {
+                      
+                  } destructiveHandler:^(LGAlertView * _Nonnull alertView) {
+                      __strong typeof(weakSelf) strongSelf = weakSelf;
+                      
+                  }];
             return;
         }
         
@@ -259,6 +274,9 @@
              
         }
         make.height.equalTo(@(230));
+    }];
+    [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.bottom.equalTo(self.videoContainerView);
     }];
     [self.chatComponentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containerView.mas_left);
@@ -653,5 +671,15 @@
         _liveInfoRequest=[[LoadLiveInfoManager alloc]init];
     }
     return _liveInfoRequest;
+}
+- (UIImageView *)coverImageView {
+    if (!_coverImageView) {
+        _coverImageView = [[UIImageView alloc] init];
+//        _coverImageView.userInteractionEnabled = YES;
+        _coverImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _coverImageView.alpha = 0;
+   
+    }
+    return _coverImageView;
 }
 @end
