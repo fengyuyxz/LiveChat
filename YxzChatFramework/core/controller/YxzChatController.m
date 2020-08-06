@@ -7,6 +7,7 @@
 //
 
 #import "YxzChatController.h"
+#import "NSString+Empty.h"
 #import "YxzChatCompleteComponent.h"
 #import "YxzVideoLooksBasicInfoView.h"
 #import "SuspensionWindow.h"
@@ -175,6 +176,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (rsult) {
             strongSelf.roomBaseInfo=info.data;
+            strongSelf.roomBaseInfo.auth.auth=NO;
             [strongSelf setBaseInfoView];
             
             [strongSelf playVideo:strongSelf.roomBaseInfo];
@@ -486,6 +488,7 @@
     };
     [pop show:vote superView:self.view];
 }
+#pragma mark - 弹窗切换清晰度视频源
 -(void)popSeparationView{
     if (self.playerModel.multiVideoURLs&&self.playerModel.multiVideoURLs.count>1) {
         LiveRoomSettingSeparationView *separationView=[[LiveRoomSettingSeparationView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 180)];
@@ -497,9 +500,16 @@
             __strong typeof(weakSelf) strongSelf =weakSelf;
             dispatch_async(dispatch_get_main_queue(), ^{
 //                strongSelf.playerModel.playingDefinition=title;
-                [strongSelf.livePlayer switchSeparation:title];
+                if(![NSString isEmpty:title]){
+                    [strongSelf.livePlayer switchSeparation:title];
+                }
+                
                 [popView dismiss];
             });
+        };
+        
+        separationView.openVipBlock = ^{
+            
         };
         
         [popView show:separationView superView:self.view];

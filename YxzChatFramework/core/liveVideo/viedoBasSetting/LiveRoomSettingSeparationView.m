@@ -7,6 +7,7 @@
 //
 
 #import "LiveRoomSettingSeparationView.h"
+#import "LGAlertView.h"
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
 @interface LiveRoomSettingSeparationView()<UITableViewDelegate,UITableViewDataSource>
@@ -50,7 +51,8 @@
     [super layoutSubviews];
     
 }
--(void)setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle{
+-(void)
+setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle{
     _playerModel=playerModel;
     NSMutableArray *array=[NSMutableArray array];
     for (RoomPlayUrlModel *pu in _playerModel.playList) {
@@ -89,6 +91,18 @@
     
     if (model.is_vip==1&&!self.playerModel.auth.auth) {
         //弹框 无权限切换高清
+        __weak typeof(self) weakSelf = self;
+        LGAlertView *alert=[[LGAlertView alloc]initWithTitle:self.playerModel.auth.title message:self.playerModel.auth.desc style:LGAlertViewStyleAlert buttonTitles:nil cancelButtonTitle:@"取消" destructiveButtonTitle:@"开通vip" actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
+            
+        } cancelHandler:^(LGAlertView * _Nonnull alertView) {
+            
+        } destructiveHandler:^(LGAlertView * _Nonnull alertView) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if(strongSelf.openVipBlock){
+                strongSelf.openVipBlock();
+            }
+        }];
+        [alert show];
         return;
     }
     

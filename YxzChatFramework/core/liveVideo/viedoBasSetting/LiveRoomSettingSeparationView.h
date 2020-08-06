@@ -23,7 +23,10 @@
 
 @interface LiveRoomSettingSeparationView : UIView
 
+typedef void(^OpenVipCompletion)(void);
+
 typedef void(^SeparationCompelation)(NSString *title,NSString *url);
+@property(nonatomic,copy)OpenVipCompletion openVipBlock;//开通vip block
 @property(nonatomic,copy)SeparationCompelation block;
 @property(nonatomic,strong)RoomBaseInfo *playerModel;
 @property(nonatomic,strong)NSArray *dataSouce;
