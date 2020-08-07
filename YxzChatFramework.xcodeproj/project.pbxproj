@@ -18,6 +18,7 @@
 		1C2CBEE424D2CFCD0079BFD1 /* SupportedInterfaceOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBEE324D2CFCD0079BFD1 /* SupportedInterfaceOrientations.m */; };
 		1C2CBF2224D3062D0079BFD1 /* YxzLiveRoomSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBF2124D3062D0079BFD1 /* YxzLiveRoomSettingView.m */; };
 		1C2CC06F24D3FF320079BFD1 /* YxzPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */; };
+		1C6B42CD24DCF4BA00399AFC /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42CC24DCF4BA00399AFC /* ToastView.m */; };
 		1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */; };
 		1CB2B44124C940B80056107A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44024C940B80056107A /* AppDelegate.m */; };
 		1CB2B44724C940B80056107A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44624C940B80056107A /* ViewController.m */; };
@@ -86,6 +87,8 @@
 		1C2CBF2124D3062D0079BFD1 /* YxzLiveRoomSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzLiveRoomSettingView.m; sourceTree = "<group>"; };
 		1C2CC06D24D3FF320079BFD1 /* YxzPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzPopView.h; sourceTree = "<group>"; };
 		1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzPopView.m; sourceTree = "<group>"; };
+		1C6B42CB24DCF4BA00399AFC /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
+		1C6B42CC24DCF4BA00399AFC /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
 		1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadLiveInfoManager.h; sourceTree = "<group>"; };
 		1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadLiveInfoManager.m; sourceTree = "<group>"; };
 		1CB2B43C24C940B80056107A /* YxzChatFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxzChatFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -423,6 +426,8 @@
 		1CB2B49F24C9919F0056107A /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				1C6B42CB24DCF4BA00399AFC /* ToastView.h */,
+				1C6B42CC24DCF4BA00399AFC /* ToastView.m */,
 				1CB2B4A024C991F20056107A /* YxzGetBundleResouceTool.h */,
 				1CB2B4A124C991F20056107A /* YxzGetBundleResouceTool.m */,
 				1CB2B4A324CA7EB60056107A /* YxzCalculateTextSizeTool.h */,
@@ -663,6 +668,7 @@
 				1CB2B4A524CA7EB60056107A /* YxzCalculateTextSizeTool.m in Sources */,
 				1C2CBED824D257A10079BFD1 /* YxzLivePlayer.m in Sources */,
 				1CBEB37824D657620090F277 /* VoteView.m in Sources */,
+				1C6B42CD24DCF4BA00399AFC /* ToastView.m in Sources */,
 				1C2CBE0C24CE65280079BFD1 /* LivePlayerInitializeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "LiveRoomSettingSeparationView.h"
+#import "ToastView.h"
 #import "LGAlertView.h"
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
@@ -90,7 +91,9 @@ setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle{
    RoomSeparationModel *model=self.dataSouce[indexPath.row];
     
     if (model.is_vip==1&&!self.playerModel.auth.auth) {
+        [ToastView showWithEnText:self.playerModel.auth.title];
         //弹框 无权限切换高清
+        /*
         __weak typeof(self) weakSelf = self;
         LGAlertView *alert=[[LGAlertView alloc]initWithTitle:self.playerModel.auth.title message:self.playerModel.auth.desc style:LGAlertViewStyleAlert buttonTitles:nil cancelButtonTitle:@"取消" destructiveButtonTitle:@"开通vip" actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
             
@@ -103,6 +106,7 @@ setPlayerModel:(RoomBaseInfo *)playerModel withPlayTitle:(NSString *)playTitle{
             }
         }];
         [alert show];
+         */
         return;
     }
     

@@ -7,6 +7,7 @@
 //
 
 #import "YxzChatController.h"
+#import "ToastView.h"
 #import "NSString+Empty.h"
 #import "LGAlertView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -235,6 +236,8 @@
             [self.coverImageView sd_setImageWithURL:corerImage];
             //弹框 无权限切换高清
                   __weak typeof(self) weakSelf = self;
+            [ToastView showWithEnText:info.auth.title];
+            /*
                   LGAlertView *alert=[[LGAlertView alloc]initWithTitle:info.auth.title message:info.auth.desc style:LGAlertViewStyleAlert buttonTitles:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
                       
                   } cancelHandler:^(LGAlertView * _Nonnull alertView) {
@@ -242,7 +245,7 @@
                   } destructiveHandler:^(LGAlertView * _Nonnull alertView) {
                       __strong typeof(weakSelf) strongSelf = weakSelf;
                       
-                  }];
+                  }];*/
             return;
         }
         
