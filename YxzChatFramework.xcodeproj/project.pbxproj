@@ -19,6 +19,8 @@
 		1C2CBF2224D3062D0079BFD1 /* YxzLiveRoomSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBF2124D3062D0079BFD1 /* YxzLiveRoomSettingView.m */; };
 		1C2CC06F24D3FF320079BFD1 /* YxzPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */; };
 		1C6B42CD24DCF4BA00399AFC /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42CC24DCF4BA00399AFC /* ToastView.m */; };
+		1C6B42D124DD1D1100399AFC /* RongCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D024DD1D1100399AFC /* RongCloudManager.m */; };
+		1C6B42D424DD8A8500399AFC /* RongCloudTokenResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */; };
 		1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */; };
 		1CB2B44124C940B80056107A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44024C940B80056107A /* AppDelegate.m */; };
 		1CB2B44724C940B80056107A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44624C940B80056107A /* ViewController.m */; };
@@ -89,6 +91,10 @@
 		1C2CC06E24D3FF320079BFD1 /* YxzPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzPopView.m; sourceTree = "<group>"; };
 		1C6B42CB24DCF4BA00399AFC /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
 		1C6B42CC24DCF4BA00399AFC /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
+		1C6B42CF24DD1D1100399AFC /* RongCloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RongCloudManager.h; sourceTree = "<group>"; };
+		1C6B42D024DD1D1100399AFC /* RongCloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RongCloudManager.m; sourceTree = "<group>"; };
+		1C6B42D224DD8A8500399AFC /* RongCloudTokenResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RongCloudTokenResult.h; sourceTree = "<group>"; };
+		1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RongCloudTokenResult.m; sourceTree = "<group>"; };
 		1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadLiveInfoManager.h; sourceTree = "<group>"; };
 		1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadLiveInfoManager.m; sourceTree = "<group>"; };
 		1CB2B43C24C940B80056107A /* YxzChatFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxzChatFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +268,17 @@
 			path = viedoBasSetting;
 			sourceTree = "<group>";
 		};
+		1C6B42CE24DD1B6800399AFC /* RongCloud */ = {
+			isa = PBXGroup;
+			children = (
+				1C6B42CF24DD1D1100399AFC /* RongCloudManager.h */,
+				1C6B42D024DD1D1100399AFC /* RongCloudManager.m */,
+				1C6B42D224DD8A8500399AFC /* RongCloudTokenResult.h */,
+				1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */,
+			);
+			path = RongCloud;
+			sourceTree = "<group>";
+		};
 		1CB2B43324C940B80056107A = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +319,7 @@
 		1CB2B45A24C940DF0056107A /* core */ = {
 			isa = PBXGroup;
 			children = (
+				1C6B42CE24DD1B6800399AFC /* RongCloud */,
 				1CF4A32024D845AB000A630D /* network */,
 				1C2CBE6324CEA0200079BFD1 /* foreign */,
 				1C2CBE0924CE64BD0079BFD1 /* initManager */,
@@ -632,6 +650,7 @@
 				1C2CBED724D257A00079BFD1 /* SuspensionWindow.m in Sources */,
 				1CBEB37224D5B2360090F277 /* YxzAnimationControl.m in Sources */,
 				1CB2B49524C979F10056107A /* YxzInputBoxView.m in Sources */,
+				1C6B42D124DD1D1100399AFC /* RongCloudManager.m in Sources */,
 				1CB2B48A24C940E00056107A /* YxzChatBaseCell.m in Sources */,
 				1CB2B48424C940E00056107A /* YxzMsgAttributeModel.m in Sources */,
 				1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */,
@@ -653,6 +672,7 @@
 				1CF4A32324D845D0000A630D /* NetWorkCore.m in Sources */,
 				1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */,
 				1CB2B44124C940B80056107A /* AppDelegate.m in Sources */,
+				1C6B42D424DD8A8500399AFC /* RongCloudTokenResult.m in Sources */,
 				1CB2B48124C940DF0056107A /* YXZMessageModel.m in Sources */,
 				1CB2B49824C989F20056107A /* YxzChatCompleteComponent.m in Sources */,
 				1CF4A32624D90861000A630D /* NetWorkRequestManager.m in Sources */,

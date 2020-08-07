@@ -7,6 +7,7 @@
 //
 
 #import "YxzChatController.h"
+#import "RongCloudManager.h"
 #import "ToastView.h"
 #import "NSString+Empty.h"
 #import "LGAlertView.h"
@@ -48,6 +49,7 @@
 
 @property(nonatomic,strong)YxzPlayerModel *playerModel;
 @property(nonatomic,strong)LoadLiveInfoManager *liveInfoRequest;
+@property(nonatomic,strong)ChatRoomUserInfoAndTokenModel *chatRoomTokenModel;
 @end
 
 @implementation YxzChatController
@@ -93,6 +95,7 @@
 //    self.playerView.fatherView = self.videoContainerView;
      [self layoutSubViewConstraint];
     [self loadData];
+    [self joinChatRoom];
     
 }
 -(void)addGesture{
@@ -193,6 +196,28 @@
         }
     }];
    
+}
+-(void)joinChatRoom{
+    __weak typeof(self) weakSelf =self;
+    [[RongCloudManager shareInstance]getRongCloudTokenWithUserToken:self.token completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
+        if (isSUC) {
+            weakSelf.chatRoomTokenModel=model;
+            [[RongCloudManager shareInstance]connectRongCloudService:model.imtoken userToken:self.token completion:^(BOOL isConnect, NSString *userId) {
+                if (isConnect) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[RongCloudManager shareInstance]setUserId:weakSelf.chatRoomTokenModel.user_id userName:weakSelf.chatRoomTokenModel.username];
+                        [[RongCloudManager shareInstance] joinChatRoom: weakSelf.chatRoomTokenModel.liveroomid completion:^(BOOL joinSuc, RCErrorCode code) {
+                            if (joinSuc) {//加入成功
+                                
+                            }
+                        }];
+                    });
+                }
+            }];
+        }else{
+            
+        }
+    }];
 }
 -(void)setFaceDataToFaceView{
     [self.chatComponentView setFaceList:self.roomBaseInfo.faceList];

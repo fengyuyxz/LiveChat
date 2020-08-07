@@ -25,7 +25,7 @@
     
     YxzChatController *vc=[[YxzChatController alloc]init];
     vc.modalPresentationStyle=UIModalPresentationFullScreen;
-    vc.token=@"66a80bac-bb66-4932-8bff-4d8ef5219b6d";
+    vc.token=@"32339c97-ff67-4421-93f8-47222d6f8596";
 //    LiveRoomViewController *vc=[[LiveRoomViewController alloc]init];
 //    vc.modalPresentationStyle=UIModalPresentationFullScreen;
 //    vc.roomBaseInfo=info;

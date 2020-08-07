@@ -10,6 +10,7 @@
 #import "YxzLevelManager.h"
 #import "LivePlayerInitializeController.h"
 #import "SupportedInterfaceOrientations.h"
+#import "RongCloudManager.h"
 @interface AppDelegate ()
 
 @end
@@ -18,9 +19,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
     [[YxzLevelManager sharedInstance]setup];
-//    [LivePlayerInitializeController loadLivePlayLicenceUrlAndLincenceKey];
+    [RongCloudManager loadRongCloudSdk];
     return YES;
 }
 
