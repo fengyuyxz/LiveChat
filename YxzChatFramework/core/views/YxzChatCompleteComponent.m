@@ -198,7 +198,7 @@
     YXZMessageModel *model=[YXZMessageModel new];
     model.msgType=YxzMsgType_barrage;
     model.content=msgText;
-   // model.faceImageUrl=faceImageUrlStr;
+    model.faceImageUrl=faceImageUrlStr;
     YxzUserModel *user=[YxzUserModel new];
     user.nickName=@"fengyuyxz";
     user.level=7;

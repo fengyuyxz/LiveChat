@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YxzGetBundleResouceTool : NSObject
 +(instancetype)shareInstance;
 -(UIImage *)getImageWithImageName:(NSString *)imageName;
--(UIImage *)getFaceWithImageName:(NSString *)imageName;
-+(NSArray<YxzFaceItem *> *)getBundlerFace;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

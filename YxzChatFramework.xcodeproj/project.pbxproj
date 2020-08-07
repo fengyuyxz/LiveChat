@@ -50,7 +50,6 @@
 		1CB2B4A924CAD1E00056107A /* YxzFaceContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4A824CAD1E00056107A /* YxzFaceContainerView.m */; };
 		1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4AD24CB1DCB0056107A /* YxzFaceItem.m */; };
 		1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B024CB1E0A0056107A /* YxzFaceCell.m */; };
-		1CB2B4B324CB21350056107A /* face.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B224CB21350056107A /* face.bundle */; };
 		1CB2B4B624CBB4430056107A /* YxzShowSelectedFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B524CBB4430056107A /* YxzShowSelectedFaceView.m */; };
 		1CB2B4B924CBDED90056107A /* NSString+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B824CBDED90056107A /* NSString+Empty.m */; };
 		1CBEB35B24D4535D0090F277 /* LiveRoomSettingSeparationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBEB35A24D4535D0090F277 /* LiveRoomSettingSeparationView.m */; };
@@ -149,7 +148,6 @@
 		1CB2B4AD24CB1DCB0056107A /* YxzFaceItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzFaceItem.m; sourceTree = "<group>"; };
 		1CB2B4AF24CB1E0A0056107A /* YxzFaceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzFaceCell.h; sourceTree = "<group>"; };
 		1CB2B4B024CB1E0A0056107A /* YxzFaceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzFaceCell.m; sourceTree = "<group>"; };
-		1CB2B4B224CB21350056107A /* face.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = face.bundle; sourceTree = "<group>"; };
 		1CB2B4B424CBB4430056107A /* YxzShowSelectedFaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzShowSelectedFaceView.h; sourceTree = "<group>"; };
 		1CB2B4B524CBB4430056107A /* YxzShowSelectedFaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzShowSelectedFaceView.m; sourceTree = "<group>"; };
 		1CB2B4B724CBDED90056107A /* NSString+Empty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Empty.h"; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				1CB2B49D24C990CD0056107A /* YxzChatResouce.bundle */,
-				1CB2B4B224CB21350056107A /* face.bundle */,
 				1CBEB37324D5B5750090F277 /* animationfireworks.bundle */,
 			);
 			path = resouce;
@@ -567,7 +564,6 @@
 				1CB2B44C24C940B90056107A /* Assets.xcassets in Resources */,
 				1CB2B49E24C990CD0056107A /* YxzChatResouce.bundle in Resources */,
 				1CB2B44A24C940B80056107A /* Main.storyboard in Resources */,
-				1CB2B4B324CB21350056107A /* face.bundle in Resources */,
 				1CBEB37424D5B5760090F277 /* animationfireworks.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
