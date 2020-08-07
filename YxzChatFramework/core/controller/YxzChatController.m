@@ -183,7 +183,7 @@
             [strongSelf setBaseInfoView];
             
             [strongSelf playVideo:strongSelf.roomBaseInfo];
-            
+            [strongSelf setFaceDataToFaceView];
             
         }else{
             if (info) {
@@ -192,6 +192,9 @@
         }
     }];
    
+}
+-(void)setFaceDataToFaceView{
+    [self.chatComponentView setFaceList:self.roomBaseInfo.faceList];
 }
 -(void)setBaseInfoView{
     [self.basInfoView roomTitle:self.roomBaseInfo.title viewNum:self.roomBaseInfo.view_num zanNum:self.roomBaseInfo.zan_num commentNum:self.roomBaseInfo.comment_num];
@@ -398,6 +401,9 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     
+    if (self.chatComponentView.inputStatus==YxzInputStatus_showFace) {
+        return NO;
+    }
 
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         if (self.livePlayer.playDidEnd){
@@ -405,7 +411,7 @@
         }
     }
 
-    if ([touch.view isKindOfClass:[UISlider class]] || [touch.view.superview isKindOfClass:[UISlider class]]||[touch.view isKindOfClass:[UIButton class]]) {
+    if ([touch.view isKindOfClass:[UISlider class]] || [touch.view.superview isKindOfClass:[UISlider class]]||[touch.view isKindOfClass:[UIButton class]]||[touch.view isKindOfClass:[UICollectionView class]]||[touch.view isKindOfClass:[UITableView class]]||[touch.view isKindOfClass:[UICollectionViewCell class]]) {
         return NO;
     }
   

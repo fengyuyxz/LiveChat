@@ -11,14 +11,14 @@
 #import "YxzGetBundleResouceTool.h"
 #import <Masonry/Masonry.h>
 #import "YXZConstant.h"
-#import "YxzFaceItem.h"
+
 #import "YxzFaceCell.h"
 #define  BOTTOM_FACE_TOOL_BAR_H 40
 @interface YxzFaceContainerView()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)UIView *bottomFaceTool;
 @property(nonatomic,strong)UIButton *addMoreFaceBut;
 @property(nonatomic,strong)UICollectionView *collectionView;
-@property(nonatomic,strong)NSMutableArray<YxzFaceItem *> *faceDataSouce;
+
 
 
 
@@ -44,8 +44,12 @@
 - (CGFloat)faceContainerH{
     return 150+BOTTOM_FACE_TOOL_BAR_H;
 }
+-(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList{
+    [self.faceDataSouce addObjectsFromArray:faceList];
+    [self.collectionView reloadData];
+}
 -(void)showFace{
-    self.faceDataSouce;
+    
     [self.collectionView reloadData];
 }
 -(void)setupSubViews{
@@ -118,8 +122,8 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     YxzFaceItem *item=self.faceDataSouce[indexPath.row];
     if ([self.delegate respondsToSelector:@selector(didSelectedFace:)]) {
-        NSString *url=[[item.face_name stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
-        [self.delegate didSelectedFace:url];
+        
+        [self.delegate didSelectedFace:item.icon];
     }
 }
 -(UIView *)bottomFaceTool{
@@ -153,8 +157,8 @@
 }
 -(NSMutableArray<YxzFaceItem *> *)faceDataSouce{
     if (!_faceDataSouce) {
-        NSArray *list=[YxzGetBundleResouceTool getBundlerFace];
-        _faceDataSouce=[NSMutableArray arrayWithArray:list];
+        
+        _faceDataSouce=[NSMutableArray array];
     }
     return _faceDataSouce;
 }

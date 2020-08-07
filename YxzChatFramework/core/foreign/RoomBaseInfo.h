@@ -5,7 +5,7 @@
 //  Created by 颜学宙 on 2020/7/27.
 //  Copyright © 2020 颜学宙. All rights reserved.
 //
-
+#import "YxzFaceItem.h"
 #import <Foundation/Foundation.h>
 
 @interface RoomPlayUrlModel : NSObject
@@ -38,7 +38,7 @@
 
 @property(nonatomic,copy)NSString *payLiveUrl;
 @property(nonatomic,strong)NSArray<RoomPlayUrlModel *> *playList;
-
+@property(nonatomic,strong)NSArray<YxzFaceItem *> *faceList;// 表情礼物
 @property(nonatomic,strong)LivePayAuth *auth;
 
 @end

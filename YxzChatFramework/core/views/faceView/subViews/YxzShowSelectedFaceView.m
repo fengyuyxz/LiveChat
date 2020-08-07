@@ -10,6 +10,7 @@
 #import "YxzGetBundleResouceTool.h"
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface YxzShowSelectedFaceView()
 @property(nonatomic,strong)UIImageView *imageView;
 @property(nonatomic,strong)UIButton *closeButton;
@@ -53,7 +54,9 @@
 }
 -(void)setImageURLStr:(NSString *)imageURLStr{
     _imageURLStr=imageURLStr;
-    self.imageView.image=[[YxzGetBundleResouceTool shareInstance] getFaceWithImageName:imageURLStr];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:_imageURLStr] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+    }];
 }
 -(void)closeButPressed{
     if ([self.delegate respondsToSelector:@selector(delSelectedFaceImg)]) {

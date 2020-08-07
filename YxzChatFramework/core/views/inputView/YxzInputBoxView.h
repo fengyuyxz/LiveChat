@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <YYText/YYTextView.h>
+#import "YxzFaceItem.h"
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, YxzInputStatus) {
@@ -38,7 +39,7 @@ typedef NS_ENUM(NSUInteger, YxzInputStatus) {
 @property(nonatomic,weak)id<YxzInputViewDelegate> delegate;
 @property(nonatomic,assign)YxzInputStatus inputStatus;
 @property(nonatomic,strong)UITextField *textView;
-
+-(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList;
 -(void)clickFace;
 -(void)clickTextField;
 -(void)hiddenInput;

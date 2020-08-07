@@ -20,12 +20,14 @@
 +(NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{
         @"playList":@"definition",
-        @"roomId":@"id"
+        @"roomId":@"id",
+        @"faceList":@"sticker"
     };
 }
 +(NSDictionary *)mj_objectClassInArray{
     return @{
-        @"playList":@"RoomPlayUrlModel"
+        @"playList":@"RoomPlayUrlModel",
+        @"faceList":@"YxzFaceItem"
     };
 }
 @end

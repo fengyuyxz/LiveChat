@@ -8,7 +8,7 @@
 
 #import "YxzFaceCell.h"
 #import <Masonry/Masonry.h>
-#import "YxzGetBundleResouceTool.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @interface YxzFaceCell()
 @property(nonatomic,strong)UIImageView *faceImgView;
 @end
@@ -31,6 +31,9 @@
 }
 -(void)setItem:(YxzFaceItem *)item{
     _item=item;
-    _faceImgView.image=[[YxzGetBundleResouceTool shareInstance] getFaceWithImageName:[[_item.face_name stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""]];
+    NSURL *imageUrl=[NSURL URLWithString:item.icon];
+    [self.faceImgView sd_setImageWithURL:imageUrl completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+    }];
 }
 @end

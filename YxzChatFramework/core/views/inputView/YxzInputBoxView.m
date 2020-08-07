@@ -107,6 +107,9 @@
     }];
     
 }
+-(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList{
+    self.faceContainerView.faceDataSouce=[NSMutableArray arrayWithArray:faceList];
+}
 #pragma mark - show face 相关 方法 =============
 -(void)showFaceView{
     

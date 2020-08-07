@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YxzFaceItem.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol YxzFaceSeletedDelegate <NSObject>
 
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 @interface YxzFaceContainerView : UIView
+@property(nonatomic,strong)NSMutableArray<YxzFaceItem *> *faceDataSouce;
 @property(nonatomic,weak)id<YxzFaceSeletedDelegate> delegate;
 @property(nonatomic,assign)CGFloat faceContainerH;
 -(void)showFace;

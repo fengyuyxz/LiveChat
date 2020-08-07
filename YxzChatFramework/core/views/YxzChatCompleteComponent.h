@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YxzFaceItem.h"
+#import "YxzInputBoxView.h"
 @protocol ChateCompletionDelegate <NSObject>
 
 -(void)showKeyBorad:(BOOL)isShow;
@@ -16,11 +17,13 @@
 
 
 @interface YxzChatCompleteComponent : UIView
-
+@property(nonatomic,assign,readonly)YxzInputStatus inputStatus;
 @property(nonatomic,assign)id<ChateCompletionDelegate> delegate;
 @property(nonatomic,assign)BOOL isFull;
 typedef void(^HiddenKeyboardAndFaceViewCompletion)(void);
 -(void)hiddenTheKeyboardAndFace:(HiddenKeyboardAndFaceViewCompletion)block;
+
+-(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList;
 @end
 
 

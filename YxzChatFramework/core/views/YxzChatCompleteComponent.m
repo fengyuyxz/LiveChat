@@ -8,7 +8,7 @@
 
 #import "YxzChatCompleteComponent.h"
 #import "YxzChatListTableView.h"
-#import "YxzInputBoxView.h"
+
 #import "YXZConstant.h"
 #import "YxzAnimationControl.h"
 #import "PraiseAnimation.h"
@@ -121,6 +121,12 @@
    
    
     
+}
+-(YxzInputStatus)inputStatus{
+    return self.inputboxView.inputStatus;
+}
+-(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList{
+    [self.inputboxView setFaceList:faceList];
 }
 #pragma mark - 发送烟花 按钮事件 ======
 -(void)firworkButPressed:(UIButton *)but{
