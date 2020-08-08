@@ -13,7 +13,7 @@
 #import "YxzAnimationControl.h"
 #import "PraiseAnimation.h"
 #import <Masonry/Masonry.h>
-@interface YxzChatCompleteComponent()<YxzInputViewDelegate,YxzListViewInputDelegate,RoomMsgListDelegate>
+@interface YxzChatCompleteComponent()<YxzInputViewDelegate,YxzListViewInputDelegate,RoomMsgListDelegate,RongCouldManagerReciveDelegate>
 @property(nonatomic,strong)ChatRoomUserInfoAndTokenModel *tokenModel;
 @property(nonatomic,strong)YxzChatListTableView *listTableView;
 @property(nonatomic,strong)YxzInputBoxView *inputboxView;
@@ -47,6 +47,7 @@
 }
 -(void)setupSubViews{
     self.userInteractionEnabled=YES;
+    
     _praiseAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     self.inputBoxHight=inputBoxDefaultHight;
     _listTableView=[[YxzChatListTableView alloc]initWithFrame:CGRectZero];
@@ -62,7 +63,7 @@
     
     [self addSubview:self.firworkBut];
     [self layoutSubViewConstraint];
-
+    [RongCloudManager shareInstance].delegate=self;
 }
 
 -(void)layoutSubViewConstraint{
@@ -232,18 +233,35 @@
 }
 //发送消息
 -(void)sendText:(NSString *)msgText faceImage:(NSString *)faceImageUrlStr{
+    
+    
     YXZMessageModel *model=[YXZMessageModel new];
-    model.msgType=YxzMsgType_barrage;
+        model.msgType=YxzMsgType_barrage;
     model.content=msgText;
     model.faceImageUrl=faceImageUrlStr;
-    YxzUserModel *user=[YxzUserModel new];
-    user.nickName=@"fengyuyxz";
-    user.level=7;
-    model.user=user;
-    model.msgID = [NSString stringWithFormat:@"msgID_%u", arc4random() % 10000];
-    // 生成富文本模型
-    [model initMsgAttribute];
-    [self.listTableView addNewMsg:model];
+        model.user=self.userModel;
+    
+    [self sendRongCould:model];
+    
+}
+#pragma mark - delegateRongCouldManagerDelegate
+-(void)reciveRCMessage:(YXZMessageModel *)model{
+     __weak typeof(self) weakSelf =self;
+    
+        [model initMsgAttribute];
+        [weakSelf.listTableView addNewMsg:model];
+    
+}
+
+-(void)sendRongCould:(YXZMessageModel *)model{
+    __weak typeof(self) weakSelf =self;
+    [[RongCloudManager shareInstance] sendMessage:model compleiton:^(BOOL isSUC, NSString *messageId) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            model.msgID=messageId;
+                   [model initMsgAttribute];
+                   [weakSelf.listTableView addNewMsg:model];
+        });
+    }];
 }
 -(void)inputBoxHightChange:(YxzInputBoxView *)boxView inputViewHight:(CGFloat)inputHight{
     CGRect frame =self.inputboxView.frame;

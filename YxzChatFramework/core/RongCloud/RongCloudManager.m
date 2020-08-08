@@ -8,6 +8,7 @@
 
 #import "RongCloudManager.h"
 #import <MJExtension/MJExtension.h>
+#import "RCMessageModel.h"
 #import "NSString+Empty.h"
 #import <RongIMLib/RongIMLib.h>
 #import "NetWorkRequestManager.h"
@@ -37,6 +38,8 @@
 }
 +(void)loadRongCloudSdk{
     [[RCIMClient sharedRCIMClient] initWithAppKey:RONG_CLOUD_APP_KEY];
+    
+    [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
 }
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken completion:(void(^)(BOOL isConnect,NSString *userId))block{
     [[RCIMClient sharedRCIMClient]connectWithToken:token success:^(NSString *userId) {
@@ -173,8 +176,24 @@
     object:(id)object
    offline:(BOOL)offline
         hasPackage:(BOOL)hasPackage{
-    NSLog(@"");
+    
+    
 }
+
+- (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object {
+    NSLog(@"");
+    if (message.content&&[message.content isKindOfClass:[RCMessageModel class]]) {
+        RCMessageModel *model=(RCMessageModel*)message.content;
+       YXZMessageModel *uiMode= [UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
+        
+        
+            if ([self.delegate respondsToSelector:@selector(reciveRCMessage:)]) {
+                [self.delegate reciveRCMessage:uiMode];
+            }
+        
+    }
+}
+
 -(NetWorkRequestManager *)request{
     if (!_request) {
         _request=[[NetWorkRequestManager alloc]init];

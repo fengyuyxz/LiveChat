@@ -14,12 +14,13 @@
 typedef NS_ENUM(NSUInteger, YxzMsgType) {
     YxzMsgType_Unknow=0,//未知
     YxzMsgType_Share,// 分享
-    YxzMsgType_barrage,//弹幕
-    YxzMsgType_Other,//他人
+    YxzMsgType_barrage,//弹幕 正常聊天 发表情
+
     YxzMsgType_memberEnter,//用户进入聊天室
     YxzMsgType_gift_text,//礼物文本消息
     YxzMsgType_Subscription,//关注订阅
     YxzMsgType_Announcement,   // 系统公告信息
+    YxzMsgType_Other,//他人
 };
 
 typedef NS_ENUM(NSUInteger, YxzLiveVideoScreenStyle) {

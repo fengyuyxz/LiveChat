@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "RCMessageModel.h"
 #import "YXZMessageModel.h"
 #import <RongIMLib/RongIMLib.h>
 @interface UIMsgModeToRongMsgModelFactory : NSObject
@@ -18,7 +18,7 @@
 
 /// 融云消息model 转 ui model
 /// @param rcMsg 融云msg model
-+(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageContent *)rcMsg;
++(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageModel *)rcMsg;
 @end
 
 

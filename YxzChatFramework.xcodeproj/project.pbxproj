@@ -22,6 +22,7 @@
 		1C6B42D124DD1D1100399AFC /* RongCloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D024DD1D1100399AFC /* RongCloudManager.m */; };
 		1C6B42D424DD8A8500399AFC /* RongCloudTokenResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */; };
 		1C6B42D724DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D624DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m */; };
+		1C6B42DA24DE5BD000399AFC /* RCMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D924DE5BD000399AFC /* RCMessageModel.m */; };
 		1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */; };
 		1CB2B44124C940B80056107A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44024C940B80056107A /* AppDelegate.m */; };
 		1CB2B44724C940B80056107A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44624C940B80056107A /* ViewController.m */; };
@@ -98,6 +99,8 @@
 		1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RongCloudTokenResult.m; sourceTree = "<group>"; };
 		1C6B42D524DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIMsgModeToRongMsgModelFactory.h; sourceTree = "<group>"; };
 		1C6B42D624DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIMsgModeToRongMsgModelFactory.m; sourceTree = "<group>"; };
+		1C6B42D824DE5BD000399AFC /* RCMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCMessageModel.h; sourceTree = "<group>"; };
+		1C6B42D924DE5BD000399AFC /* RCMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCMessageModel.m; sourceTree = "<group>"; };
 		1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadLiveInfoManager.h; sourceTree = "<group>"; };
 		1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadLiveInfoManager.m; sourceTree = "<group>"; };
 		1CB2B43C24C940B80056107A /* YxzChatFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxzChatFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +283,8 @@
 				1C6B42D324DD8A8500399AFC /* RongCloudTokenResult.m */,
 				1C6B42D524DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.h */,
 				1C6B42D624DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m */,
+				1C6B42D824DE5BD000399AFC /* RCMessageModel.h */,
+				1C6B42D924DE5BD000399AFC /* RCMessageModel.m */,
 			);
 			path = RongCloud;
 			sourceTree = "<group>";
@@ -695,6 +700,7 @@
 				1C2CBED824D257A10079BFD1 /* YxzLivePlayer.m in Sources */,
 				1CBEB37824D657620090F277 /* VoteView.m in Sources */,
 				1C6B42CD24DCF4BA00399AFC /* ToastView.m in Sources */,
+				1C6B42DA24DE5BD000399AFC /* RCMessageModel.m in Sources */,
 				1C2CBE0C24CE65280079BFD1 /* LivePlayerInitializeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
