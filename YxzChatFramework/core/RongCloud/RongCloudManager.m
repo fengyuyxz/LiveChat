@@ -41,7 +41,7 @@
     
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
 }
--(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken completion:(void(^)(BOOL isConnect,NSString *userId))block{
+-(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block{
     [[RCIMClient sharedRCIMClient]connectWithToken:token success:^(NSString *userId) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if(block){
@@ -71,28 +71,31 @@
                                      block(NO,nil);
                                  }
                });
-        [self ageinConnectUserToken:userToken completion:block];
+        [self ageinConnectUserToken:userToken liveId:(NSString *)liveId completion:block];
     }];
 }
--(void)ageinConnectUserToken:(NSString *)userToken completion:(void(^)(BOOL isConnect,NSString *userId))block{
+-(void)ageinConnectUserToken:(NSString *)userToken liveId:(NSString *)liveId completion:(void(^)(BOOL isConnect,NSString *userId))block{
     if (_connectTimes>=3) {
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [self getRongCloudTokenWithUserToken:userToken completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
+    [self getRongCloudTokenWithUserToken:userToken liveId:(NSString *)liveId completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
         __strong typeof(weakSelf) strongSelf =weakSelf;
         if (isSUC) {
             strongSelf.connectTimes++;
-            [weakSelf connectRongCloudService:model.imtoken userToken:userToken completion:block];
+            [weakSelf connectRongCloudService:model.imtoken userToken:userToken liveId:(NSString *)liveId completion:block];
         }
         
         
     }];
 }
--(void)getRongCloudTokenWithUserToken:(NSString *)userToken completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block{
+-(void)getRongCloudTokenWithUserToken:(NSString *)userToken liveId:(NSString *)liveId completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block{
     NSString *url=@"http://www.pts.ifanteam.com/api/userinfo/imlogin";
        NSMutableDictionary *param=[@{} mutableCopy];
-       [param setValue:@"93" forKey:@"live_id"];
+      
+    if (![NSString isEmpty:liveId]) {
+         [param setValue:liveId forKey:@"live_id"];
+    }
        if (![NSString isEmpty:userToken]) {
            [param setValue:userToken forKey:@"token"];
        }

@@ -181,7 +181,7 @@
    
 //    [self.liveInfoRequest loadLiveInfo:@"66a80bac-bb66-4932-8bff-4d8ef5219b6d"];
     __weak typeof(self) weakSelf = self;
-    [self.liveInfoRequest loadLiveInfo:self.token completion:^(BOOL rsult, LiveRoomInfoModel * info) {
+    [self.liveInfoRequest loadLiveInfo:self.token liveId:self.liveId completion:^(BOOL rsult, LiveRoomInfoModel * info) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (rsult) {
             strongSelf.roomBaseInfo=info.data;
@@ -201,10 +201,10 @@
 }
 -(void)joinChatRoom{
     __weak typeof(self) weakSelf =self;
-    [[RongCloudManager shareInstance]getRongCloudTokenWithUserToken:self.token completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
+    [[RongCloudManager shareInstance]getRongCloudTokenWithUserToken:self.token liveId:self.liveId completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
         if (isSUC) {
             weakSelf.chatRoomTokenModel=model;
-            [weakSelf.chatComponentView joinRoom:weakSelf.chatRoomTokenModel userToken:weakSelf.token];
+            [weakSelf.chatComponentView joinRoom:weakSelf.chatRoomTokenModel userToken:weakSelf.token liveId:self.liveId];
         }else{
             
         }

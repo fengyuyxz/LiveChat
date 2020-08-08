@@ -14,11 +14,14 @@
 @property(nonatomic,strong)NetWorkRequestManager *request;
 @end
 @implementation LoadLiveInfoManager
--(void)loadLiveInfo:(NSString *)userToken completion:(loadLiveInfoCompletion)block{
+-(void)loadLiveInfo:(NSString *)userToken liveId:(NSString *)liveId completion:(loadLiveInfoCompletion)block{
     //
     NSString *url=@"http://www.pts.ifanteam.com/api/live/detail";
     NSMutableDictionary *param=[@{} mutableCopy];
-    [param setValue:@"93" forKey:@"id"];
+    if (![NSString isEmpty:liveId]) {
+        [param setValue:liveId forKey:@"id"];
+    }
+    
     if (![NSString isEmpty:userToken]) {
         [param setValue:userToken forKey:@"token"];
     }

@@ -132,10 +132,10 @@
     [self.inputboxView setFaceList:faceList];
 }
 #pragma mark - 加入聊天室
--(void)joinRoom:(ChatRoomUserInfoAndTokenModel *)model userToken:(NSString *)userToken{
+-(void)joinRoom:(ChatRoomUserInfoAndTokenModel *)model userToken:(NSString *)userToken liveId:(NSString *)liveId{
     _tokenModel=model;
     __weak typeof(self) weakSelf =self;
-    [[RongCloudManager shareInstance]connectRongCloudService:model.imtoken userToken:userToken completion:^(BOOL isConnect, NSString *userId) {
+    [[RongCloudManager shareInstance]connectRongCloudService:model.imtoken userToken:userToken liveId:liveId completion:^(BOOL isConnect, NSString *userId) {
         if (isConnect) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[RongCloudManager shareInstance]setUserId:weakSelf.tokenModel.user_id userName:weakSelf.tokenModel.username];

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoadLiveInfoManager : NSObject
 typedef void(^loadLiveInfoCompletion)(BOOL rsult,LiveRoomInfoModel *info);
--(void)loadLiveInfo:(NSString *)userToken completion:(loadLiveInfoCompletion)block;
+-(void)loadLiveInfo:(NSString *)userToken liveId:(NSString *)liveId completion:(loadLiveInfoCompletion)block;
 @end
 
 NS_ASSUME_NONNULL_END

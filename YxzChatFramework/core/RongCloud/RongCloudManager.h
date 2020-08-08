@@ -40,8 +40,8 @@
 // 断开连接
 -(void)disConnect;
 -(void)setUserId:(NSString *)userId userName:(NSString *)userName;
--(void)getRongCloudTokenWithUserToken:(NSString *)userToken completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block;
--(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken completion:(void(^)(BOOL isConnect,NSString *userId))block;
+-(void)getRongCloudTokenWithUserToken:(NSString *)userToken liveId:(NSString *)liveId completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block;
+-(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block;
 
 /// 发送消息
 /// @param message 消息列表uimodel 需要转换

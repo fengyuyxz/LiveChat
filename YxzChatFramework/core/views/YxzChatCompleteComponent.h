@@ -29,7 +29,7 @@ typedef void(^HiddenKeyboardAndFaceViewCompletion)(void);
 
 /// 加入聊天室
 /// @param model token model
--(void)joinRoom:(ChatRoomUserInfoAndTokenModel *)model userToken:(NSString *)userToken;
+-(void)joinRoom:(ChatRoomUserInfoAndTokenModel *)model userToken:(NSString *)userToken liveId:(NSString *)liveId;
 @end
 
 
