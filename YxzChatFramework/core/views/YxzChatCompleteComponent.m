@@ -168,15 +168,17 @@
 
 #pragma mark - 发送烟花 按钮事件 ======
 -(void)firworkButPressed:(UIButton *)but{
-    NSLog(@"烟花");
-//   NSString *typeNum= [YxzAnimationControl generateAnimationNums];
-//    [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
-    self.praiseAnimateManager.x_left_swing=30;
-    self.praiseAnimateManager.x_right_swing=15;
-    self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
-    self.praiseAnimateManager.speed=1;
-//    [self.praiseAnimateManager animate:2];
-    [self.praiseAnimateManager starAnimation:10];
+    
+   NSString *typeNum= [YxzAnimationControl generateAnimationNums];
+    [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
+//    self.praiseAnimateManager.x_left_swing=30;
+//    self.praiseAnimateManager.x_right_swing=15;
+//    self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
+//    self.praiseAnimateManager.speed=1;
+////    [self.praiseAnimateManager animate:2];
+//    [self.praiseAnimateManager starAnimation:10];
+    
+    
 }
 #pragma mark - YxzListViewInputDelegate =================
 -(void)faceClick{
@@ -283,7 +285,7 @@
 -(UIView *)animationView{
     if (!_animationView) {
         _animationView=[[UIImageView alloc]init];
-        for(int i=0;i<6;i++){
+        for(int i=0;i<1;i++){
             UIImageView *imgView=[[UIImageView alloc]init];
             [_animationView addSubview:imgView];
             [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
