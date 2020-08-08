@@ -10,7 +10,7 @@
 #import "YXZConstant.h"
 #import "ToastView.h"
 #import <Masonry/Masonry.h>
-#import <SDwebImage/UIImageView+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NSString+Empty.h"
 #import "LoadLiveInfoManager.h"
 @interface VoteView()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>

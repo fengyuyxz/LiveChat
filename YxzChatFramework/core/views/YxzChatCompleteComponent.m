@@ -85,7 +85,7 @@
     [self.firworkBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.mas_right).offset(-20);
         make.width.mas_equalTo(40);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(40);
         make.bottom.equalTo(self.mas_bottom).offset(-5);
     }];
 }
@@ -275,7 +275,7 @@
 -(UIButton *)firworkBut{
     if (!_firworkBut) {
            _firworkBut=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_firworkBut setImage:YxzSuperPlayerImage(@"fireworks") forState:UIControlStateNormal];
+        [_firworkBut setImage:YxzSuperPlayerImage(@"Group30") forState:UIControlStateNormal];
         [_firworkBut addTarget:self action:@selector(firworkButPressed:) forControlEvents:UIControlEventTouchUpInside];
        }
     return _firworkBut;
