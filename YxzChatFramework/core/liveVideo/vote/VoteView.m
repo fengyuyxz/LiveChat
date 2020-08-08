@@ -8,9 +8,11 @@
 
 #import "VoteView.h"
 #import "YXZConstant.h"
+#import "ToastView.h"
 #import <Masonry/Masonry.h>
 #import <SDwebImage/UIImageView+WebCache.h>
 #import "NSString+Empty.h"
+#import "LoadLiveInfoManager.h"
 @interface VoteView()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)UILabel *title;
 @property(nonatomic,strong)UILabel *contentTitleLabel;
@@ -19,7 +21,7 @@
 
 @property(nonatomic,strong)UIButton *closeBut;
 @property(nonatomic,strong)UIImageView *tipsImageView;
-
+@property(nonatomic,strong)LoadLiveInfoManager *request;
 
 @end
 @implementation VoteView
@@ -43,6 +45,7 @@
 }
 -(void)setupView{
     self.backgroundColor=[UIColor whiteColor];
+    self.layer.cornerRadius=4;
     [self addSubview:self.title];
     [self addSubview:self.contentTitleLabel];
     [self addSubview:self.contentLabel];
@@ -128,12 +131,27 @@
     VoteViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"VoteViewCell" forIndexPath:indexPath];
     VoteItemModel *item=self.dataSouce[indexPath.row];
     cell.item=item;
+    cell.delegate=self;
     return cell;
 }
+#pragma makr - 投票回调===
+-(void)vote:(VoteItemModel *)voteMode{
+    [self.request vote:self.liveId voteId:voteMode.voteId userToken:self.userToken completion:^(BOOL isSUC, VoteNetResult * _Nonnull result) {
+        if (isSUC) {
+            [ToastView showWithText:@"投票成功"];
+            self.voteResultModel=result.data;
+            
+        }else if(result){
+            [ToastView showWithText:[NSString stringWithFormat:@"%@",![NSString isEmpty:result.msg]?result.msg:@"投票失败"]];
+        }
+    }];
+}
+#pragma mark - getter =====
 -(void)setVoteResultModel:(VoteItemModelResult *)voteResultModel{
     _voteResultModel=voteResultModel;
     self.dataSouce=[_voteResultModel.items mutableCopy];
     self.contentLabel.text=_voteResultModel.title;
+    [self.collectionView reloadData];
 }
 -(UILabel *)title{
     if (!_title) {
@@ -193,6 +211,12 @@
     
     }
     return _collectionView;
+}
+-(LoadLiveInfoManager *)request{
+    if (!_request) {
+        _request=[[LoadLiveInfoManager alloc]init];
+    }
+    return _request;
 }
 @end
 @interface PopVoteView()
@@ -322,7 +346,9 @@
     }];
 }
 -(void)voteButPressed{
-    
+    if ([self.delegate respondsToSelector:@selector(vote:)]) {
+        [self.delegate vote:self.item];
+    }
 }
 -(UIView *)voteView{
     if (!_voteView) {

@@ -526,6 +526,8 @@
     
     
     VoteView *vote=[[VoteView alloc] initWithFrame:CGRectMake(0, 0, 300, 400)];
+    vote.liveId=self.liveId;
+    vote.userToken=self.token;
     vote.voteResultModel=voteModel;
     PopVoteView *pop=[[PopVoteView alloc]initWithFrame:self.view.bounds];
     vote.block = ^{

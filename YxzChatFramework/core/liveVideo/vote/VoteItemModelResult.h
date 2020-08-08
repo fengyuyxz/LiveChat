@@ -20,6 +20,13 @@
 @property(nonatomic,copy)NSString *title;
 @property(nonatomic,copy)NSString *roomid;
 @property(nonatomic,strong)NSArray<VoteItemModel *> *items;
+
+
+
 @end
 
-
+@interface VoteNetResult : NSObject
+@property(nonatomic,assign)int code;
+@property(nonatomic,copy)NSString *msg;
+@property(nonatomic,strong)VoteItemModelResult *data;
+@end

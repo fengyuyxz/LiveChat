@@ -42,6 +42,36 @@
         }
     }];
 }
+-(void)vote:(NSString *)liveId voteId:(int)voteId userToken:(NSString *)userToken completion:(void(^)(BOOL isSUC,VoteNetResult *result))block{
+    NSString *url=@"http://www.pts.ifanteam.com/api/live/sendVote";
+       NSMutableDictionary *param=[@{} mutableCopy];
+       if (![NSString isEmpty:liveId]) {
+           [param setValue:liveId forKey:@"live_id"];
+       }
+    
+        [param setValue:@(voteId) forKey:@"voteitemid"];
+    
+       
+       if (![NSString isEmpty:userToken]) {
+           [param setValue:userToken forKey:@"token"];
+       }
+       [self.request post:url param:param header:nil success:^(NSDictionary *originalResponseResult) {
+           VoteNetResult * reuslt= [[VoteNetResult class] mj_objectWithKeyValues:originalResponseResult];
+           if (reuslt.code==1) {
+               if (block) {
+                   block(YES,reuslt);
+               }
+           }else{
+               if (block) {
+                   block(NO,reuslt);
+               }
+           }
+       } fail:^(NSError *error) {
+           if (block) {
+               block(NO,nil);
+           }
+       }];
+}
 -(NetWorkRequestManager *)request{
     if (!_request) {
         _request=[[NetWorkRequestManager alloc]init];

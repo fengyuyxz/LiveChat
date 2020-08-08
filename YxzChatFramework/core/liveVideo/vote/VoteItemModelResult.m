@@ -23,5 +23,9 @@
     return @{@"voteId":@"id"};
 }
 
+@end
+@implementation VoteNetResult
+
+
 
 @end

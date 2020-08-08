@@ -10,15 +10,23 @@
 
 #import "VoteItemModelResult.h"
 
+@protocol VoteDelegate <NSObject>
 
+-(void)vote:(VoteItemModel *)voteMode;
+
+@end
 
 @interface VoteViewCell : UICollectionViewCell
+@property(nonatomic,weak)id<VoteDelegate> delegate;
 @property(nonatomic,strong)VoteItemModel *item;
 @end
 
 
-@interface VoteView : UIView
+@interface VoteView : UIView<VoteDelegate>
+
 typedef void(^closeCompelation)(void);
+@property(nonatomic,strong)NSString *userToken;
+@property(nonatomic,strong)NSString *liveId;
 @property(nonatomic,copy)closeCompelation block;
 @property(nonatomic,strong)VoteItemModelResult *voteResultModel;
 @property(nonatomic,strong)NSMutableArray<VoteItemModel *> *dataSouce;
