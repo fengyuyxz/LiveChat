@@ -24,7 +24,7 @@
 #import "LiveRoomSettingSeparationView.h"
 #import "VoteView.h"
 #import "LoadLiveInfoManager.h"
-@interface YxzChatController ()<YxzLiveRoomControlDelegate,YxzPlayerDelegate,UIGestureRecognizerDelegate,ChateCompletionDelegate>
+@interface YxzChatController ()<YxzLiveRoomControlDelegate,YxzPlayerDelegate,UIGestureRecognizerDelegate,ChateCompletionDelegate,RongCouldVoteDelegate>
 
 @property(nonatomic,strong)RoomBaseInfo *roomBaseInfo;
 
@@ -97,6 +97,7 @@
 //    self.playerView.fatherView = self.videoContainerView;
      [self layoutSubViewConstraint];
     [self loadData];
+    [RongCloudManager shareInstance].voteDelegate=self;
     [self joinChatRoom];
     
 }
@@ -503,7 +504,7 @@
                 if (setting==liveRoomSeeting_separation) {
                     [strongSelf popSeparationView];
                 }else if(setting==liveRoomSeeting_share){
-                    [strongSelf popVote];
+                    
                 }
             });
             
@@ -513,20 +514,19 @@
     
     
 }
--(void)popVote{
+#pragma mark -RongCouldVoteDelegate ======
+-(void)voteMsg:(VoteItemModelResult *)voteModel{
+    __weak typeof(self) weakSelf =self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf popVote:voteModel];
+    });
+}
+-(void)popVote:(VoteItemModelResult *)voteModel{
     
-    VoteItemModel *item1=[VoteItemModel new];
-    item1.title=@"唱歌";
-    item1.imgeUrlStr=@"https://t7.baidu.com/it/u=3616242789,1098670747&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1596951525&t=3ce06a68d37777a94af82d99bb56c185";
-    VoteItemModel *item2=[VoteItemModel new];
-    item2.title=@"唱歌";
-    item2.imgeUrlStr=@"https://t7.baidu.com/it/u=3616242789,1098670747&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1596951525&t=3ce06a68d37777a94af82d99bb56c185";
-    VoteItemModel *item3=[VoteItemModel new];
-    item3.title=@"唱歌";
-    item3.imgeUrlStr=@"https://t7.baidu.com/it/u=3616242789,1098670747&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1596951525&t=3ce06a68d37777a94af82d99bb56c185";
+    
     
     VoteView *vote=[[VoteView alloc] initWithFrame:CGRectMake(0, 0, 300, 400)];
-    vote.dataSouce=[@[item1,item2,item3]mutableCopy];
+    vote.voteResultModel=voteModel;
     PopVoteView *pop=[[PopVoteView alloc]initWithFrame:self.view.bounds];
     vote.block = ^{
         [pop dismiss];

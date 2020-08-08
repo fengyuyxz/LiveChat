@@ -8,20 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "RongCloudTokenResult.h"
+#import "RCLiveVoteMsgModel.h"
 #import <RongIMLib/RongIMLib.h>
 #import "UIMsgModeToRongMsgModelFactory.h"
 #import "YXZMessageModel.h"
 
-
+#import "VoteItemModelResult.h"
 @protocol RongCouldManagerReciveDelegate <NSObject>
 
 -(void)reciveRCMessage:(YXZMessageModel *)model;
 
 @end
+@protocol RongCouldVoteDelegate <NSObject>
 
+-(void)voteMsg:(VoteItemModelResult *)voteModel;
+
+@end
 ///  用于融云sdk 初始化，和连接 加入聊天室 聊天接发消息等
 @interface RongCloudManager : NSObject
 @property(nonatomic,weak)id<RongCouldManagerReciveDelegate> delegate;
+@property(nonatomic,weak)id<RongCouldVoteDelegate> voteDelegate;
 @property(nonatomic,copy)NSString *chatRoomId;
 
 +(instancetype)shareInstance;

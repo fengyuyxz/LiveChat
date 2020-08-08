@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1C0D9B0924CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */; };
+		1C151C8524DE8F72000D70C4 /* RCLiveVoteMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */; };
+		1C151C8824DE9219000D70C4 /* VoteItemModelResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8724DE9219000D70C4 /* VoteItemModelResult.m */; };
+		1C151C8B24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8A24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m */; };
 		1C2CBE0C24CE65280079BFD1 /* LivePlayerInitializeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBE0B24CE65280079BFD1 /* LivePlayerInitializeController.m */; };
 		1C2CBE6224CE9EC20079BFD1 /* FirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBE6124CE9EC20079BFD1 /* FirstVC.m */; };
 		1C2CBE6624CEA03E0079BFD1 /* RoomBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CBE6524CEA03E0079BFD1 /* RoomBaseInfo.m */; };
@@ -70,6 +73,12 @@
 /* Begin PBXFileReference section */
 		1C0D9B0724CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzVideoLooksBasicInfoView.h; sourceTree = "<group>"; };
 		1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzVideoLooksBasicInfoView.m; sourceTree = "<group>"; };
+		1C151C8324DE8F72000D70C4 /* RCLiveVoteMsgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCLiveVoteMsgModel.h; sourceTree = "<group>"; };
+		1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCLiveVoteMsgModel.m; sourceTree = "<group>"; };
+		1C151C8624DE9219000D70C4 /* VoteItemModelResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteItemModelResult.h; sourceTree = "<group>"; };
+		1C151C8724DE9219000D70C4 /* VoteItemModelResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoteItemModelResult.m; sourceTree = "<group>"; };
+		1C151C8924DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCShowLiveVoteMsgModel.h; sourceTree = "<group>"; };
+		1C151C8A24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCShowLiveVoteMsgModel.m; sourceTree = "<group>"; };
 		1C2CBE0A24CE65280079BFD1 /* LivePlayerInitializeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivePlayerInitializeController.h; sourceTree = "<group>"; };
 		1C2CBE0B24CE65280079BFD1 /* LivePlayerInitializeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivePlayerInitializeController.m; sourceTree = "<group>"; };
 		1C2CBE6024CE9EC20079BFD1 /* FirstVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstVC.h; sourceTree = "<group>"; };
@@ -285,6 +294,10 @@
 				1C6B42D624DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m */,
 				1C6B42D824DE5BD000399AFC /* RCMessageModel.h */,
 				1C6B42D924DE5BD000399AFC /* RCMessageModel.m */,
+				1C151C8324DE8F72000D70C4 /* RCLiveVoteMsgModel.h */,
+				1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */,
+				1C151C8924DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.h */,
+				1C151C8A24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m */,
 			);
 			path = RongCloud;
 			sourceTree = "<group>";
@@ -502,6 +515,8 @@
 			children = (
 				1CBEB37624D657620090F277 /* VoteView.h */,
 				1CBEB37724D657620090F277 /* VoteView.m */,
+				1C151C8624DE9219000D70C4 /* VoteItemModelResult.h */,
+				1C151C8724DE9219000D70C4 /* VoteItemModelResult.m */,
 			);
 			path = vote;
 			sourceTree = "<group>";
@@ -653,9 +668,11 @@
 				1CB2B48624C940E00056107A /* YxzSubscriptionCell.m in Sources */,
 				1CB2B4A924CAD1E00056107A /* YxzFaceContainerView.m in Sources */,
 				1CB2B48524C940E00056107A /* YxzLevelManager.m in Sources */,
+				1C151C8824DE9219000D70C4 /* VoteItemModelResult.m in Sources */,
 				1C0D9B0924CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m in Sources */,
 				1C2CC06F24D3FF320079BFD1 /* YxzPopView.m in Sources */,
 				1CBEB35B24D4535D0090F277 /* LiveRoomSettingSeparationView.m in Sources */,
+				1C151C8524DE8F72000D70C4 /* RCLiveVoteMsgModel.m in Sources */,
 				1CB2B4B924CBDED90056107A /* NSString+Empty.m in Sources */,
 				1C2CBED724D257A00079BFD1 /* SuspensionWindow.m in Sources */,
 				1CBEB37224D5B2360090F277 /* YxzAnimationControl.m in Sources */,
@@ -663,6 +680,7 @@
 				1C6B42D124DD1D1100399AFC /* RongCloudManager.m in Sources */,
 				1CB2B48A24C940E00056107A /* YxzChatBaseCell.m in Sources */,
 				1CB2B48424C940E00056107A /* YxzMsgAttributeModel.m in Sources */,
+				1C151C8B24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m in Sources */,
 				1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */,
 				1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */,
 				1CB2B4A224C991F20056107A /* YxzGetBundleResouceTool.m in Sources */,

@@ -82,7 +82,7 @@
     _dataSouce=dataSouce;
     VoteItemModel *mode=[dataSouce firstObject];
     CGFloat hight=160;
-    if ([NSString isEmpty:mode.imgeUrlStr]) {
+    if ([NSString isEmpty:mode.pic]) {
         hight=80;
     }
     if (_dataSouce.count>2) {
@@ -105,7 +105,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     VoteItemModel *model=[self.dataSouce firstObject];
     CGFloat hight=160;
-    if ([NSString isEmpty:model.imgeUrlStr]) {
+    if ([NSString isEmpty:model.pic]) {
         hight=80;
     }
     return CGSizeMake(CGRectGetWidth(self.bounds)/2.0f, hight);
@@ -130,6 +130,11 @@
     cell.item=item;
     return cell;
 }
+-(void)setVoteResultModel:(VoteItemModelResult *)voteResultModel{
+    _voteResultModel=voteResultModel;
+    self.dataSouce=[_voteResultModel.items mutableCopy];
+    self.contentLabel.text=_voteResultModel.title;
+}
 -(UILabel *)title{
     if (!_title) {
         _title=[[UILabel alloc]init];
@@ -152,7 +157,7 @@
     if (!_contentLabel) {
         _contentLabel=[[UILabel alloc]init];
         _contentLabel.font=[UIFont systemFontOfSize:15];
-        _contentLabel.text=@"所发生的事范德萨范德萨发顺丰";
+        _contentLabel.text=@"";
         _contentLabel.numberOfLines=2;
         _contentLabel.textAlignment=NSTextAlignmentLeft;
         _contentLabel.textColor=[UIColor blackColor];
@@ -269,7 +274,7 @@
 }
 -(void)setItem:(VoteItemModel *)item{
     _item=item;
-    if ([NSString isEmpty:_item.imgeUrlStr]) {
+    if ([NSString isEmpty:_item.pic]) {
         [self.topImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
             make.top.equalTo(self.mas_top);
@@ -281,7 +286,7 @@
                    make.top.equalTo(self.mas_top);
                    make.height.width.mas_equalTo(80);
                }];
-        [self.topImageView sd_setImageWithURL:[NSURL URLWithString:_item.imgeUrlStr] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [self.topImageView sd_setImageWithURL:[NSURL URLWithString:_item.pic] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             
         }];
     }
@@ -354,8 +359,4 @@
 }
 @end
 
-@implementation VoteItemModel
 
-
-
-@end

@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "VoteItemModelResult.h"
 
 
-@interface VoteItemModel : NSObject
-@property(nonatomic,copy)NSString *imgeUrlStr;
-@property(nonatomic,copy)NSString *title;
-
-@end
 
 @interface VoteViewCell : UICollectionViewCell
 @property(nonatomic,strong)VoteItemModel *item;
@@ -24,6 +20,7 @@
 @interface VoteView : UIView
 typedef void(^closeCompelation)(void);
 @property(nonatomic,copy)closeCompelation block;
+@property(nonatomic,strong)VoteItemModelResult *voteResultModel;
 @property(nonatomic,strong)NSMutableArray<VoteItemModel *> *dataSouce;
 @end
 

@@ -12,6 +12,7 @@
 #import "NSString+Empty.h"
 #import <RongIMLib/RongIMLib.h>
 #import "NetWorkRequestManager.h"
+#import "RCShowLiveVoteMsgModel.h"
 #define RONG_CLOUD_APP_KEY @"k51hidwqkvjyb"
 @interface RongCloudManager()<RCIMClientReceiveMessageDelegate>
 @property(nonatomic,assign)BOOL isConnected;
@@ -39,6 +40,8 @@
 +(void)loadRongCloudSdk{
     [[RCIMClient sharedRCIMClient] initWithAppKey:RONG_CLOUD_APP_KEY];
     
+    [[RCIMClient sharedRCIMClient] registerMessageType:[RCShowLiveVoteMsgModel class]];
+    [[RCIMClient sharedRCIMClient] registerMessageType:[RCLiveVoteMsgModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
 }
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block{
@@ -185,16 +188,30 @@
 
 - (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object {
     NSLog(@"");
-    if (message.content&&[message.content isKindOfClass:[RCMessageModel class]]) {
-        RCMessageModel *model=(RCMessageModel*)message.content;
-       YXZMessageModel *uiMode= [UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
-        
-        
-            if ([self.delegate respondsToSelector:@selector(reciveRCMessage:)]) {
-                [self.delegate reciveRCMessage:uiMode];
+    if (message.content) {
+        if (message.content&&[message.content isKindOfClass:[RCMessageModel class]]) {
+            
+         
+            
+            RCMessageModel *model=(RCMessageModel*)message.content;
+           YXZMessageModel *uiMode= [UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
+            
+            
+                if ([self.delegate respondsToSelector:@selector(reciveRCMessage:)]) {
+                    [self.delegate reciveRCMessage:uiMode];
+                }
+            
+        }else if([message.content isKindOfClass:[RCLiveVoteMsgModel class]]){
+            if ([self.voteDelegate respondsToSelector:@selector(voteMsg:)]) {
+                [self.voteDelegate voteMsg:((RCLiveVoteMsgModel *)message.content).context];
             }
-        
+        }else if ([message.content isKindOfClass:[RCShowLiveVoteMsgModel class]]){
+            if ([self.voteDelegate respondsToSelector:@selector(voteMsg:)]) {
+                [self.voteDelegate voteMsg:((RCShowLiveVoteMsgModel *)message.content).context];
+            }
+        }
     }
+    
 }
 
 -(NetWorkRequestManager *)request{
