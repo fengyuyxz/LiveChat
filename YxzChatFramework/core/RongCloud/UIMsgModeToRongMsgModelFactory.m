@@ -28,6 +28,8 @@
 }
 +(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageModel *)rcMsg{
     YXZMessageModel *model=[[YXZMessageModel alloc]init];
+    long long time=[NSDate timeIntervalSinceReferenceDate];
+    model.msgID=[NSString stringWithFormat:@"%lld%d%d",time,arc4random_uniform((int)time),arc4random_uniform((int)time)];
     NSDictionary *dic=rcMsg.context;
     YxzUserModel *user=[YxzUserModel new];
     user.userID=rcMsg.senderUserInfo.userId;
@@ -45,6 +47,20 @@
     if (dic) {
         if ([dic objectForKey:@"msgType"]) {
             model.msgType=[(NSNumber *)dic[@"msgType"] intValue];
+        }
+        if([dic objectForKey:@"context"]){
+            NSString *context=dic[@"context"];
+            if (![NSString isEmpty:context]) {
+                if ([context containsString:@"["]&&[context containsString:@"]"]) {
+                    NSRange startIndex=[context rangeOfString:@"["];
+                    NSRange endIndex=[context rangeOfString:@"]"];
+                    NSRange range=NSMakeRange(startIndex.location+1, endIndex.location-startIndex.location-1);
+                   NSString *imageStr= [context substringWithRange:range];
+                    NSString *contentStr=[[[context stringByReplacingOccurrencesOfString:imageStr withString:@""] stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
+                    model.content=contentStr;
+                    model.faceImageUrl=imageStr;
+                }
+            }
         }
         
     }
