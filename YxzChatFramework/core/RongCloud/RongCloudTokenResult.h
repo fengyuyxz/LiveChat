@@ -11,7 +11,7 @@
 @interface ChatRoomUserInfoAndTokenModel : NSObject
 @property(nonatomic,copy)NSString *username;
 @property(nonatomic,copy)NSString *avatar;
-@property(nonatomic,assign)int *vip_type;//会员：0：普通会员，1：周会员，2：半年会员，3：年会员
+@property(nonatomic,assign)int vip_type;//会员：0：普通会员，1：周会员，2：半年会员，3：年会员
 @property(nonatomic,copy)NSString *user_id;
 @property(nonatomic,copy)NSString *imtoken;
 @property(nonatomic,copy)NSString *liveroomid;

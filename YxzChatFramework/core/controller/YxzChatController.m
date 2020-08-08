@@ -80,6 +80,8 @@
     if (parent == nil) {
         if (!YxzSuperPlayerWindowShared.isShowing) {
             [self.livePlayer resetPlayer];
+            [[RongCloudManager shareInstance]quitRoom:self.chatRoomTokenModel.liveroomid completion:nil];
+            [[RongCloudManager shareInstance]disConnect];
         }
     }
 }
@@ -202,18 +204,7 @@
     [[RongCloudManager shareInstance]getRongCloudTokenWithUserToken:self.token completion:^(BOOL isSUC, ChatRoomUserInfoAndTokenModel *model) {
         if (isSUC) {
             weakSelf.chatRoomTokenModel=model;
-            [[RongCloudManager shareInstance]connectRongCloudService:model.imtoken userToken:self.token completion:^(BOOL isConnect, NSString *userId) {
-                if (isConnect) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[RongCloudManager shareInstance]setUserId:weakSelf.chatRoomTokenModel.user_id userName:weakSelf.chatRoomTokenModel.username];
-                        [[RongCloudManager shareInstance] joinChatRoom: weakSelf.chatRoomTokenModel.liveroomid completion:^(BOOL joinSuc, RCErrorCode code) {
-                            if (joinSuc) {//加入成功
-                                
-                            }
-                        }];
-                    });
-                }
-            }];
+            [weakSelf.chatComponentView joinRoom:weakSelf.chatRoomTokenModel userToken:weakSelf.token];
         }else{
             
         }

@@ -116,6 +116,7 @@
     [RCIMClient sharedRCIMClient].currentUserInfo=userInfo;
 }
 -(void)joinChatRoom:(NSString *)roomId completion:(void(^)(BOOL joinSuc,RCErrorCode code))block{
+    _chatRoomId=roomId;
     /*
     [[RCIMClient sharedRCIMClient]  joinExistChatRoom:roomId messageCount:-1 success:^{
         if (block) {
@@ -138,6 +139,19 @@
         }
     }];
     
+}
+-(void)sendMessage:(YXZMessageModel *)message  compleiton:(void(^)(BOOL isSUC,NSString *messageId))block{
+    RCMessageContent *messageContent=[UIMsgModeToRongMsgModelFactory uiMsgModelToRCMsgModel:message];
+    [[RCIMClient sharedRCIMClient]sendMessage:ConversationType_CHATROOM targetId:_chatRoomId content:messageContent pushContent:nil pushData:nil
+                                      success:^(long messageId) {
+        if (block) {
+            block(YES,[NSString stringWithFormat:@"%ld",messageId]);
+        }
+    } error:^(RCErrorCode nErrorCode, long messageId) {
+        if (block) {
+            block(NO,[NSString stringWithFormat:@"%ld",messageId]);
+        }
+    }];
 }
 -(void)quitRoom:(NSString *)roomId completion:(void(^)(BOOL joinSuc,RCErrorCode code))block{
     

@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "RongCloudTokenResult.h"
 #import <RongIMLib/RongIMLib.h>
-
+#import "UIMsgModeToRongMsgModelFactory.h"
+#import "YXZMessageModel.h"
 ///  用于融云sdk 初始化，和连接 加入聊天室 聊天接发消息等
 @interface RongCloudManager : NSObject
 
-
+@property(nonatomic,copy)NSString *chatRoomId;
 
 +(instancetype)shareInstance;
 
@@ -33,6 +34,11 @@
 -(void)setUserId:(NSString *)userId userName:(NSString *)userName;
 -(void)getRongCloudTokenWithUserToken:(NSString *)userToken completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block;
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken completion:(void(^)(BOOL isConnect,NSString *userId))block;
+
+/// 发送消息
+/// @param message 消息列表uimodel 需要转换
+/// @param block 消息发送成功失败回调
+-(void)sendMessage:(YXZMessageModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block;
 @end
 
 

@@ -8,12 +8,13 @@
 
 #import "YxzChatCompleteComponent.h"
 #import "YxzChatListTableView.h"
-
+#import "RongCloudManager.h"
 #import "YXZConstant.h"
 #import "YxzAnimationControl.h"
 #import "PraiseAnimation.h"
 #import <Masonry/Masonry.h>
 @interface YxzChatCompleteComponent()<YxzInputViewDelegate,YxzListViewInputDelegate,RoomMsgListDelegate>
+@property(nonatomic,strong)ChatRoomUserInfoAndTokenModel *tokenModel;
 @property(nonatomic,strong)YxzChatListTableView *listTableView;
 @property(nonatomic,strong)YxzInputBoxView *inputboxView;
 @property(nonatomic,assign)CGFloat inputBoxHight;
@@ -25,6 +26,7 @@
 
 @property(nonatomic,strong)UIButton *firworkBut;
 @property(nonatomic,strong)PraiseAnimation *praiseAnimateManager;
+@property(nonatomic,strong)YxzUserModel *userModel;
 @end
 @implementation YxzChatCompleteComponent
 - (instancetype)init
@@ -128,6 +130,41 @@
 -(void)setFaceList:(NSArray<YxzFaceItem *> *)faceList{
     [self.inputboxView setFaceList:faceList];
 }
+#pragma mark - 加入聊天室
+-(void)joinRoom:(ChatRoomUserInfoAndTokenModel *)model userToken:(NSString *)userToken{
+    _tokenModel=model;
+    __weak typeof(self) weakSelf =self;
+    [[RongCloudManager shareInstance]connectRongCloudService:model.imtoken userToken:userToken completion:^(BOOL isConnect, NSString *userId) {
+        if (isConnect) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[RongCloudManager shareInstance]setUserId:weakSelf.tokenModel.user_id userName:weakSelf.tokenModel.username];
+                [[RongCloudManager shareInstance] joinChatRoom: weakSelf.tokenModel.liveroomid completion:^(BOOL joinSuc, RCErrorCode code) {
+                    if (joinSuc) {//加入成功
+                        [self sendJoinChatMsg];
+                    }
+                }];
+            });
+        }
+    }];
+}
+-(void)sendJoinChatMsg{
+    YXZMessageModel *model=[YXZMessageModel new];
+    model.msgType=YxzMsgType_memberEnter;
+//    model.content=msgText;
+//    model.faceImageUrl=faceImageUrlStr;
+//
+    model.user=self.userModel;
+    __weak typeof(self) weakSelf =self;
+    [[RongCloudManager shareInstance]sendMessage:model compleiton:^(BOOL isSUC, NSString *messageId) {
+        model.msgID=messageId;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [model initMsgAttribute];
+            [strongSelf.listTableView addNewMsg:model];
+        });
+    }];
+}
+
 #pragma mark - 发送烟花 按钮事件 ======
 -(void)firworkButPressed:(UIButton *)but{
     NSLog(@"烟花");
@@ -237,5 +274,14 @@
         }
     }
     return _animationView;
+}
+-(YxzUserModel *)userModel{
+    if (!_userModel) {
+        _userModel=[[YxzUserModel alloc]init];
+    }
+    _userModel.userID=self.tokenModel.user_id;
+    _userModel.nickName=self.tokenModel.username;
+    _userModel.level=self.tokenModel.vip_type;
+    return _userModel;
 }
 @end
