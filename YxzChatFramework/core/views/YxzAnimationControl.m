@@ -25,6 +25,17 @@
     
     return animationNums;
 }
++(NSArray *)generatteAnimationNumArray{
+    int nums=arc4random()%6+1;//生成1 - 6中动画
+       NSMutableArray *array=[[NSMutableArray alloc]init];
+       for(int i=1;i<=nums;i++){
+           NSString *anim=[NSString stringWithFormat:@"%d",(arc4random()%6+1)];
+           if (![array containsObject:anim]) {
+               [array addObject:anim];
+           }
+       }
+    return array;
+}
 +(void)beginAnimation:(NSString *)animationNum animationImageView:(UIView *)animaitnImageView{
 //    __block NSMutableArray<NSMutableArray *> *imgeArray=[[NSMutableArray alloc]init];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

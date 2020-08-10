@@ -216,6 +216,7 @@
 }
 -(void)setBaseInfoView{
     [self.basInfoView roomTitle:self.roomBaseInfo.title viewNum:self.roomBaseInfo.view_num zanNum:self.roomBaseInfo.zan_num commentNum:self.roomBaseInfo.comment_num];
+    self.chatComponentView.btn_type=self.roomBaseInfo.btn_type;
 }
 -(void)playVideo:(RoomBaseInfo *)info{
     dispatch_async(dispatch_get_main_queue(), ^{

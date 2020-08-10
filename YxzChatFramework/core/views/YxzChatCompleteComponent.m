@@ -27,6 +27,9 @@
 @property(nonatomic,strong)UIButton *firworkBut;
 @property(nonatomic,strong)PraiseAnimation *praiseAnimateManager;
 @property(nonatomic,strong)YxzUserModel *userModel;
+
+@property(nonatomic,strong)NSTimer *praiseTimer;
+@property(nonatomic,assign)int praiseTimes;
 @end
 @implementation YxzChatCompleteComponent
 - (instancetype)init
@@ -84,7 +87,7 @@
     }];
     [self.firworkBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.mas_right).offset(-20);
-        make.width.mas_equalTo(40);
+        make.width.mas_equalTo(45);
         make.height.mas_equalTo(40);
         make.bottom.equalTo(self.mas_bottom).offset(-5);
     }];
@@ -168,17 +171,48 @@
 
 #pragma mark - 发送烟花 按钮事件 ======
 -(void)firworkButPressed:(UIButton *)but{
+    _praiseTimes++;
+    if (self.btn_type==1) {
+        NSString *typeNum= [YxzAnimationControl generateAnimationNums];
+        [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
+    }else if(self.btn_type==2){
+           self.praiseAnimateManager.x_left_swing=30;
+           self.praiseAnimateManager.x_right_swing=15;
+           self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
+           self.praiseAnimateManager.speed=1;
+           [self.praiseAnimateManager animate:2];
+    }
     
-   NSString *typeNum= [YxzAnimationControl generateAnimationNums];
-    [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
-//    self.praiseAnimateManager.x_left_swing=30;
-//    self.praiseAnimateManager.x_right_swing=15;
-//    self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
-//    self.praiseAnimateManager.speed=1;
-////    [self.praiseAnimateManager animate:2];
+   
 //    [self.praiseAnimateManager starAnimation:10];
+    [self startCountPraiseTimes];
+    
+}
+-(void)startCountPraiseTimes{
+    if (!_praiseTimer) {
+        _praiseTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(prasieTime:) userInfo:nil repeats:NO];
+    }
+}
+-(void)prasieTime:(NSTimer *)time{
+    [_praiseTimer invalidate];
+    _praiseTimer=nil;
+    // 发送点赞次数
+    PraiseMessagModel *messageModel=[PraiseMessagModel new];
+    messageModel.btn_type=self.btn_type;
+    messageModel.times=_praiseTimes;
+    YXZMessageModel *model=[YXZMessageModel new];
+    model.msgType=YxzMsgType_Subscription;
+//    model.content=msgText;
+    
+        model.user=self.userModel;
     
     
+    [[RongCloudManager shareInstance]sendPraiseMessage:messageModel compleiton:^(BOOL isSUC, NSString *messageId) {
+        model.msgID=messageId;
+        [model initMsgAttribute];
+        [self.listTableView addNewMsg:model];
+    }];
+    _praiseTimes=0;
 }
 #pragma mark - YxzListViewInputDelegate =================
 -(void)faceClick{
@@ -254,7 +288,30 @@
         [weakSelf.listTableView addNewMsg:model];
     
 }
-
+//收到点赞的消息
+-(void)prasieAnmiaiton:(PraiseMessagModel *)model{
+    YXZMessageModel *message=[UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
+    [message initMsgAttribute];
+    [self.listTableView addNewMsg:message];
+    int times=model.times;
+    if (self.btn_type==1) {
+        
+        
+        NSMutableArray *array=[NSMutableArray array];
+        for (int i=0; i<times; i++) {
+            NSArray *list=[YxzAnimationControl generatteAnimationNumArray];
+            [array addObjectsFromArray:list];
+        }
+        NSString *animationNums= [array componentsJoinedByString:@","];
+        [YxzAnimationControl beginAnimation:animationNums animationImageView:self.animationView];
+    }else if(self.btn_type==2){
+           self.praiseAnimateManager.x_left_swing=30;
+           self.praiseAnimateManager.x_right_swing=15;
+           self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
+           self.praiseAnimateManager.speed=1;
+           [self.praiseAnimateManager animate:2*times];
+    }
+}
 -(void)sendRongCould:(YXZMessageModel *)model{
     __weak typeof(self) weakSelf =self;
     [[RongCloudManager shareInstance] sendMessage:model compleiton:^(BOOL isSUC, NSString *messageId) {
@@ -273,6 +330,17 @@
     CGRect listTabeFrame=self.listTableView.frame;
     listTabeFrame.size.height=CGRectGetHeight(self.bounds)-CGRectGetHeight(frame);
     self.listTableView.frame=listTabeFrame;
+}
+#pragma mark - getter setter ===========
+-(void)setBtn_type:(int)btn_type{
+    _btn_type=btn_type;
+    if (_btn_type==1) {
+        [_firworkBut setImage:YxzSuperPlayerImage(@"Group29") forState:UIControlStateNormal];
+    }else if (_btn_type==2){
+        if (_btn_type==1) {
+            [_firworkBut setImage:YxzSuperPlayerImage(@"Group30") forState:UIControlStateNormal];
+        }
+    }
 }
 -(UIButton *)firworkBut{
     if (!_firworkBut) {

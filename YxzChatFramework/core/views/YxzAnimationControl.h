@@ -12,6 +12,7 @@
 
 @interface YxzAnimationControl : NSObject
 +(NSString *)generateAnimationNums;
++(NSArray *)generatteAnimationNumArray;
 +(void)beginAnimation:(NSString *)animationNum animationImageView:(UIView *)animaitnImageView;
 @end
 

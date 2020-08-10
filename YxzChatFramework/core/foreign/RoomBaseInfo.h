@@ -26,6 +26,8 @@
 @end
 
 @interface RoomBaseInfo : NSObject
+@property(nonatomic,assign)int btn_type;//发送按钮样式，1星星，2海豚
+
 @property(nonatomic,assign)int roomId;
 @property(nonatomic,copy)NSString * star_id;
 @property(nonatomic,copy)NSString * view_num;//播放数

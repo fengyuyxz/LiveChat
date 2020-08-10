@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0D312D24E172D1008CCD53 /* PraiseMessagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D312C24E172D1008CCD53 /* PraiseMessagModel.m */; };
 		1C0D9B0924CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */; };
 		1C151C8524DE8F72000D70C4 /* RCLiveVoteMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */; };
 		1C151C8824DE9219000D70C4 /* VoteItemModelResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8724DE9219000D70C4 /* VoteItemModelResult.m */; };
@@ -71,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0D312B24E172D1008CCD53 /* PraiseMessagModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PraiseMessagModel.h; sourceTree = "<group>"; };
+		1C0D312C24E172D1008CCD53 /* PraiseMessagModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PraiseMessagModel.m; sourceTree = "<group>"; };
 		1C0D9B0724CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzVideoLooksBasicInfoView.h; sourceTree = "<group>"; };
 		1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzVideoLooksBasicInfoView.m; sourceTree = "<group>"; };
 		1C151C8324DE8F72000D70C4 /* RCLiveVoteMsgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCLiveVoteMsgModel.h; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */,
 				1C151C8924DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.h */,
 				1C151C8A24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m */,
+				1C0D312B24E172D1008CCD53 /* PraiseMessagModel.h */,
+				1C0D312C24E172D1008CCD53 /* PraiseMessagModel.m */,
 			);
 			path = RongCloud;
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */,
 				1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */,
 				1CB2B4A224C991F20056107A /* YxzGetBundleResouceTool.m in Sources */,
+				1C0D312D24E172D1008CCD53 /* PraiseMessagModel.m in Sources */,
 				1CB2B48D24C940E00056107A /* YxzChatListTableView.m in Sources */,
 				1CB2B44724C940B80056107A /* ViewController.m in Sources */,
 				1CB2B4B624CBB4430056107A /* YxzShowSelectedFaceView.m in Sources */,

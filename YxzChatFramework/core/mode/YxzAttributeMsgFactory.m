@@ -204,7 +204,7 @@
 
 // 关注
 +(NSMutableAttributedString *)Subscriptionfont:(UIFont *)font msgModel:(YXZMessageModel *)msgModel tapCompletion:(AttributeTapBlock)tap{
-    NSMutableAttributedString *attribuite= [self UnknowCell:@"关注了主播" font:font msgModel:msgModel tapCompletion:tap];
+    NSMutableAttributedString *attribuite= [self UnknowCell:@"点赞" font:font msgModel:msgModel tapCompletion:tap];
     return attribuite;
 }
 // 将个人标签生成富文本

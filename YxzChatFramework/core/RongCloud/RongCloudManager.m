@@ -43,6 +43,8 @@
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCShowLiveVoteMsgModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCLiveVoteMsgModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
+    [[RCIMClient sharedRCIMClient] registerMessageType:[PraiseMessagModel class]];
+    
 }
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block{
     [[RCIMClient sharedRCIMClient]connectWithToken:token success:^(NSString *userId) {
@@ -162,6 +164,18 @@
         }
     }];
 }
+-(void)sendPraiseMessage:(PraiseMessagModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block{
+    [[RCIMClient sharedRCIMClient]sendMessage:ConversationType_CHATROOM targetId:_chatRoomId content:message pushContent:nil pushData:nil
+                                         success:^(long messageId) {
+           if (block) {
+               block(YES,[NSString stringWithFormat:@"%ld",messageId]);
+           }
+       } error:^(RCErrorCode nErrorCode, long messageId) {
+           if (block) {
+               block(NO,[NSString stringWithFormat:@"%ld",messageId]);
+           }
+       }];
+}
 -(void)quitRoom:(NSString *)roomId completion:(void(^)(BOOL joinSuc,RCErrorCode code))block{
     
     [[RCIMClient sharedRCIMClient] quitChatRoom:roomId success:^{
@@ -208,6 +222,10 @@
         }else if ([message.content isKindOfClass:[RCShowLiveVoteMsgModel class]]){
             if ([self.voteDelegate respondsToSelector:@selector(voteMsg:)]) {
                 [self.voteDelegate voteMsg:((RCShowLiveVoteMsgModel *)message.content).context];
+            }
+        }else if([message.content isKindOfClass:[PraiseMessagModel class]]){
+            if ([self.delegate respondsToSelector:@selector(prasieAnmiaiton:)]) {
+                [self.delegate prasieAnmiaiton:(PraiseMessagModel *)message.content];
             }
         }
     }

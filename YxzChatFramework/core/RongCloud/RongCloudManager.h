@@ -12,11 +12,13 @@
 #import <RongIMLib/RongIMLib.h>
 #import "UIMsgModeToRongMsgModelFactory.h"
 #import "YXZMessageModel.h"
-
+#import "PraiseMessagModel.h"
 #import "VoteItemModelResult.h"
 @protocol RongCouldManagerReciveDelegate <NSObject>
 
 -(void)reciveRCMessage:(YXZMessageModel *)model;
+
+-(void)prasieAnmiaiton:(PraiseMessagModel *)model;
 
 @end
 @protocol RongCouldVoteDelegate <NSObject>
@@ -53,6 +55,8 @@
 /// @param message 消息列表uimodel 需要转换
 /// @param block 消息发送成功失败回调
 -(void)sendMessage:(YXZMessageModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block;
+
+-(void)sendPraiseMessage:(PraiseMessagModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block;
 @end
 
 

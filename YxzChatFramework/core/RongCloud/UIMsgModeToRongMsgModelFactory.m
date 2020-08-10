@@ -26,11 +26,11 @@
     messageContent.context=context;
     return messageContent;
 }
-+(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageModel *)rcMsg{
++(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageContent *)rcMsg{
     YXZMessageModel *model=[[YXZMessageModel alloc]init];
     long long time=[NSDate timeIntervalSinceReferenceDate];
     model.msgID=[NSString stringWithFormat:@"%lld%d%d",time,arc4random_uniform((int)time),arc4random_uniform((int)time)];
-    NSDictionary *dic=rcMsg.context;
+    
     YxzUserModel *user=[YxzUserModel new];
     user.userID=rcMsg.senderUserInfo.userId;
     user.nickName=rcMsg.senderUserInfo.name;
@@ -43,27 +43,32 @@
             
         }
     }
-    
-    if (dic) {
-        if ([dic objectForKey:@"msgType"]) {
-            model.msgType=[(NSNumber *)dic[@"msgType"] intValue];
-        }
-        if([dic objectForKey:@"context"]){
-            NSString *context=dic[@"context"];
-            if (![NSString isEmpty:context]) {
-                if ([context containsString:@"["]&&[context containsString:@"]"]) {
-                    NSRange startIndex=[context rangeOfString:@"["];
-                    NSRange endIndex=[context rangeOfString:@"]"];
-                    NSRange range=NSMakeRange(startIndex.location+1, endIndex.location-startIndex.location-1);
-                   NSString *imageStr= [context substringWithRange:range];
-                    NSString *contentStr=[[[context stringByReplacingOccurrencesOfString:imageStr withString:@""] stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
-                    model.content=contentStr;
-                    model.faceImageUrl=imageStr;
+    if([rcMsg isKindOfClass:[RCMessageModel class]]){
+        NSDictionary *dic=((RCMessageModel *)rcMsg).context;
+        if (dic) {
+            if ([dic objectForKey:@"msgType"]) {
+                model.msgType=[(NSNumber *)dic[@"msgType"] intValue];
+            }
+            if([dic objectForKey:@"context"]){
+                NSString *context=dic[@"context"];
+                if (![NSString isEmpty:context]) {
+                    if ([context containsString:@"["]&&[context containsString:@"]"]) {
+                        NSRange startIndex=[context rangeOfString:@"["];
+                        NSRange endIndex=[context rangeOfString:@"]"];
+                        NSRange range=NSMakeRange(startIndex.location+1, endIndex.location-startIndex.location-1);
+                       NSString *imageStr= [context substringWithRange:range];
+                        NSString *contentStr=[[[context stringByReplacingOccurrencesOfString:imageStr withString:@""] stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
+                        model.content=contentStr;
+                        model.faceImageUrl=imageStr;
+                    }
                 }
             }
+            
         }
-        
+    }else if([rcMsg isKindOfClass:[PraiseMessagModel class]]){
+        model.msgType=YxzMsgType_Subscription;
     }
+    
     model.user=user;
     return model;
 }
