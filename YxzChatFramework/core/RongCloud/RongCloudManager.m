@@ -44,6 +44,7 @@
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCLiveVoteMsgModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[PraiseMessagModel class]];
+    [[RCIMClient sharedRCIMClient] registerMessageType:[BackgroundAnimationMessage class]];
     
 }
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block{
@@ -165,6 +166,7 @@
     }];
 }
 -(void)sendPraiseMessage:(PraiseMessagModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block{
+    message.senderUserInfo=[RCIMClient sharedRCIMClient].currentUserInfo;
     [[RCIMClient sharedRCIMClient]sendMessage:ConversationType_CHATROOM targetId:_chatRoomId content:message pushContent:nil pushData:nil
                                          success:^(long messageId) {
            if (block) {
@@ -226,6 +228,10 @@
         }else if([message.content isKindOfClass:[PraiseMessagModel class]]){
             if ([self.delegate respondsToSelector:@selector(prasieAnmiaiton:)]) {
                 [self.delegate prasieAnmiaiton:(PraiseMessagModel *)message.content];
+            }
+        }else if([message.content isKindOfClass:[BackgroundAnimationMessage class]]){
+            if ([self.delegate respondsToSelector:@selector(backgroundAnimation:)]) {
+                [self.delegate backgroundAnimation:((BackgroundAnimationMessage *)message.content).animation];
             }
         }
     }

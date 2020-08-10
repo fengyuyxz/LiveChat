@@ -14,12 +14,13 @@
 #import "YXZMessageModel.h"
 #import "PraiseMessagModel.h"
 #import "VoteItemModelResult.h"
+#import "BackgroundAnimationMessage.h"
 @protocol RongCouldManagerReciveDelegate <NSObject>
 
 -(void)reciveRCMessage:(YXZMessageModel *)model;
 
 -(void)prasieAnmiaiton:(PraiseMessagModel *)model;
-
+-(void)backgroundAnimation:(NSString *)animation;
 @end
 @protocol RongCouldVoteDelegate <NSObject>
 

@@ -26,6 +26,8 @@
 
 @property(nonatomic,strong)UIButton *firworkBut;
 @property(nonatomic,strong)PraiseAnimation *praiseAnimateManager;
+@property(nonatomic,strong)PraiseAnimation *shootingStarAnimate;
+
 @property(nonatomic,strong)YxzUserModel *userModel;
 
 @property(nonatomic,strong)NSTimer *praiseTimer;
@@ -52,6 +54,12 @@
     self.userInteractionEnabled=YES;
     
     _praiseAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    _shootingStarAnimate=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"star")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    _shootingStarAnimate.animation_h=250;
+    _shootingStarAnimate.speed=1;
+    _shootingStarAnimate.x_right_swing=20;
+    _shootingStarAnimate.x_right_swing=10;
+    
     self.inputBoxHight=inputBoxDefaultHight;
     _listTableView=[[YxzChatListTableView alloc]initWithFrame:CGRectZero];
     _listTableView.delegate=self;
@@ -107,6 +115,7 @@
     [super layoutSubviews];
 //    [self layoutSubViewConstraint];
 //    [self layoutSubViewFrame];
+    _shootingStarAnimate.animation_h=self.animationView.frame.size.height;
     self.praiseAnimateManager.startPoint=CGPointMake(self.firworkBut.center.x, self.firworkBut.frame.origin.y-25);
 }
 
@@ -288,6 +297,13 @@
         [weakSelf.listTableView addNewMsg:model];
     
 }
+-(void)backgroundAnimation:(NSString *)animation{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [weakSelf.shootingStarAnimate starAnimation:50];
+    });
+   
+}
 //收到点赞的消息
 -(void)prasieAnmiaiton:(PraiseMessagModel *)model{
     YXZMessageModel *message=[UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
@@ -355,6 +371,7 @@
         _animationView=[[UIImageView alloc]init];
         for(int i=0;i<1;i++){
             UIImageView *imgView=[[UIImageView alloc]init];
+            imgView.backgroundColor=[UIColor clearColor];
             [_animationView addSubview:imgView];
             [imgView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.right.top.bottom.equalTo(_animationView);
