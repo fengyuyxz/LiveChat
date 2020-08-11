@@ -69,8 +69,9 @@
     int i = [msgModel.quantity intValue];
     
     // 等级
-    NSMutableAttributedString *textView =[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];;
-    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] tap:YES];
+    NSMutableAttributedString *textView =[self getUerLevelmsgModel:msgModel font:font tapCompletion:tap];
+    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];;
+    
     [textView appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
     
     /**徽章*/
@@ -125,8 +126,9 @@
     
     NSMutableAttributedString *welcomeAttribText = [self getAttributed:[NSString stringWithFormat:@"%@ ", @"欢迎"] font:font color:MsgLbColor tap:NO shadow:YES tapCompletion:tap];
     
-    NSMutableAttributedString *textView =[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
-    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] tap:YES tapCompletion:tap];
+    NSMutableAttributedString *textView = [self getUerLevelmsgModel:msgModel font:font tapCompletion:tap];
+    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
+  
     [textView appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
     
     /**徽章*/
@@ -147,6 +149,13 @@
     
     return welcomeAttribText;
 }
++(NSMutableAttributedString *)getUerLevelmsgModel:(YXZMessageModel *)msgModel font:(UIFont *)font tapCompletion:(AttributeTapBlock)tap{
+    
+    
+    
+    return [self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
+}
+
 // 聊天
 + (NSMutableAttributedString *)commentfont:(UIFont *)font msgModel:(YXZMessageModel *)msgModel tipImages:(NSArray<id> *)tipImages faceImage:(UIImage *)faceImage tapCompletion:(AttributeTapBlock)tap {
     NSMutableParagraphStyle *paraStyle = [self paragraphStyle];
@@ -155,8 +164,9 @@
     //paraStyle.firstLineHeadIndent = 33;
     
     // 等级
-    NSMutableAttributedString *textView =[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
-    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] tap:YES];
+    NSMutableAttributedString *textView =[self getUerLevelmsgModel:msgModel font:font tapCompletion:tap];
+    //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
+    
     [textView appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
     
     /**徽章*/

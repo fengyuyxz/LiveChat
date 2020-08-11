@@ -9,6 +9,7 @@
 #import "FirstVC.h"
 #import "RoomBaseInfo.h"
 #import "YxzChatController.h"
+#import "YxzLevelManager.h"
 //#import "LiveRoomViewController.h"
 @interface FirstVC ()
 
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor greenColor];
+    UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(10, 100, 40, 20)];
+    view.image=[[YxzLevelManager sharedInstance]imageForLevel:1];
+    [self.view addSubview:view];
+    
     // Do any additional setup after loading the view.
 }
 - (IBAction)pushRoom:(id)sender {
