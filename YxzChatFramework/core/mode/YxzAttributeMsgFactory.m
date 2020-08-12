@@ -72,7 +72,7 @@
     NSMutableAttributedString *textView =[self getUerLevelmsgModel:msgModel font:font tapCompletion:tap];
     //[self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];;
     
-    [textView appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    [textView appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n "]];
     
     /**徽章*/
     
@@ -205,6 +205,10 @@
     }
     
     [textView appendAttributedString:name];
+    
+    NSMutableAttributedString *newlineAttr=[self getAttributed:[NSString stringWithFormat:@"\n "] font:font color:MsgNameColor tap:NO shadow:NO tapCompletion:nil];
+
+    [textView appendAttributedString:newlineAttr];
     [textView appendAttributedString:content];
     
     textView.yy_paragraphStyle = paraStyle;
@@ -246,7 +250,8 @@
     CGFloat lineH = 40;
     if([faceImg isKindOfClass:[UIImage class]]){
         CGFloat scale = faceImg.size.height / lineH;
-        CGSize size = CGSizeMake(faceImg.size.width / scale, lineH);
+        CGFloat imageW=device_sceen_width/5.0f;
+        CGSize size = CGSizeMake(imageW, imageW);//CGSizeMake(faceImg.size.width / scale, lineH);
         UIImage *newImage = [self scaleToSize:size image:faceImg];
         NSMutableAttributedString *labs = [self getAttachText:newImage font:font tap:NO tapCompletion:nil];
         [attachText appendAttributedString:labs];
