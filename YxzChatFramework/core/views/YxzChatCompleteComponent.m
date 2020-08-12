@@ -76,9 +76,10 @@
     _inputboxView=[[YxzInputBoxView alloc]initWithFrame:CGRectZero];
     _inputboxView.delegate=self;
     _inputboxView.hidden=YES;
+    [self addSubview:self.firworkBut];
     [self addSubview:_inputboxView];
     
-    [self addSubview:self.firworkBut];
+    
     [self layoutSubViewConstraint];
     [RongCloudManager shareInstance].delegate=self;
 }

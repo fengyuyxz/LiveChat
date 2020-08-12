@@ -153,7 +153,16 @@
     
     
     
-    return [self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:msgModel.user.level] font:font tap:YES tapCompletion:tap];
+    if (msgModel.user.level==0) {
+        NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:@"" attributes:nil];
+        attribute.yy_font = font;
+        return attribute;
+    }
+    
+    
+    
+    
+    return [self getAttachText:[[YxzLevelManager sharedInstance] imageForLevel:arc4random_uniform(1)] font:font tap:YES tapCompletion:tap];
 }
 
 // 聊天
