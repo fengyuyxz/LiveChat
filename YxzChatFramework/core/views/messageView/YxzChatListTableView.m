@@ -40,6 +40,7 @@
     self.userInteractionEnabled=YES;
     self.backgroundColor=[UIColor clearColor];
     [self addSubview:self.containerView];
+    
     [self.containerView addSubview:self.faceBut];
     [self.containerView addSubview:self.inputTextLabel];
     [self.containerView addSubview:self.inputBut];
@@ -83,6 +84,7 @@
     if(!_containerView){
         _containerView=[[UIView alloc]init];
         _containerView.backgroundColor=RGBA_OF(0x34343B);
+        _containerView.layer.cornerRadius=4;
     }
     return _containerView;
 }

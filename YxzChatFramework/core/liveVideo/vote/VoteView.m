@@ -282,7 +282,7 @@
 
 @interface VoteViewCell()
 @property(nonatomic,strong)UIImageView *topImageView;
-@property(nonatomic,strong)UIButton *voteBut;
+@property(nonatomic,strong)ProcessButton *voteBut;
 @property(nonatomic,strong)UIView *voteView;
 @property(nonatomic,strong)UILabel *label;
 @end
@@ -298,6 +298,8 @@
 }
 -(void)setItem:(VoteItemModel *)item{
     _item=item;
+    
+    
     if ([NSString isEmpty:_item.pic]) {
         [self.topImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
@@ -315,6 +317,8 @@
         }];
     }
     self.label.text=_item.title;
+    
+    self.voteBut.process=_item.percent/100.0f;
     
 }
 -(void)setupView{
@@ -355,6 +359,7 @@
         _voteView=[[UIView alloc]init];
         _voteView.backgroundColor=[UIColor clearColor];
         _voteView.layer.borderColor=RGBA_OF(0xffcbdd).CGColor;
+        _voteBut.clipsToBounds=YES;
         _voteView.layer.borderWidth=1;
         _voteView.layer.cornerRadius=17.5;
     }
@@ -368,9 +373,9 @@
     }
     return _topImageView;
 }
--(UIButton *)voteBut{
+-(ProcessButton *)voteBut{
     if (!_voteBut) {
-        _voteBut=[UIButton buttonWithType:UIButtonTypeCustom];
+        _voteBut=[ProcessButton buttonWithType:UIButtonTypeCustom];
         [_voteBut addTarget:self action:@selector(voteButPressed) forControlEvents:UIControlEventTouchUpInside];
     }
     return _voteBut;

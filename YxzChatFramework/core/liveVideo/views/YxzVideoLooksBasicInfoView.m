@@ -40,7 +40,7 @@
     return self;
 }
 -(void)setupView{
-    
+    self.backgroundColor=baseBlackColor;
     
     UIView *topView=[[UIView alloc]init];
     UIView *bottomView=[[UIView alloc]init];

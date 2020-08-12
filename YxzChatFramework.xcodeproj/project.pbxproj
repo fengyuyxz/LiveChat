@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C0D312D24E172D1008CCD53 /* PraiseMessagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D312C24E172D1008CCD53 /* PraiseMessagModel.m */; };
 		1C0D313024E17F20008CCD53 /* BackgroundAnimationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D312F24E17F20008CCD53 /* BackgroundAnimationMessage.m */; };
+		1C0D315B24E23CD9008CCD53 /* ProcessButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D315A24E23CD9008CCD53 /* ProcessButton.m */; };
 		1C0D9B0924CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */; };
 		1C151C8524DE8F72000D70C4 /* RCLiveVoteMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8424DE8F72000D70C4 /* RCLiveVoteMsgModel.m */; };
 		1C151C8824DE9219000D70C4 /* VoteItemModelResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C151C8724DE9219000D70C4 /* VoteItemModelResult.m */; };
@@ -77,6 +78,8 @@
 		1C0D312C24E172D1008CCD53 /* PraiseMessagModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PraiseMessagModel.m; sourceTree = "<group>"; };
 		1C0D312E24E17F20008CCD53 /* BackgroundAnimationMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundAnimationMessage.h; sourceTree = "<group>"; };
 		1C0D312F24E17F20008CCD53 /* BackgroundAnimationMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundAnimationMessage.m; sourceTree = "<group>"; };
+		1C0D315924E23CD9008CCD53 /* ProcessButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessButton.h; sourceTree = "<group>"; };
+		1C0D315A24E23CD9008CCD53 /* ProcessButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessButton.m; sourceTree = "<group>"; };
 		1C0D9B0724CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzVideoLooksBasicInfoView.h; sourceTree = "<group>"; };
 		1C0D9B0824CD2ED400F4F017 /* YxzVideoLooksBasicInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzVideoLooksBasicInfoView.m; sourceTree = "<group>"; };
 		1C151C8324DE8F72000D70C4 /* RCLiveVoteMsgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCLiveVoteMsgModel.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 		1CBEB37524D6572A0090F277 /* vote */ = {
 			isa = PBXGroup;
 			children = (
+				1C0D315924E23CD9008CCD53 /* ProcessButton.h */,
+				1C0D315A24E23CD9008CCD53 /* ProcessButton.m */,
 				1CBEB37624D657620090F277 /* VoteView.h */,
 				1CBEB37724D657620090F277 /* VoteView.m */,
 				1C151C8624DE9219000D70C4 /* VoteItemModelResult.h */,
@@ -730,6 +735,7 @@
 				1C2CBED824D257A10079BFD1 /* YxzLivePlayer.m in Sources */,
 				1CBEB37824D657620090F277 /* VoteView.m in Sources */,
 				1C6B42CD24DCF4BA00399AFC /* ToastView.m in Sources */,
+				1C0D315B24E23CD9008CCD53 /* ProcessButton.m in Sources */,
 				1C6B42DA24DE5BD000399AFC /* RCMessageModel.m in Sources */,
 				1C2CBE0C24CE65280079BFD1 /* LivePlayerInitializeController.m in Sources */,
 			);

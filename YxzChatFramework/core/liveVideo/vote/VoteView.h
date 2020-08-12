@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ProcessButton.h"
 #import "VoteItemModelResult.h"
 
 @protocol VoteDelegate <NSObject>

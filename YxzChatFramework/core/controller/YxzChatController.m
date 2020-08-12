@@ -635,6 +635,10 @@
 -(YxzVideoLooksBasicInfoView *)basInfoView{
     if (!_basInfoView) {
         _basInfoView=[[YxzVideoLooksBasicInfoView alloc]init];
+        _basInfoView.layer.shadowColor=baseBlackColor.CGColor;
+        _basInfoView.layer.shadowOffset=CGSizeMake(2, 3);
+        _basInfoView.layer.shadowOpacity=0.8;
+        _basInfoView.layer.shadowRadius=4;
     }
     return _basInfoView;
 }
