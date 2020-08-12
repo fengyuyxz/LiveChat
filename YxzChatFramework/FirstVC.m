@@ -10,6 +10,7 @@
 #import "RoomBaseInfo.h"
 #import "YxzChatController.h"
 #import "YxzLevelManager.h"
+#import "HttpHostManager.h"
 //#import "LiveRoomViewController.h"
 @interface FirstVC ()
 
@@ -28,6 +29,7 @@
 }
 - (IBAction)pushRoom:(id)sender {
     
+    [HttpHostManager shareInstance].host=@"http://www.pts.ifanteam.com";
     YxzChatController *vc=[[YxzChatController alloc]init];
     vc.modalPresentationStyle=UIModalPresentationFullScreen;
     vc.liveId=@"93";

@@ -244,6 +244,17 @@
     }];
     _praiseTimes=0;
 }
+-(void)setIsFull:(BOOL)isFull{
+    _isFull=isFull;
+//    [self.firworkBut mas_updateConstraints:^(MASConstraintMaker *make) {
+//        if (_isFull) {
+//             make.right.equalTo(self.mas_right).offset(-45);
+//        }else{
+//             make.right.equalTo(self.mas_right).offset(-30);
+//        }
+//       
+//    }];
+}
 #pragma mark - YxzListViewInputDelegate =================
 -(void)faceClick{
     [self.inputboxView clickFace];

@@ -30,6 +30,7 @@
 		1C6B42D724DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D624DE2C2B00399AFC /* UIMsgModeToRongMsgModelFactory.m */; };
 		1C6B42DA24DE5BD000399AFC /* RCMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B42D924DE5BD000399AFC /* RCMessageModel.m */; };
 		1C8380C024DA93D1007C42D2 /* LoadLiveInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */; };
+		1CB1D6F324E3FCAB00F10690 /* HttpHostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB1D6F224E3FCAB00F10690 /* HttpHostManager.m */; };
 		1CB2B44124C940B80056107A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44024C940B80056107A /* AppDelegate.m */; };
 		1CB2B44724C940B80056107A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B44624C940B80056107A /* ViewController.m */; };
 		1CB2B44A24C940B80056107A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB2B44824C940B80056107A /* Main.storyboard */; };
@@ -121,6 +122,8 @@
 		1C6B42D924DE5BD000399AFC /* RCMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCMessageModel.m; sourceTree = "<group>"; };
 		1C8380BE24DA93D1007C42D2 /* LoadLiveInfoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadLiveInfoManager.h; sourceTree = "<group>"; };
 		1C8380BF24DA93D1007C42D2 /* LoadLiveInfoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadLiveInfoManager.m; sourceTree = "<group>"; };
+		1CB1D6F124E3FCAB00F10690 /* HttpHostManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpHostManager.h; sourceTree = "<group>"; };
+		1CB1D6F224E3FCAB00F10690 /* HttpHostManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpHostManager.m; sourceTree = "<group>"; };
 		1CB2B43C24C940B80056107A /* YxzChatFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YxzChatFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB2B43F24C940B80056107A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CB2B44024C940B80056107A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				1CB2B46A24C940DF0056107A /* YxzMsgAttributeModel.m */,
 				1CB2B46424C940DF0056107A /* YxzLevelManager.h */,
 				1CB2B46B24C940DF0056107A /* YxzLevelManager.m */,
+				1CB1D6F124E3FCAB00F10690 /* HttpHostManager.h */,
+				1CB1D6F224E3FCAB00F10690 /* HttpHostManager.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */,
 				1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */,
 				1CB2B4A224C991F20056107A /* YxzGetBundleResouceTool.m in Sources */,
+				1CB1D6F324E3FCAB00F10690 /* HttpHostManager.m in Sources */,
 				1C0D312D24E172D1008CCD53 /* PraiseMessagModel.m in Sources */,
 				1CB2B48D24C940E00056107A /* YxzChatListTableView.m in Sources */,
 				1CB2B44724C940B80056107A /* ViewController.m in Sources */,

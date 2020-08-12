@@ -339,7 +339,7 @@
         make.right.equalTo(self.suspensionBut.mas_left).offset(-15);
     }];
     [self.fullScreenBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(25);
+        make.width.height.mas_equalTo(40);
         make.right.equalTo(self.containerView.mas_right).offset(-10);
         make.bottom.equalTo(self.videoContainerView.mas_bottom).offset(-10);
     }];
@@ -350,6 +350,7 @@
     }];
 }
 -(void)modifyLeftSapcen:(BOOL)isFull{
+    self.chatComponentView.isFull=isFull;
     if (isFull) {
         [self.videoContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.top.equalTo(self.containerView);
@@ -376,11 +377,11 @@
                 make.bottom.equalTo(self.containerView.mas_bottom).offset(-15);
             }
             
-            make.right.equalTo(self.containerView.mas_right);
+            make.right.equalTo(self.containerView.mas_right).offset(-60);
             make.top.equalTo(self.containerView.mas_top).offset(90);
         }];
         [self.fullScreenBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.mas_equalTo(25);
+            make.width.height.mas_equalTo(40);
             
             if (IPHONE_X) {
                 make.right.equalTo(self.containerView.mas_right).offset(-20);
@@ -424,7 +425,7 @@
             make.left.equalTo(self.containerView.mas_left);
             make.top.equalTo(self.videoContainerView.mas_bottom).offset(70);
                    make.right.equalTo(self.containerView.mas_right);
-            
+            make.right.equalTo(self.containerView.mas_right).offset(0);
             if (IPHONE_X) {
                 make.bottom.equalTo(self.containerView.mas_bottom).offset(-IPHONE_X_TOP_SPACE);
             }else{

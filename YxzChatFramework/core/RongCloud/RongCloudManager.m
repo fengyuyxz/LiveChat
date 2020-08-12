@@ -7,6 +7,7 @@
 //
 
 #import "RongCloudManager.h"
+#import "HttpHostManager.h"
 #import <MJExtension/MJExtension.h>
 #import "RCMessageModel.h"
 #import "NSString+Empty.h"
@@ -96,7 +97,10 @@
     }];
 }
 -(void)getRongCloudTokenWithUserToken:(NSString *)userToken liveId:(NSString *)liveId completion:(void(^)(BOOL isSUC,ChatRoomUserInfoAndTokenModel *model))block{
-    NSString *url=@"http://www.pts.ifanteam.com/api/userinfo/imlogin";
+//    NSString *url=@"http://www.pts.ifanteam.com/api/userinfo/imlogin";
+    
+    NSString *url=[NSString stringWithFormat:@"%@/api/userinfo/imlogin",[HttpHostManager shareInstance].host];
+    
        NSMutableDictionary *param=[@{} mutableCopy];
       
     if (![NSString isEmpty:liveId]) {

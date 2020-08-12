@@ -8,6 +8,7 @@
 
 #import "LoadLiveInfoManager.h"
 #import "NetWorkRequestManager.h"
+#import "HttpHostManager.h"
 #import "NSString+Empty.h"
 #import <MJExtension/MJExtension.h>
 #import "ToastView.h"
@@ -17,7 +18,9 @@
 @implementation LoadLiveInfoManager
 -(void)loadLiveInfo:(NSString *)userToken liveId:(NSString *)liveId completion:(loadLiveInfoCompletion)block{
     //
-    NSString *url=@"http://www.pts.ifanteam.com/api/live/detail";
+//    NSString *url=@"http://www.pts.ifanteam.com/api/live/detail";
+    NSString *url=[NSString stringWithFormat:@"%@/api/live/detail",[HttpHostManager shareInstance].host];
+    
     NSMutableDictionary *param=[@{} mutableCopy];
     if (![NSString isEmpty:liveId]) {
         [param setValue:liveId forKey:@"id"];
@@ -45,7 +48,8 @@
     }];
 }
 -(void)vote:(NSString *)liveId voteId:(int)voteId userToken:(NSString *)userToken completion:(void(^)(BOOL isSUC,VoteNetResult *result))block{
-    NSString *url=@"http://www.pts.ifanteam.com/api/live/sendVote";
+//    NSString *url=@"http://www.pts.ifanteam.com/api/live/sendVote";
+    NSString *url=[NSString stringWithFormat:@"%@/api/live/sendVote",[HttpHostManager shareInstance].host];
        NSMutableDictionary *param=[@{} mutableCopy];
        if (![NSString isEmpty:liveId]) {
            [param setValue:liveId forKey:@"live_id"];
