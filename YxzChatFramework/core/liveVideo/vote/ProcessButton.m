@@ -30,6 +30,7 @@
     CGFloat endX=CGRectGetWidth(rect)*self.process;
     [path addLineToPoint:CGPointMake(endX, centerY)];
     path.lineWidth=CGRectGetHeight(rect);
+    
     // 设置线的颜色
     [[UIColor orangeColor] setStroke];
     // 绘画

@@ -317,7 +317,7 @@
         }];
     }
     self.label.text=_item.title;
-    
+    [self.voteBut setTitle:_item.title forState:UIControlStateNormal];
     self.voteBut.process=_item.percent/100.0f;
     
 }
@@ -358,10 +358,9 @@
     if (!_voteView) {
         _voteView=[[UIView alloc]init];
         _voteView.backgroundColor=[UIColor clearColor];
-        _voteView.layer.borderColor=RGBA_OF(0xffcbdd).CGColor;
-        _voteBut.clipsToBounds=YES;
-        _voteView.layer.borderWidth=1;
-        _voteView.layer.cornerRadius=17.5;
+        
+        _voteView.clipsToBounds=YES;
+        _voteView.layer.cornerRadius=12.5;
     }
     return _voteView;
 }
@@ -376,7 +375,13 @@
 -(ProcessButton *)voteBut{
     if (!_voteBut) {
         _voteBut=[ProcessButton buttonWithType:UIButtonTypeCustom];
+        _voteBut.titleLabel.font=[UIFont boldSystemFontOfSize:14];
+        [_voteBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_voteBut addTarget:self action:@selector(voteButPressed) forControlEvents:UIControlEventTouchUpInside];
+        _voteBut.layer.borderColor=RGBA_OF(0xffcbdd).CGColor;
+        _voteBut.clipsToBounds=YES;
+               _voteView.layer.borderWidth=1;
+               _voteView.layer.cornerRadius=12.5;
     }
     return _voteBut;
 }
@@ -384,6 +389,7 @@
     if (!_label) {
         _label=[[UILabel alloc]init];
         _label.font=[UIFont boldSystemFontOfSize:14];
+        _label.hidden=YES;
         _label.textColor=[UIColor blackColor];
     }
     return _label;
