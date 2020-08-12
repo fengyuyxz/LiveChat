@@ -10,6 +10,7 @@
 #import "NetWorkRequestManager.h"
 #import "NSString+Empty.h"
 #import <MJExtension/MJExtension.h>
+#import "ToastView.h"
 @interface LoadLiveInfoManager()
 @property(nonatomic,strong)NetWorkRequestManager *request;
 @end
@@ -37,6 +38,7 @@
             }
         }
     } fail:^(NSError *error) {
+        [ToastView showWithEnText:@"获取直播信息错误请稍后重试"];
         if (block) {
             block(NO,nil);
         }
@@ -67,6 +69,7 @@
                }
            }
        } fail:^(NSError *error) {
+           
            if (block) {
                block(NO,nil);
            }
