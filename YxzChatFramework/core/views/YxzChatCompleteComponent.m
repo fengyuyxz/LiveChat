@@ -32,6 +32,8 @@
 
 @property(nonatomic,strong)UIButton *firworkBut;
 @property(nonatomic,strong)PraiseAnimation *praiseAnimateManager;
+@property(nonatomic,strong)PraiseAnimation *dolphinsAnimateManager;//海豚
+
 @property(nonatomic,strong)PraiseAnimation *shootingStarAnimate;
 
 @property(nonatomic,strong)YxzUserModel *userModel;
@@ -60,6 +62,10 @@
     self.userInteractionEnabled=YES;
     
     _praiseAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    
+    _dolphinsAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"water1"),YxzSuperPlayerImage(@"water2"),YxzSuperPlayerImage(@"water3")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    
+    
     _shootingStarAnimate=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"star")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     _shootingStarAnimate.animation_h=250;
     _shootingStarAnimate.speed=1;
@@ -189,8 +195,14 @@
 -(void)firworkButPressed:(UIButton *)but{
     _praiseTimes++;
     if (self.btn_type==1) {
-        NSString *typeNum= [YxzAnimationControl generateAnimationNums];
-        [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
+//        NSString *typeNum= [YxzAnimationControl generateAnimationNums];
+//        [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
+        
+        self.dolphinsAnimateManager.x_left_swing=30;
+        self.dolphinsAnimateManager.x_right_swing=15;
+        self.dolphinsAnimateManager.animation_h=self.animationView.frame.size.height;
+        self.dolphinsAnimateManager.speed=1;
+        [self.dolphinsAnimateManager animate:2];
     }else if(self.btn_type==2){
            self.praiseAnimateManager.x_left_swing=30;
            self.praiseAnimateManager.x_right_swing=15;
