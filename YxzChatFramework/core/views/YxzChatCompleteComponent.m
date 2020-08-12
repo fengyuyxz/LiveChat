@@ -206,7 +206,7 @@
 }
 -(void)startCountPraiseTimes{
     if (!_praiseTimer) {
-        _praiseTimer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(prasieTime:) userInfo:nil repeats:NO];
+        _praiseTimer=[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(prasieTime:) userInfo:nil repeats:NO];
     }
 }
 -(void)prasieTime:(NSTimer *)time{
@@ -316,24 +316,24 @@
     YXZMessageModel *message=[UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
     [message initMsgAttribute];
     [self.listTableView addNewMsg:message];
-    int times=model.times;
-    if (self.btn_type==1) {
-        
-        
-        NSMutableArray *array=[NSMutableArray array];
-        for (int i=0; i<times; i++) {
-            NSArray *list=[YxzAnimationControl generatteAnimationNumArray];
-            [array addObjectsFromArray:list];
-        }
-        NSString *animationNums= [array componentsJoinedByString:@","];
-        [YxzAnimationControl beginAnimation:animationNums animationImageView:self.animationView];
-    }else if(self.btn_type==2){
-           self.praiseAnimateManager.x_left_swing=30;
-           self.praiseAnimateManager.x_right_swing=15;
-           self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
-           self.praiseAnimateManager.speed=1;
-           [self.praiseAnimateManager animate:2*times];
-    }
+//    int times=model.times;
+//    if (self.btn_type==1) {
+//
+//
+//        NSMutableArray *array=[NSMutableArray array];
+//        for (int i=0; i<times; i++) {
+//            NSArray *list=[YxzAnimationControl generatteAnimationNumArray];
+//            [array addObjectsFromArray:list];
+//        }
+//        NSString *animationNums= [array componentsJoinedByString:@","];
+//        [YxzAnimationControl beginAnimation:animationNums animationImageView:self.animationView];
+//    }else if(self.btn_type==2){
+//           self.praiseAnimateManager.x_left_swing=30;
+//           self.praiseAnimateManager.x_right_swing=15;
+//           self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
+//           self.praiseAnimateManager.speed=1;
+//           [self.praiseAnimateManager animate:2*times];
+//    }
 }
 -(void)sendRongCould:(YXZMessageModel *)model{
     __weak typeof(self) weakSelf =self;
