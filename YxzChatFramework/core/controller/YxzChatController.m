@@ -291,13 +291,13 @@
        
         make.right.equalTo(self.containerView.mas_right);
         if (IPHONE_X) {
-            make.top.equalTo(self.containerView.mas_top).offset(24);
-             
+            make.top.equalTo(self.containerView.mas_top).offset(0);
+             make.height.equalTo(@(240));
         }else{
              make.top.equalTo(self.containerView.mas_top);
-             
+             make.height.equalTo(@(230));
         }
-        make.height.equalTo(@(230));
+        
     }];
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.equalTo(self.videoContainerView);
@@ -305,18 +305,23 @@
     [self.chatComponentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containerView.mas_left);
         make.top.equalTo(self.videoContainerView.mas_bottom).offset(70);
-               make.right.equalTo(self.containerView.mas_right);
-        make.bottom.equalTo(self.containerView.mas_bottom);
+        make.right.equalTo(self.containerView.mas_right);
+        if (IPHONE_X) {
+            make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+        }else{
+            make.bottom.equalTo(self.containerView.mas_bottom);
+        }
+        
     }];
     
     [self.topToolView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.containerView);
         if (IPHONE_X) {
             make.top.equalTo(self.containerView.mas_top).offset(24);
-            make.height.mas_equalTo(4);
+            make.height.mas_equalTo(44);
         }else{
             make.top.equalTo(self.containerView.mas_top).offset(0);
-            make.height.mas_equalTo(54);
+            make.height.mas_equalTo(44);
         }
     }];
     [self.suspensionBut mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -347,31 +352,81 @@
             make.left.right.bottom.top.equalTo(self.containerView);
             
         }];
+        [self.topToolView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.containerView);
+            make.right.equalTo(self.containerView.mas_right).offset(-15);
+            if (IPHONE_X) {
+                make.top.equalTo(self.containerView.mas_top).offset(0);
+                make.height.mas_equalTo(44);
+            }else{
+                make.top.equalTo(self.containerView.mas_top).offset(0);
+                make.height.mas_equalTo(44);
+            }
+        }];
         [self.chatComponentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.containerView.mas_left);
-            make.bottom.equalTo(self.containerView.mas_bottom).offset(-60);
+            make.left.equalTo(self.containerView.mas_left).offset(20);
+            
+            
+            if (IPHONE_X) {
+                make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+            }else{
+                make.bottom.equalTo(self.containerView.mas_bottom).offset(-15);
+            }
+            
             make.right.equalTo(self.containerView.mas_right);
             make.top.equalTo(self.containerView.mas_top).offset(90);
         }];
+        [self.fullScreenBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(25);
+            
+            if (IPHONE_X) {
+                make.right.equalTo(self.containerView.mas_right).offset(-20);
+                make.bottom.equalTo(self.videoContainerView.mas_bottom).offset(-20);
+            }else{
+                make.right.equalTo(self.containerView.mas_right).offset(-10);
+                make.bottom.equalTo(self.videoContainerView.mas_bottom).offset(-10);
+            }
+            
+        }];
     }else{
         [self.videoContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-             make.left.equalTo(self.containerView.mas_left);
-                  
-                   make.right.equalTo(self.containerView.mas_right);
-                   if (IPHONE_X) {
-                       make.top.equalTo(self.containerView.mas_top).offset(24);
-                        
-                   }else{
-                        make.top.equalTo(self.containerView.mas_top);
-                        
-                   }
-                   make.height.equalTo(@(230));
+              make.left.equalTo(self.containerView.mas_left);
+                   
+                    make.right.equalTo(self.containerView.mas_right);
+                    if (IPHONE_X) {
+                        make.top.equalTo(self.containerView.mas_top).offset(0);
+                         make.height.equalTo(@(240));
+                    }else{
+                         make.top.equalTo(self.containerView.mas_top);
+                         make.height.equalTo(@(230));
+                    }
+                   
+        }];
+        [self.topToolView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.containerView);
+            if (IPHONE_X) {
+                make.top.equalTo(self.containerView.mas_top).offset(24);
+                make.height.mas_equalTo(44);
+            }else{
+                make.top.equalTo(self.containerView.mas_top).offset(0);
+                make.height.mas_equalTo(44);
+            }
+        }];
+        [self.fullScreenBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(25);
+            make.right.equalTo(self.containerView.mas_right).offset(-10);
+            make.bottom.equalTo(self.videoContainerView.mas_bottom).offset(-10);
         }];
         [self.chatComponentView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.containerView.mas_left);
             make.top.equalTo(self.videoContainerView.mas_bottom).offset(70);
                    make.right.equalTo(self.containerView.mas_right);
-            make.bottom.equalTo(self.containerView.mas_bottom);
+            
+            if (IPHONE_X) {
+                make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+            }else{
+                make.bottom.equalTo(self.containerView.mas_bottom);
+            }
         }];
     }
 }
