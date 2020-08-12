@@ -456,6 +456,7 @@
             }
         }
     }
+    [self.chatComponentView hiddenTheKeyboardAndFace:nil];
     
 }
 
@@ -475,6 +476,7 @@
                [self.livePlayer pause];
            }
     }
+    [self.chatComponentView hiddenTheKeyboardAndFace:nil];
    
 }
 #pragma mark - UIGestureRecognizerDelegate
@@ -581,7 +583,9 @@
                 if (setting==liveRoomSeeting_separation) {
                     [strongSelf popSeparationView];
                 }else if(setting==liveRoomSeeting_share){
-                    
+                    if (self.shareBlock) {
+                        self.shareBlock();
+                    }
                 }
             });
             

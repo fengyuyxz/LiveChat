@@ -12,6 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YxzChatController : UIViewController
+typedef void(^ShareCompletion)(void);
+@property(nonatomic,copy)ShareCompletion shareBlock;
 @property(nonatomic,copy)NSString *token;
 @property(nonatomic,copy)NSString *liveId;
 @end
