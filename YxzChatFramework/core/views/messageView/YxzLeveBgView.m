@@ -7,7 +7,7 @@
 //
 
 #import "YxzLeveBgView.h"
-#import "YXZConstant.h"
+
 @interface YxzLeveBgView()
 @property (nonatomic, strong) UIImageView *leveImage;
 //@property (nonatomic, strong) UILabel *leveLabel;
@@ -35,38 +35,19 @@
     UIColor *color;
     NSString *imageName;
     self.image = nil;
-//    self.leveLabel.font = [UIFont boldSystemFontOfSize:10];
-    
-     if (level > 0 && level <= 3) {
-        color = RGBA_OF(0x8D28F1);
-        imageName = @"vip";
-    }else {
-        color = [UIColor clearColor];
-//        imageName = @"icon_rank_64_99";
-//        self.image = [UIImage imageNamed:@"icon_rank_bg_64"];
-        if ([NSString stringWithFormat:@"%ld", level].length >= 3) {
-//            self.leveLabel.font = [UIFont boldSystemFontOfSize:7.8];
-        }
-    }
-    
+
     self.backgroundColor = [UIColor whiteColor];
-    // 渐变色
-//    [self.leveBgImage.layer addSublayer:[YWUtils setGradualChangingColor:self.leveBgImage fromColor:MLHexColor(@"8E45EC") toColor:MLHexColor(@"FD085E")]];//color;
+
+    NSArray<UIColor *> *colors=@[RGBA_OF(0xFFC700),RGBA_OF(0xFFBBD3)];
     
-    self.leveImage.image = YxzSuperPlayerImage(imageName);
+    self.leveImage.image = YxzSuperPlayerImage(@"vip");
     UIView *bview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 14)];
-    bview.backgroundColor=[UIColor clearColor];
+    bview.backgroundColor=colors[level];
     UIImage *bImg=[self convertCreateImageWithUIView:bview];
     self.image=bImg;
     if (level <= 0) level = 0;
     
-    if (self.isShadeLv) {
-//        NSMutableAttributedString *str1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", level] attributes:@{NSShadowAttributeName:[self getTextShadow]}];
-        
-//        self.leveLabel.attributedText = str1;
-    } else {
-//        self.leveLabel.text = [NSString stringWithFormat:@"%ld", level];
-    }
+
 }
 
 // 文字阴影效果

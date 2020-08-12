@@ -8,6 +8,7 @@
 
 #import "YxzLevelManager.h"
 #import "YxzLeveBgView.h"
+#import "YXZConstant.h"
 @interface YxzLevelManager()
 
 /** 数据源 */
@@ -29,15 +30,15 @@
 - (void)setup {
     [self.data removeAllObjects];
     
-    for (NSInteger i = 0; i <= 3; i++) {
+    
+    for (NSInteger i = 0; i < 2; i++) {
         // YxzLeveBgView就是我的等级生成器，返回view
         // 启动app我们调用一次这个方法，然后内存就有生成0-100等级图片
         YxzLeveBgView *view = [[YxzLeveBgView alloc] init];
+        view.level=i;
         view.frame = CGRectMake(0, 0, 30.0, 14.0);
-        view.layer.cornerRadius = 7;
-        view.layer.masksToBounds = YES;
-        view.isShadeLv = YES;
-        view.level = i;
+        view.layer.cornerRadius=7;
+        view.clipsToBounds=YES;
         
         
         [self.data setObject:[self convertCreateImageWithUIView:view] forKey:[NSString stringWithFormat:@"%li", (long)i]];

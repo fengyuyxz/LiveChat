@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "YXZConstant.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YxzLeveBgView : UIImageView
