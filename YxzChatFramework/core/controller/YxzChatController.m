@@ -24,6 +24,9 @@
 #import "LiveRoomSettingSeparationView.h"
 #import "VoteView.h"
 #import "LoadLiveInfoManager.h"
+
+#define IPHONE_X_TOP_SPACE 30
+
 @interface YxzChatController ()<YxzLiveRoomControlDelegate,YxzPlayerDelegate,UIGestureRecognizerDelegate,ChateCompletionDelegate,RongCouldVoteDelegate>
 
 @property(nonatomic,strong)RoomBaseInfo *roomBaseInfo;
@@ -291,13 +294,13 @@
        
         make.right.equalTo(self.containerView.mas_right);
         if (IPHONE_X) {
-            make.top.equalTo(self.containerView.mas_top).offset(0);
-             make.height.equalTo(@(240));
+            make.top.equalTo(self.containerView.mas_top).offset(IPHONE_X_TOP_SPACE);
+             
         }else{
              make.top.equalTo(self.containerView.mas_top);
-             make.height.equalTo(@(230));
+            
         }
-        
+         make.height.equalTo(@(230));
     }];
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.bottom.equalTo(self.videoContainerView);
@@ -307,7 +310,7 @@
         make.top.equalTo(self.videoContainerView.mas_bottom).offset(70);
         make.right.equalTo(self.containerView.mas_right);
         if (IPHONE_X) {
-            make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+            make.bottom.equalTo(self.containerView.mas_bottom).offset(-IPHONE_X_TOP_SPACE);
         }else{
             make.bottom.equalTo(self.containerView.mas_bottom);
         }
@@ -317,12 +320,12 @@
     [self.topToolView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.containerView);
         if (IPHONE_X) {
-            make.top.equalTo(self.containerView.mas_top).offset(24);
-            make.height.mas_equalTo(44);
+            make.top.equalTo(self.containerView.mas_top).offset(IPHONE_X_TOP_SPACE);
         }else{
             make.top.equalTo(self.containerView.mas_top).offset(0);
-            make.height.mas_equalTo(44);
+            
         }
+        make.height.mas_equalTo(44);
     }];
     [self.suspensionBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.topToolView.mas_bottom).offset(0);
@@ -368,7 +371,7 @@
             
             
             if (IPHONE_X) {
-                make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+                make.bottom.equalTo(self.containerView.mas_bottom).offset(-IPHONE_X_TOP_SPACE);
             }else{
                 make.bottom.equalTo(self.containerView.mas_bottom).offset(-15);
             }
@@ -394,18 +397,18 @@
                    
                     make.right.equalTo(self.containerView.mas_right);
                     if (IPHONE_X) {
-                        make.top.equalTo(self.containerView.mas_top).offset(0);
-                         make.height.equalTo(@(240));
+                        make.top.equalTo(self.containerView.mas_top).offset(IPHONE_X_TOP_SPACE);
+                         
                     }else{
                          make.top.equalTo(self.containerView.mas_top);
-                         make.height.equalTo(@(230));
+                         
                     }
-                   
+                   make.height.equalTo(@(230));
         }];
         [self.topToolView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self.containerView);
             if (IPHONE_X) {
-                make.top.equalTo(self.containerView.mas_top).offset(24);
+                make.top.equalTo(self.containerView.mas_top).offset(IPHONE_X_TOP_SPACE);
                 make.height.mas_equalTo(44);
             }else{
                 make.top.equalTo(self.containerView.mas_top).offset(0);
@@ -423,7 +426,7 @@
                    make.right.equalTo(self.containerView.mas_right);
             
             if (IPHONE_X) {
-                make.bottom.equalTo(self.containerView.mas_bottom).offset(-35);
+                make.bottom.equalTo(self.containerView.mas_bottom).offset(-IPHONE_X_TOP_SPACE);
             }else{
                 make.bottom.equalTo(self.containerView.mas_bottom);
             }
