@@ -97,7 +97,10 @@
 }
 #pragma mark - collection layout ====================
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(50, 50);
+    
+    CGFloat w=device_sceen_width/4.0f;
+    
+    return CGSizeMake(w, device_sceen_width/5.0f);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 0;

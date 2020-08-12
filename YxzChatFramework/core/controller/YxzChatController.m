@@ -520,10 +520,27 @@
 }
 #pragma mark - 更多信息  小窗播放 delegate =============
 -(void)suspensionButPressed:(UIButton *)but{
-    YxzSuperPlayerWindowShared.superPlayer=self.livePlayer;
-    YxzSuperPlayerWindowShared.backController=self;
-    [YxzSuperPlayerWindowShared show];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (self.isFullScreen) {
+        self.fullScreenBtn.selected=!self.fullScreenBtn.selected;
+        self.isFullScreen=self.fullScreenBtn.selected;
+        __weak typeof(self) weakSelf = self;
+        [self switchFull:self.isFullScreen compelation:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 YxzSuperPlayerWindowShared.superPlayer=weakSelf.livePlayer;
+                    YxzSuperPlayerWindowShared.backController=weakSelf;
+                    [YxzSuperPlayerWindowShared show];
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }];
+    }else{
+        YxzSuperPlayerWindowShared.superPlayer=self.livePlayer;
+           YxzSuperPlayerWindowShared.backController=self;
+           [YxzSuperPlayerWindowShared show];
+           [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+   
 }
 -(void)backButPressed:(UIButton *)but{
     if (self.isFullScreen) {
