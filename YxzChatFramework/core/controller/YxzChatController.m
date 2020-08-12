@@ -325,13 +325,13 @@
             make.top.equalTo(self.containerView.mas_top).offset(0);
             
         }
-        make.height.mas_equalTo(44);
+        make.height.mas_equalTo(54);
     }];
     [self.suspensionBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.topToolView.mas_bottom).offset(0);
         make.right.equalTo(self.topToolView.mas_right).offset(-15);
         make.height.mas_equalTo(25);
-        make.width.mas_equalTo(20);
+        make.width.mas_equalTo(25);
     }];
     [self.moreBut mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.suspensionBut.mas_centerY);
