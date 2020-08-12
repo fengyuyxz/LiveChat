@@ -13,6 +13,12 @@
 #import "YxzAnimationControl.h"
 #import "PraiseAnimation.h"
 #import <Masonry/Masonry.h>
+
+#define fir_1_but_w (device_sceen_width * 81 /375)
+#define fir_1_but_h (fir_1_but_w*52/81)
+#define fir_2_but_w (device_sceen_width * 96 /375)
+#define fir_2_but_h (fir_2_but_w*49/96)
+
 @interface YxzChatCompleteComponent()<YxzInputViewDelegate,YxzListViewInputDelegate,RoomMsgListDelegate,RongCouldManagerReciveDelegate>
 @property(nonatomic,strong)ChatRoomUserInfoAndTokenModel *tokenModel;
 @property(nonatomic,strong)YxzChatListTableView *listTableView;
@@ -94,9 +100,9 @@
         make.height.equalTo(@(inputBoxDefaultHight));
     }];
     [self.firworkBut mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.mas_right).offset(-20);
-        make.width.mas_equalTo(45);
-        make.height.mas_equalTo(40);
+        make.right.equalTo(self.mas_right).offset(-30);
+        make.width.mas_equalTo(fir_2_but_w);
+        make.height.mas_equalTo(fir_2_but_h);
         make.bottom.equalTo(self.mas_bottom).offset(-5);
     }];
 }
@@ -357,6 +363,19 @@
             [_firworkBut setImage:YxzSuperPlayerImage(@"Group30") forState:UIControlStateNormal];
         }
     }
+    
+    [self.firworkBut mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.mas_right).offset(-30);
+        if (_btn_type==1) {
+            make.width.mas_equalTo(fir_2_but_w);
+            make.height.mas_equalTo(fir_2_but_h);
+        }else if(_btn_type==2){
+            make.width.mas_equalTo(fir_1_but_w);
+            make.height.mas_equalTo(fir_1_but_h);
+        }
+        
+        make.bottom.equalTo(self.mas_bottom).offset(-5);
+    }];
 }
 -(UIButton *)firworkBut{
     if (!_firworkBut) {
