@@ -63,7 +63,7 @@
     
     _praiseAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     
-    _dolphinsAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"water1"),YxzSuperPlayerImage(@"water2"),YxzSuperPlayerImage(@"water3")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    _dolphinsAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"water1"),YxzSuperPlayerImage(@"water2"),YxzSuperPlayerImage(@"water3")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     
     
     _shootingStarAnimate=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"star")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
@@ -128,8 +128,10 @@
     [super layoutSubviews];
 //    [self layoutSubViewConstraint];
 //    [self layoutSubViewFrame];
+    
     _shootingStarAnimate.animation_h=self.animationView.frame.size.height;
     self.praiseAnimateManager.startPoint=CGPointMake(self.firworkBut.center.x, self.firworkBut.frame.origin.y-25);
+    self.dolphinsAnimateManager.startPoint=CGPointMake(self.firworkBut.center.x, self.firworkBut.frame.origin.y-25);
 }
 
 
@@ -194,7 +196,7 @@
 #pragma mark - 发送烟花 按钮事件 ======
 -(void)firworkButPressed:(UIButton *)but{
     _praiseTimes++;
-    if (self.btn_type==1) {
+    if (self.btn_type==2) {
 //        NSString *typeNum= [YxzAnimationControl generateAnimationNums];
 //        [YxzAnimationControl beginAnimation:typeNum animationImageView:self.animationView];
         
@@ -203,7 +205,7 @@
         self.dolphinsAnimateManager.animation_h=self.animationView.frame.size.height;
         self.dolphinsAnimateManager.speed=1;
         [self.dolphinsAnimateManager animate:2];
-    }else if(self.btn_type==2){
+    }else if(self.btn_type==1){
            self.praiseAnimateManager.x_left_swing=30;
            self.praiseAnimateManager.x_right_swing=15;
            self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
