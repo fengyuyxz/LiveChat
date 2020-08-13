@@ -65,7 +65,6 @@
 		1CB2B4B624CBB4430056107A /* YxzShowSelectedFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B524CBB4430056107A /* YxzShowSelectedFaceView.m */; };
 		1CB2B4B924CBDED90056107A /* NSString+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4B824CBDED90056107A /* NSString+Empty.m */; };
 		1CBEB35B24D4535D0090F277 /* LiveRoomSettingSeparationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBEB35A24D4535D0090F277 /* LiveRoomSettingSeparationView.m */; };
-		1CBEB37224D5B2360090F277 /* YxzAnimationControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBEB37124D5B2360090F277 /* YxzAnimationControl.m */; };
 		1CBEB37424D5B5760090F277 /* animationfireworks.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CBEB37324D5B5750090F277 /* animationfireworks.bundle */; };
 		1CBEB37824D657620090F277 /* VoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CBEB37724D657620090F277 /* VoteView.m */; };
 		1CF4A32324D845D0000A630D /* NetWorkCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF4A32224D845D0000A630D /* NetWorkCore.m */; };
@@ -190,8 +189,6 @@
 		1CB2B4B824CBDED90056107A /* NSString+Empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Empty.m"; sourceTree = "<group>"; };
 		1CBEB35924D4535D0090F277 /* LiveRoomSettingSeparationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveRoomSettingSeparationView.h; sourceTree = "<group>"; };
 		1CBEB35A24D4535D0090F277 /* LiveRoomSettingSeparationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveRoomSettingSeparationView.m; sourceTree = "<group>"; };
-		1CBEB37024D5B2360090F277 /* YxzAnimationControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzAnimationControl.h; sourceTree = "<group>"; };
-		1CBEB37124D5B2360090F277 /* YxzAnimationControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzAnimationControl.m; sourceTree = "<group>"; };
 		1CBEB37324D5B5750090F277 /* animationfireworks.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = animationfireworks.bundle; sourceTree = "<group>"; };
 		1CBEB37624D657620090F277 /* VoteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteView.h; sourceTree = "<group>"; };
 		1CBEB37724D657620090F277 /* VoteView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoteView.m; sourceTree = "<group>"; };
@@ -427,8 +424,6 @@
 				1CB2B49124C979870056107A /* messageView */,
 				1CB2B49624C989F20056107A /* YxzChatCompleteComponent.h */,
 				1CB2B49724C989F20056107A /* YxzChatCompleteComponent.m */,
-				1CBEB37024D5B2360090F277 /* YxzAnimationControl.h */,
-				1CBEB37124D5B2360090F277 /* YxzAnimationControl.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -695,7 +690,6 @@
 				1C151C8524DE8F72000D70C4 /* RCLiveVoteMsgModel.m in Sources */,
 				1CB2B4B924CBDED90056107A /* NSString+Empty.m in Sources */,
 				1C2CBED724D257A00079BFD1 /* SuspensionWindow.m in Sources */,
-				1CBEB37224D5B2360090F277 /* YxzAnimationControl.m in Sources */,
 				1CB2B49524C979F10056107A /* YxzInputBoxView.m in Sources */,
 				1C6B42D124DD1D1100399AFC /* RongCloudManager.m in Sources */,
 				1CB2B48A24C940E00056107A /* YxzChatBaseCell.m in Sources */,

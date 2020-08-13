@@ -10,7 +10,7 @@
 #import "YxzChatListTableView.h"
 #import "RongCloudManager.h"
 #import "YXZConstant.h"
-#import "YxzAnimationControl.h"
+
 #import "PraiseAnimation.h"
 #import <Masonry/Masonry.h>
 

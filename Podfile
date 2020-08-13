@@ -11,7 +11,7 @@ target 'YxzChatFramework' do
    
 #   pod 'TXLiteAVSDK_Professional', :podspec => 'http://pod-1252463788.cosgz.myqcloud.com/liteavsdkspec/TXLiteAVSDK_Professional.podspec'
    pod 'SuperPlayer'
-   pod 'TTKeyFrameAnimationView', '~> 1.0.0'
+#   pod 'TTKeyFrameAnimationView', '~> 1.0.0'
    pod 'RongCloudIM/IMLib', '~> 2.10.4'
    pod 'AFNetworking'
    pod 'LGAlertView'
