@@ -12,7 +12,7 @@
 #import "YxzLevelManager.h"
 #import "NSString+Empty.h"
 #import <YYText/YYText.h>
-#import <YYImage/YYImage.h>
+
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/SDWebImageManager.h>
 @interface YxzMsgAttributeModel()

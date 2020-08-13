@@ -157,7 +157,7 @@
 
 
 -(void)whaleSprayAnimation{
-    UIImage *image=[UIImage imageNamed:@"star"];
+    UIImage *image=YxzSuperPlayerImage(@"star");
     [self shootFrom:self.startPoint Level:10 Cells:@[image]];
 }
 -(void)starAnimation:(int)count{
@@ -168,7 +168,17 @@
     }
 }
 -(void)startStar{
-    PraiseImageView *prasie=[[PraiseImageView alloc]initWithImage:YxzSuperPlayerImage(@"star")];
+    int index=arc4random_uniform(self.imgArray.count);
+    UIImage *image=self.imgArray[index];
+    NSLog(@"seize=  %@",NSStringFromCGSize(image.size));
+    PraiseImageView *prasie=[[PraiseImageView alloc]initWithImage:image];
+    if (image.size.width>120){
+        prasie.frame=CGRectMake(0, 0, image.size.width/12, image.size.height/15);
+    }else if (image.size.width>=100&&image.size.width<=120) {
+        prasie.frame=CGRectMake(0, 0, image.size.width/10, image.size.height/10);
+    }else{
+        prasie.frame=CGRectMake(0, 0, image.size.width/4, image.size.height/4);
+    }
     [self.containerView addSubview:prasie];
     [prasie shootingStarAnimate];
 }

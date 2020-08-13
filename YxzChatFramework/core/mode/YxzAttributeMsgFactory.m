@@ -9,7 +9,7 @@
 #import "YxzAttributeMsgFactory.h"
 #import "YxzLevelManager.h"
 #import <YYText/YYText.h>
-#import <YYImage/YYImage.h>
+
 #import <SDWebImage/SDImageCache.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import "NSString+Empty.h"

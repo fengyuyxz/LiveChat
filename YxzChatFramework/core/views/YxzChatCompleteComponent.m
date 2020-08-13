@@ -66,7 +66,7 @@
     _dolphinsAnimateManager=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"icon_xin"),YxzSuperPlayerImage(@"water1"),YxzSuperPlayerImage(@"water2"),YxzSuperPlayerImage(@"water3")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     
     
-    _shootingStarAnimate=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"star")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
+    _shootingStarAnimate=[[PraiseAnimation alloc]initWithImageArray:@[YxzSuperPlayerImage(@"star"),YxzSuperPlayerImage(@"star1"),YxzSuperPlayerImage(@"star2"),YxzSuperPlayerImage(@"star3"),YxzSuperPlayerImage(@"star4")] onView:self.animationView startAnimationPoint:self.firworkBut.center];
     _shootingStarAnimate.animation_h=250;
     _shootingStarAnimate.speed=1;
     _shootingStarAnimate.x_right_swing=20;
@@ -212,6 +212,12 @@
            self.praiseAnimateManager.animation_h=self.animationView.frame.size.height;
            self.praiseAnimateManager.speed=1;
            [self.praiseAnimateManager animate:2];
+    }else{
+        self.dolphinsAnimateManager.x_left_swing=30;
+        self.dolphinsAnimateManager.x_right_swing=15;
+        self.dolphinsAnimateManager.animation_h=self.animationView.frame.size.height;
+        self.dolphinsAnimateManager.speed=1;
+        [self.dolphinsAnimateManager animate:2];
     }
     
    
@@ -333,6 +339,7 @@
 -(void)backgroundAnimation:(NSString *)animation{
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
+        
          [weakSelf.shootingStarAnimate starAnimation:50];
     });
    
@@ -390,7 +397,7 @@
             [_firworkBut setImage:YxzSuperPlayerImage(@"Group30") forState:UIControlStateNormal];
         }
     }
-    
+
     [self.firworkBut mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.mas_right).offset(-30);
         if (_btn_type==1) {
@@ -399,10 +406,16 @@
         }else if(_btn_type==2){
             make.width.mas_equalTo(fir_1_but_w);
             make.height.mas_equalTo(fir_1_but_h);
+        }else{
+            
+                make.width.mas_equalTo(fir_2_but_w);
+                make.height.mas_equalTo(fir_2_but_h);
+            
         }
         
         make.bottom.equalTo(self.mas_bottom).offset(-5);
     }];
+    
 }
 -(UIButton *)firworkBut{
     if (!_firworkBut) {
