@@ -178,7 +178,7 @@
     [self addSubview:self.moreButton];
     [self.listInputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left);
-        make.bottom.equalTo(self.mas_bottom);
+        make.bottom.equalTo(self.mas_bottom).offset(-5);
         make.height.equalTo(@(49));
         make.width.mas_equalTo(219);
 //        make.right.equalTo(self.mas_right);
