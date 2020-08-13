@@ -222,6 +222,11 @@
     self.inputStatus=YxzInputStatus_keyborad;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@"\n"]){
+//        [self sendCurrentMessage];
+        [self sendButtonPressed:self.sendButton];
+        return NO;
+    }
     return YES;
 }
 
@@ -270,6 +275,8 @@
     
   
 }
+
+
 -(void)sendButtonPressed:(UIButton *)but{
     if ([self.delegate respondsToSelector:@selector(sendText:faceImage:)]) {
         NSString *text=self.textView.text;
@@ -315,6 +322,7 @@
         _textView.placeholder=@"点击输入内容...";
         _textView.backgroundColor=[UIColor clearColor];
         _textView.delegate=self;
+        _textView.returnKeyType=UIReturnKeySend;
         [_textView setFont:[UIFont systemFontOfSize:16.0f]];
         
 //        [_textView setScrollsToTop:NO];
