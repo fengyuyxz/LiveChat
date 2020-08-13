@@ -22,6 +22,8 @@
 @property(nonatomic,strong)UIImageView *likeImage;//收藏 或点赞数码
 @property(nonatomic,strong)UIImageView *giveAGiftImageView;//收到礼物
 
+@property(nonatomic,strong)UIImageView *playStyleImageView;
+
 @property(nonatomic,strong)UILabel *playTimesLabel;//播放次数或在线人数imageView
 @property(nonatomic,strong)UILabel *likeLabel;//收藏 或点赞数码
 @property(nonatomic,strong)UILabel *giveAGiftLabel;//收到礼物
@@ -57,18 +59,25 @@
     
     
     [topView addSubview:self.playStyleView];
-    [self.playStyleView addSubview:self.playStyleLabel];
+    [topView addSubview:self.shareBut];
+    [self.playStyleView addSubview:self.playStyleImageView];
     [topView addSubview:self.roomNameLabel];
     [self.playStyleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(topView.mas_centerY);
         make.left.equalTo(topView.mas_left).offset(10);
+        make.height.mas_equalTo(15);
+        make.width.mas_equalTo(35);
     }];
-    [self.playStyleLabel setContentHuggingPriority:256 forAxis:UILayoutConstraintAxisHorizontal];
-    [self.playStyleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.playStyleView.mas_left).offset(5);
-        make.right.equalTo(self.playStyleView.mas_right).offset(-5);
-        make.top.equalTo(self.playStyleView.mas_top).offset(2);
-        make.bottom.equalTo(self.playStyleView.mas_bottom).offset(-2);
+    
+    [self.shareBut mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(topView.mas_centerY);
+        make.right.equalTo(topView).offset(-15);
+        make.width.mas_equalTo(20);
+        make.height.mas_equalTo(22);
+    }];
+//    [self.playStyleLabel setContentHuggingPriority:256 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.playStyleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(self.playStyleView);
     }];
     [self.roomNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(topView.mas_centerY);
@@ -171,6 +180,13 @@
     }
     return _giveAGiftImageView;
 }
+-(UIImageView *)playStyleImageView{
+    if (!_playStyleImageView) {
+           _playStyleImageView=[[UIImageView alloc]init];
+           _playStyleImageView.image=YxzSuperPlayerImage(@"live");
+       }
+       return _playStyleImageView;
+}
 -(UILabel *)playStyleLabel{
     if (!_playStyleLabel) {
         _playStyleLabel=[self generateLabel];
@@ -195,5 +211,13 @@
     }
     return _roomNameLabel;
     
+}
+-(UIButton *)shareBut{
+    if (!_shareBut) {
+        _shareBut=[UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareBut setBackgroundImage:YxzSuperPlayerImage(@"share1") forState:UIControlStateNormal];
+//        [_shareBut setImage:YxzSuperPlayerImage(@"share1") forState:UIControlStateNormal];
+    }
+    return _shareBut;
 }
 @end

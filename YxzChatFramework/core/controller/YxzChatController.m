@@ -167,6 +167,7 @@
     [self.topToolView addSubview:self.suspensionBut];
     [self.containerView addSubview:self.fullScreenBtn];
     [self.topToolView addSubview:self.backBut];
+    [self.basInfoView.shareBut addTarget:self action:@selector(shareButPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)setRoomBaseInfo:(RoomBaseInfo *)roomBaseInfo{
     _roomBaseInfo=roomBaseInfo;
@@ -705,6 +706,12 @@
     
     
 }
+-(void)shareButPressed:(UIButton *)bt{
+    if (self.shareBlock) {
+        self.shareBlock();
+    }
+}
+
 #pragma mark -getter  ===============
 -(UIView *)videoContainerView{
     if (!_videoContainerView) {

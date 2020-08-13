@@ -238,7 +238,7 @@
 -(void)setupView{
     [self addSubview:self.headImageView];
     [self addSubview:self.userTitle];
-    [self addSubview:self.userSubTitle];
+//    [self addSubview:self.userSubTitle];
     UIView *liveView=[[UIView alloc]init];
     liveView.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:0.35f];
     [self addSubview:liveView];
@@ -257,12 +257,14 @@
     }];
     [self.userTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headImageView.mas_right).offset(5);
-        make.bottom.equalTo(self.mas_centerY).offset(1);
+        make.centerY.equalTo(self.headImageView.mas_centerY);
+        make.right.equalTo(self.mas_right).offset(-15);
+//        make.bottom.equalTo(self.mas_centerY).offset(1);
     }];
-    [self.userSubTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.headImageView.mas_right).offset(5);
-        make.top.equalTo(self.mas_centerY);
-    }];
+//    [self.userSubTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.headImageView.mas_right).offset(5);
+//        make.top.equalTo(self.mas_centerY);
+//    }];
     
 }
 -(void)setHeadeModel:(RoomSettingHeadeModel *)headeModel{
@@ -285,6 +287,8 @@
         _userTitle=[[UILabel alloc]init];
         _userTitle.font=[UIFont systemFontOfSize:15];
         _userTitle.textColor=[UIColor whiteColor];
+        _userTitle.numberOfLines=2;
+        _userTitle.lineBreakMode=NSLineBreakByWordWrapping;
     }
     return _userTitle;
 }

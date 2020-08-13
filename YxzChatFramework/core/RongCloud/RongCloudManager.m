@@ -202,6 +202,7 @@
 -(void)quitRoom:(NSString *)roomId completion:(void(^)(BOOL joinSuc,RCErrorCode code))block{
     
     [[RCIMClient sharedRCIMClient] quitChatRoom:roomId success:^{
+        
         if (block) {
             block(YES,0);
         }

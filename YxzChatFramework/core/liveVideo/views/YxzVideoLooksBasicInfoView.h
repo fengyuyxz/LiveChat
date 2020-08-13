@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YxzVideoLooksBasicInfoView : UIView
+@property(nonatomic,strong)UIButton *shareBut;
 -(void)roomTitle:(NSString *)roomTitle viewNum:(NSString *)viewNum zanNum:(NSString *)zanNum commentNum:(NSString *)commentNum;
 @end
 
