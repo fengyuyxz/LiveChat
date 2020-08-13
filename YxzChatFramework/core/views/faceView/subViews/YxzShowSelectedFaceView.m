@@ -7,7 +7,7 @@
 //
 
 #import "YxzShowSelectedFaceView.h"
-#import "YxzGetBundleResouceTool.h"
+
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -66,7 +66,7 @@
 -(UIButton *)closeButton{
     if (!_closeButton) {
         _closeButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeButton setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"icon_del"] forState:UIControlStateNormal];
+        [_closeButton setBackgroundImage:YxzSuperPlayerImage(@"icon_del") forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeButPressed) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;;

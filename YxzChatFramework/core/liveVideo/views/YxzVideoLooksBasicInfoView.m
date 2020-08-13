@@ -9,7 +9,7 @@
 #import "YxzVideoLooksBasicInfoView.h"
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
-#import "YxzGetBundleResouceTool.h"
+
 #import "NSString+Empty.h"
 @interface YxzVideoLooksBasicInfoView()
 

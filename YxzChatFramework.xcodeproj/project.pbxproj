@@ -58,7 +58,6 @@
 		1CB2B49824C989F20056107A /* YxzChatCompleteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B49724C989F20056107A /* YxzChatCompleteComponent.m */; };
 		1CB2B49B24C98D770056107A /* YxzChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B49A24C98D770056107A /* YxzChatController.m */; };
 		1CB2B49E24C990CD0056107A /* YxzChatResouce.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CB2B49D24C990CD0056107A /* YxzChatResouce.bundle */; };
-		1CB2B4A224C991F20056107A /* YxzGetBundleResouceTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4A124C991F20056107A /* YxzGetBundleResouceTool.m */; };
 		1CB2B4A524CA7EB60056107A /* YxzCalculateTextSizeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4A424CA7EB60056107A /* YxzCalculateTextSizeTool.m */; };
 		1CB2B4A924CAD1E00056107A /* YxzFaceContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4A824CAD1E00056107A /* YxzFaceContainerView.m */; };
 		1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2B4AD24CB1DCB0056107A /* YxzFaceItem.m */; };
@@ -177,8 +176,6 @@
 		1CB2B49924C98D770056107A /* YxzChatController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzChatController.h; sourceTree = "<group>"; };
 		1CB2B49A24C98D770056107A /* YxzChatController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzChatController.m; sourceTree = "<group>"; };
 		1CB2B49D24C990CD0056107A /* YxzChatResouce.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YxzChatResouce.bundle; sourceTree = "<group>"; };
-		1CB2B4A024C991F20056107A /* YxzGetBundleResouceTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzGetBundleResouceTool.h; sourceTree = "<group>"; };
-		1CB2B4A124C991F20056107A /* YxzGetBundleResouceTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzGetBundleResouceTool.m; sourceTree = "<group>"; };
 		1CB2B4A324CA7EB60056107A /* YxzCalculateTextSizeTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzCalculateTextSizeTool.h; sourceTree = "<group>"; };
 		1CB2B4A424CA7EB60056107A /* YxzCalculateTextSizeTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YxzCalculateTextSizeTool.m; sourceTree = "<group>"; };
 		1CB2B4A724CAD1E00056107A /* YxzFaceContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YxzFaceContainerView.h; sourceTree = "<group>"; };
@@ -492,8 +489,6 @@
 			children = (
 				1C6B42CB24DCF4BA00399AFC /* ToastView.h */,
 				1C6B42CC24DCF4BA00399AFC /* ToastView.m */,
-				1CB2B4A024C991F20056107A /* YxzGetBundleResouceTool.h */,
-				1CB2B4A124C991F20056107A /* YxzGetBundleResouceTool.m */,
 				1CB2B4A324CA7EB60056107A /* YxzCalculateTextSizeTool.h */,
 				1CB2B4A424CA7EB60056107A /* YxzCalculateTextSizeTool.m */,
 				1CF4A32824D98D50000A630D /* PraiseAnimation.h */,
@@ -708,7 +703,6 @@
 				1C151C8B24DE9CDB000D70C4 /* RCShowLiveVoteMsgModel.m in Sources */,
 				1CB2B4B124CB1E0A0056107A /* YxzFaceCell.m in Sources */,
 				1CB2B4AE24CB1DCB0056107A /* YxzFaceItem.m in Sources */,
-				1CB2B4A224C991F20056107A /* YxzGetBundleResouceTool.m in Sources */,
 				1CB1D6F324E3FCAB00F10690 /* HttpHostManager.m in Sources */,
 				1C0D312D24E172D1008CCD53 /* PraiseMessagModel.m in Sources */,
 				1CB2B48D24C940E00056107A /* YxzChatListTableView.m in Sources */,

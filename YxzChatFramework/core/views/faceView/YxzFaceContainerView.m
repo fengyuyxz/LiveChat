@@ -7,8 +7,8 @@
 //
 
 #import "YxzFaceContainerView.h"
-#import "YxzGetBundleResouceTool.h"
-#import "YxzGetBundleResouceTool.h"
+
+
 #import <Masonry/Masonry.h>
 #import "YXZConstant.h"
 
@@ -139,7 +139,7 @@
 -(UIButton *)addMoreFaceBut{
     if (!_addMoreFaceBut) {
         _addMoreFaceBut=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_addMoreFaceBut setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"moreTool"] forState:UIControlStateNormal];
+        [_addMoreFaceBut setBackgroundImage:YxzSuperPlayerImage(@"moreTool") forState:UIControlStateNormal];
     }
     return _addMoreFaceBut;
 }

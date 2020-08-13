@@ -7,7 +7,7 @@
 //
 
 #import "YxzInputBoxView.h"
-#import "YxzGetBundleResouceTool.h"
+
 #import "YXZConstant.h"
 #import "YxzCalculateTextSizeTool.h"
 #import "UIView+Frame.h"
@@ -332,8 +332,8 @@
 -(UIButton *)faceBut{
     if (!_faceBut) {
         _faceBut=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_faceBut setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"faceTool"] forState:UIControlStateNormal];
-        [_faceBut setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"icon_del"] forState:UIControlStateSelected];
+        [_faceBut setBackgroundImage:YxzSuperPlayerImage(@"faceTool") forState:UIControlStateNormal];
+        [_faceBut setBackgroundImage:YxzSuperPlayerImage(@"icon_del") forState:UIControlStateSelected];
         [_faceBut addTarget:self action:@selector(faceButPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _faceBut;

@@ -13,7 +13,7 @@
 #import "UIView+Frame.h"
 #import <Masonry/Masonry.h>
 #import "YxzAdjustPositionButton.h"
-#import "YxzGetBundleResouceTool.h"
+
 // 最小刷新时间间隔
 #define reloadTimeSpan 0.5
 
@@ -110,7 +110,7 @@
 -(UIButton *)faceBut{
     if (!_faceBut) {
         _faceBut=[UIButton buttonWithType:UIButtonTypeCustom];
-        [_faceBut setBackgroundImage:[[YxzGetBundleResouceTool shareInstance]getImageWithImageName:@"faceTool"] forState:UIControlStateNormal];
+        [_faceBut setBackgroundImage:YxzSuperPlayerImage(@"faceTool") forState:UIControlStateNormal];
         _faceBut.imageEdgeInsets=UIEdgeInsetsMake(2.5, 2.5, 2.5, 2.5);
         [_faceBut addTarget:self action:@selector(faceButPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
