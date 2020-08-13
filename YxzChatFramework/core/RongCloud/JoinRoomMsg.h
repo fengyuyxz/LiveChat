@@ -1,8 +1,8 @@
 //
-//  RCMessageModel.h
+//  JoinRoomMsg.h
 //  YxzChatFramework
 //
-//  Created by 颜学宙 on 2020/8/8.
+//  Created by 颜学宙 on 2020/8/13.
 //  Copyright © 2020 颜学宙. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RCMessageModel : RCMessageContent
-@property(nonatomic,strong)NSString *context;
+@interface JoinRoomMsg : RCMessageContent
+
 @end
 
 NS_ASSUME_NONNULL_END

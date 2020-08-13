@@ -183,7 +183,7 @@
 //
     model.user=self.userModel;
     __weak typeof(self) weakSelf =self;
-    [[RongCloudManager shareInstance]sendMessage:model compleiton:^(BOOL isSUC, NSString *messageId) {
+    [[RongCloudManager shareInstance] sendJoinRoomMssage:^(BOOL isSUC, NSString *messageId) {
         model.msgID=messageId;
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -191,6 +191,7 @@
             [strongSelf.listTableView addNewMsg:model];
         });
     }];
+    
 }
 
 #pragma mark - 发送烟花 按钮事件 ======

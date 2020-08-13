@@ -7,6 +7,7 @@
 //
 
 #import "RongCloudManager.h"
+#import "JoinRoomMsg.h"
 #import "HttpHostManager.h"
 #import <MJExtension/MJExtension.h>
 #import "RCMessageModel.h"
@@ -46,6 +47,8 @@
     [[RCIMClient sharedRCIMClient] registerMessageType:[RCMessageModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[PraiseMessagModel class]];
     [[RCIMClient sharedRCIMClient] registerMessageType:[BackgroundAnimationMessage class]];
+    [[RCIMClient sharedRCIMClient] registerMessageType:[JoinRoomMsg class]];
+    
     
 }
 -(void)connectRongCloudService:(NSString *)token userToken:(NSString *)userToken liveId:(NSString *)liveId  completion:(void(^)(BOOL isConnect,NSString *userId))block{
@@ -169,6 +172,20 @@
         }
     }];
 }
+-(void)sendJoinRoomMssage:(void(^)(BOOL isSUC,NSString *messageId))block{
+    JoinRoomMsg *message=[[JoinRoomMsg alloc]init];
+    message.senderUserInfo=[RCIMClient sharedRCIMClient].currentUserInfo;
+    [[RCIMClient sharedRCIMClient]sendMessage:ConversationType_CHATROOM targetId:_chatRoomId content:message pushContent:nil pushData:nil
+                                         success:^(long messageId) {
+           if (block) {
+               block(YES,[NSString stringWithFormat:@"%ld",messageId]);
+           }
+       } error:^(RCErrorCode nErrorCode, long messageId) {
+           if (block) {
+               block(NO,[NSString stringWithFormat:@"%ld",messageId]);
+           }
+       }];
+}
 -(void)sendPraiseMessage:(PraiseMessagModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block{
     message.senderUserInfo=[RCIMClient sharedRCIMClient].currentUserInfo;
     [[RCIMClient sharedRCIMClient]sendMessage:ConversationType_CHATROOM targetId:_chatRoomId content:message pushContent:nil pushData:nil
@@ -209,12 +226,12 @@
 - (void)onReceived:(RCMessage *)message left:(int)nLeft object:(id)object {
     NSLog(@"");
     if (message.content) {
-        if (message.content&&[message.content isKindOfClass:[RCMessageModel class]]) {
+        if (message.content&&([message.content isKindOfClass:[RCMessageModel class]]||[message.content isKindOfClass:[JoinRoomMsg class]])) {
             
          
             
-            RCMessageModel *model=(RCMessageModel*)message.content;
-           YXZMessageModel *uiMode= [UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:model];
+            
+           YXZMessageModel *uiMode= [UIMsgModeToRongMsgModelFactory rcMsgModeToUiMsgModel:message.content];
             
             
                 if ([self.delegate respondsToSelector:@selector(reciveRCMessage:)]) {

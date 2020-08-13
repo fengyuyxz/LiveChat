@@ -16,14 +16,14 @@
     messageContent.senderUserInfo=[RCIMClient sharedRCIMClient].currentUserInfo;
     messageContent.senderUserInfo.extra=[NSString stringWithFormat:@"%ld",(long)message.user.level];
     NSString *msg=![NSString isEmpty:message.content]?message.content:@"";
-    if (message.msgType==YxzMsgType_barrage) {
+    
         if (![NSString isEmpty:message.faceImageUrl]) {
             msg=[msg stringByAppendingFormat:@"[%@]",message.faceImageUrl];
         }
-    }
-    NSMutableDictionary *context=[@{@"msgType":@(message.msgType),@"context":msg} mutableCopy];
+    
+//    NSMutableDictionary *context=[@{@"msgType":@(message.msgType),@"context":msg} mutableCopy];
  
-    messageContent.context=context;
+    messageContent.context=msg;
     return messageContent;
 }
 +(YXZMessageModel *)rcMsgModeToUiMsgModel:(RCMessageContent *)rcMsg{
@@ -44,13 +44,13 @@
         }
     }
     if([rcMsg isKindOfClass:[RCMessageModel class]]){
-        NSDictionary *dic=((RCMessageModel *)rcMsg).context;
-        if (dic) {
-            if ([dic objectForKey:@"msgType"]) {
-                model.msgType=[(NSNumber *)dic[@"msgType"] intValue];
-            }
-            if([dic objectForKey:@"context"]){
-                NSString *context=dic[@"context"];
+        NSString *context=((RCMessageModel *)rcMsg).context;
+        
+            
+            model.msgType=YxzMsgType_barrage;
+            
+            
+                
                 if (![NSString isEmpty:context]) {
                     if ([context containsString:@"["]&&[context containsString:@"]"]) {
                         NSRange startIndex=[context rangeOfString:@"["];
@@ -60,13 +60,17 @@
                         NSString *contentStr=[[[context stringByReplacingOccurrencesOfString:imageStr withString:@""] stringByReplacingOccurrencesOfString:@"[" withString:@""] stringByReplacingOccurrencesOfString:@"]" withString:@""];
                         model.content=contentStr;
                         model.faceImageUrl=imageStr;
+                    }else{
+                       model.content=context;
                     }
                 }
-            }
             
-        }
+            
+        
     }else if([rcMsg isKindOfClass:[PraiseMessagModel class]]){
         model.msgType=YxzMsgType_Subscription;
+    }else if([rcMsg isKindOfClass:[JoinRoomMsg class]]){
+        model.msgType=YxzMsgType_memberEnter;
     }
     
     model.user=user;

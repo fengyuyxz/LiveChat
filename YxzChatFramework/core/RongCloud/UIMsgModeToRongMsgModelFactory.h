@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RCMessageModel.h"
+#import "JoinRoomMsg.h"
 #import "YXZMessageModel.h"
 #import "PraiseMessagModel.h"
 #import <RongIMLib/RongIMLib.h>

@@ -21,6 +21,7 @@
 
 -(void)prasieAnmiaiton:(PraiseMessagModel *)model;
 -(void)backgroundAnimation:(NSString *)animation;
+
 @end
 @protocol RongCouldVoteDelegate <NSObject>
 
@@ -62,6 +63,8 @@
 -(void)sendMessage:(YXZMessageModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block;
 
 -(void)sendPraiseMessage:(PraiseMessagModel *)message compleiton:(void(^)(BOOL isSUC,NSString *messageId))block;
+
+-(void)sendJoinRoomMssage:(void(^)(BOOL isSUC,NSString *messageId))block;
 @end
 
 
