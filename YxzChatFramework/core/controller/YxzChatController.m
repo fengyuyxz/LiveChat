@@ -10,7 +10,7 @@
 #import "RongCloudManager.h"
 #import "ToastView.h"
 #import "NSString+Empty.h"
-#import "LGAlertView.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "YxzChatCompleteComponent.h"
 #import "YxzVideoLooksBasicInfoView.h"

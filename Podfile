@@ -14,5 +14,5 @@ target 'YxzChatFramework' do
 #   pod 'TTKeyFrameAnimationView', '~> 1.0.0'
    pod 'RongCloudIM/IMLib', '~> 2.10.4'
    pod 'AFNetworking'
-   pod 'LGAlertView'
+#   pod 'LGAlertView'
 end

@@ -8,7 +8,7 @@
 
 #import "LiveRoomSettingSeparationView.h"
 #import "ToastView.h"
-#import "LGAlertView.h"
+
 #import "YXZConstant.h"
 #import <Masonry/Masonry.h>
 @interface LiveRoomSettingSeparationView()<UITableViewDelegate,UITableViewDataSource>
