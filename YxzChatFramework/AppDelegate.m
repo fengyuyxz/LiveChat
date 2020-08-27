@@ -11,6 +11,7 @@
 #import "LivePlayerInitializeController.h"
 #import "SupportedInterfaceOrientations.h"
 #import "RongCloudManager.h"
+#import "FirstVC.h"
 @interface AppDelegate ()
 
 @end
@@ -19,9 +20,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    FirstVC *vc=[[FirstVC alloc]init];
+    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
+    self.window.rootViewController=nav;
+    
     
     [[YxzLevelManager sharedInstance]setup];
     [RongCloudManager loadRongCloudSdk];
+    
     return YES;
 }
 

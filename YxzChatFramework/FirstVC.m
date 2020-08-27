@@ -25,6 +25,12 @@
     view.image=[[YxzLevelManager sharedInstance]imageForLevel:1];
     [self.view addSubview:view];
     
+    UIButton *but=[UIButton buttonWithType:UIButtonTypeCustom];
+    [but setTitle:@"进入" forState:UIControlStateNormal];
+    but.frame=CGRectMake(100, 400, 60, 40);
+    [self.view addSubview:but];
+    [but addTarget:self action:@selector(pushRoom:) forControlEvents:UIControlEventTouchUpInside];
+    
     // Do any additional setup after loading the view.
 }
 - (IBAction)pushRoom:(id)sender {
@@ -33,8 +39,8 @@
     YxzChatController *vc=[[YxzChatController alloc]init];
     vc.modalPresentationStyle=UIModalPresentationFullScreen;
     vc.liveId=@"93";
-//    vc.token=@"32339c97-ff67-4421-93f8-47222d6f8596";
-    vc.token=@"a62e9c8c-c904-49e1-96df-3e389b04c44d";
+    vc.token=@"32339c97-ff67-4421-93f8-47222d6f8596";
+//    vc.token=@"a62e9c8c-c904-49e1-96df-3e389b04c44d";
 //    LiveRoomViewController *vc=[[LiveRoomViewController alloc]init];
 //    vc.modalPresentationStyle=UIModalPresentationFullScreen;
 //    vc.roomBaseInfo=info;
